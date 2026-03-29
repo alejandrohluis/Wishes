@@ -1,0 +1,233 @@
+module DP
+{
+/* ------------ Vehiculo STANDARD ------------ */
+		/* 			Calidad Performance 			*/
+    craftRecipe MakeStandardTireTier1
+	{	
+		Category 		= Metalworking,
+		AutoLearnAny	= Mechanics:10,
+		Tags            = AnySurfaceCraft,
+		Time 			= 100,
+		SkillRequired 	= Mechanics:3;MetalWelding:1,
+		xpAward			= MetalWelding:10,
+		timedAction 	= Welding,
+		NeedToBeLearn	= true,
+		OnCreate		= Recipe.OnCreate.SetTireCondStandard,
+		inputs
+        {
+            item 1 [Base.LugWrench] mode:keep,
+			item 2 [Base.BlowTorch] flags[Prop1],
+			item 4 [Base.TirePiece],
+			item 4 [Base.Screws],
+			item 1 [Base.SheetMetal],
+        }
+		outputs
+		{   
+            item 1 Base.ModernTire1,
+		}
+	}
+		/* 			Calidad Regular 			*/
+	craftRecipe MakeStandardTireTier2
+	{	
+		Category 		= Metalworking,
+		AutoLearnAny	= Mechanics:10,
+		Tags            = AnySurfaceCraft,
+		Time 			= 100,
+		SkillRequired 	= Mechanics:3;MetalWelding:1,
+		xpAward			= MetalWelding:10,
+		timedAction 	= Welding,
+		NeedToBeLearn	= true,
+		OnCreate		= Recipe.OnCreate.SetTireCondStandard,
+		inputs
+        {
+            item 1 [Base.LugWrench] mode:keep,
+			item 2 [Base.BlowTorch] flags[Prop1],
+			item 4 [Base.TirePiece],
+			item 4 [Base.Screws],
+			item 1 [Base.SheetMetal],
+        }
+		outputs
+		{   
+            item 1 Base.NormalTire1,
+		}
+	}
+		/* 			Calidad Old 			*/
+	craftRecipe MakeStandardTireTier3
+	{	
+		Category 		= Metalworking,
+		AutoLearnAny	= Mechanics:10,
+		Tags            = AnySurfaceCraft,
+		Time 			= 100,
+		SkillRequired 	= Mechanics:3;MetalWelding:1,
+		xpAward			= MetalWelding:10,
+		timedAction 	= Welding,
+		NeedToBeLearn	= true,
+		OnCreate		= Recipe.OnCreate.SetTireCondStandard,
+		inputs
+        {
+            item 1 [Base.LugWrench] mode:keep,
+			item 2 [Base.BlowTorch] flags[Prop1],
+			item 4 [Base.TirePiece],
+			item 4 [Base.Screws],
+			item 1 [Base.SheetMetal],
+        }
+		outputs
+		{   
+            item 1 Base.OldTire1,
+		}
+	}
+
+/* ------------ Vehiculo HEAVY-DUTY ------------ */
+			/* 			Calidad Performance 			*/
+	craftRecipe MakeHeavy-DutyTireTier1
+	{	
+		Category 		= Metalworking,
+		AutoLearnAny	= Mechanics:10,
+		Tags            = AnySurfaceCraft,
+		Time 			= 100,
+		SkillRequired 	= Mechanics:3;MetalWelding:1,
+		xpAward			= MetalWelding:10,
+		timedAction 	= Welding,
+		NeedToBeLearn	= true,
+		OnCreate		= Recipe.OnCreate.SetTireCondHeavyDuty,
+		inputs
+        {
+            item 1 [Base.LugWrench] mode:keep,
+			item 2 [Base.BlowTorch] flags[Prop1],
+			item 4 [Base.TirePiece],
+			item 4 [Base.Screws],
+			item 1 [Base.SheetMetal],
+        }
+		outputs
+		{   
+            item 1 Base.ModernTire2,
+		}
+	}
+			/* 			Calidad Regular 			*/
+	craftRecipe MakeHeavy-DutyTireTier2
+	{	
+		Category 		= Metalworking,
+		AutoLearnAny	= Mechanics:10,
+		Tags            = AnySurfaceCraft,
+		Time 			= 100,
+		SkillRequired 	= Mechanics:3;MetalWelding:1,
+		xpAward			= MetalWelding:10,
+		timedAction 	= Welding,
+		NeedToBeLearn	= true,
+		OnCreate		= Recipe.OnCreate.SetTireCondHeavyDuty,
+		inputs
+        {
+            item 1 [Base.LugWrench] mode:keep,
+			item 2 [Base.BlowTorch] flags[Prop1],
+			item 4 [Base.TirePiece],
+			item 4 [Base.Screws],
+			item 1 [Base.SheetMetal],
+        }
+		outputs
+		{   
+            item 1 Base.NormalTire2,
+		}
+	}
+			/* 			Calidad Old 			*/
+	craftRecipe MakeHeavy-DutyTireTier3
+	{	
+		Category 		= Metalworking,
+		AutoLearnAny	= Mechanics:10,
+		Tags            = AnySurfaceCraft,
+		Time 			= 100,
+		SkillRequired 	= Mechanics:3;MetalWelding:1,
+		xpAward			= MetalWelding:10,
+		timedAction 	= Welding,
+		NeedToBeLearn	= true,
+		OnCreate		= Recipe.OnCreate.SetTireCondHeavyDuty,
+		inputs
+        {
+            item 1 [Base.LugWrench] mode:keep,
+			item 2 [Base.BlowTorch] flags[Prop1],
+			item 4 [Base.TirePiece],
+			item 4 [Base.Screws],
+			item 1 [Base.SheetMetal],
+        }
+		outputs
+		{   
+            item 1 Base.OldTire2,
+		}
+	}
+
+/* ------------ Vehiculo SPORT ------------ */
+				/* 			Calidad Performance 			*/
+	craftRecipe MakeSportTireTier1
+	{	
+		Category 		= Metalworking,
+		AutoLearnAny	= Mechanics:10,
+		Tags            = AnySurfaceCraft,
+		Time 			= 100,
+		SkillRequired 	= Mechanics:3;MetalWelding:1,
+		xpAward			= MetalWelding:10,
+		timedAction 	= Welding,
+		NeedToBeLearn	= true,
+		OnCreate		= Recipe.OnCreate.SetTireCondSport,
+		inputs
+        {
+            item 1 [Base.LugWrench] mode:keep,
+			item 2 [Base.BlowTorch] flags[Prop1],
+			item 4 [Base.TirePiece],
+			item 4 [Base.Screws],
+			item 1 [Base.SheetMetal],
+        }
+		outputs
+		{   
+            item 1 Base.ModernTire3,
+		}
+	}
+				/* 			Calidad Regular 			*/
+	craftRecipe MakeSportTireTier2
+	{	
+		Category 		= Metalworking,
+		AutoLearnAny	= Mechanics:10,
+		Tags            = AnySurfaceCraft,
+		Time 			= 100,
+		SkillRequired 	= Mechanics:3;MetalWelding:1,
+		xpAward			= MetalWelding:10,
+		timedAction 	= Welding,
+		NeedToBeLearn	= true,
+		OnCreate		= Recipe.OnCreate.SetTireCondSport,
+		inputs
+        {
+            item 1 [Base.LugWrench] mode:keep,
+			item 2 [Base.BlowTorch] flags[Prop1],
+			item 4 [Base.TirePiece],
+			item 4 [Base.Screws],
+			item 1 [Base.SheetMetal],
+        }
+		outputs
+		{   
+            item 1 Base.NormalTire3,
+		}
+	}
+				/* 			Calidad Old 			*/
+	craftRecipe MakeSportTireTier3
+	{	
+		Category 		= Metalworking,
+		AutoLearnAny	= Mechanics:10,
+		Tags            = AnySurfaceCraft,
+		Time 			= 100,
+		SkillRequired 	= Mechanics:3;MetalWelding:1,
+		xpAward			= MetalWelding:10,
+		timedAction 	= Welding,
+		NeedToBeLearn	= true,
+		OnCreate		= Recipe.OnCreate.SetTireCondSport,
+		inputs
+        {
+            item 1 [Base.LugWrench] mode:keep,
+			item 2 [Base.BlowTorch] flags[Prop1],
+			item 4 [Base.TirePiece],
+			item 4 [Base.Screws],
+			item 1 [Base.SheetMetal],
+        }
+		outputs
+		{   
+            item 1 Base.OldTire3,
+		}
+	}
+}

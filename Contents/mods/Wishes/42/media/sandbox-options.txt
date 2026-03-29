@@ -1,0 +1,57 @@
+VERSION = 1,
+
+option Wishes.Weight
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_Weight,
+}
+
+option Wishes.MaxPerk
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_MaxPerk,
+}
+
+option Wishes.Trait
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_Trait,
+}
+
+option Wishes.KnoxInfection
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_KnoxInfection,
+}
+
+option Wishes.AmmoBoxes
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_AmmoBoxes,
+}
+
+option Wishes.Weapons
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_Weapons,
+}
+
+option Wishes.Materials
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_Materials,
+}

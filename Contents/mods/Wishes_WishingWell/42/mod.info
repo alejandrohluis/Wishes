@@ -1,0 +1,9 @@
+name=Wishes - Wishing Well
+id=Wishes-WishingWell
+description=Throw all your bucks into wells to get wishes.
+author=Dios Pato
+versionMin=42.0
+modversion=1.0
+poster=poster.png
+icon=icon.png
+require=\WishesBase

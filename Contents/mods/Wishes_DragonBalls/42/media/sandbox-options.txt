@@ -1,0 +1,19 @@
+VERSION = 1,
+
+option Wishes.DB_Wish_MoreWishes
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_DBMoreWishes,
+}
+
+option Wishes.DB_Setting_MaxWishes
+{
+    type = int,
+    min = 1,
+    max = 10,
+    default = 3,
+    page = Wishes,
+    translation = Wishes_DBMaxWishes,
+}

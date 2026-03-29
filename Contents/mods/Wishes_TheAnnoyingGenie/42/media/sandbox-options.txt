@@ -1,0 +1,44 @@
+VERSION = 1,
+
+option Wishes.GenieWishes
+{
+    type = label,
+    page = Wishes,
+    translation = Wishes_GenieWishes,
+}
+
+option Wishes.GenieWishAmount
+{
+    type = int,
+    min = 1,
+    max = 10,
+    default = 3,
+    page = Wishes,
+    translation = Wishes_GenieWishAmount,
+}
+
+option Wishes.GenieChanceNoWish
+{
+    type = int,
+    min = 0,
+    max = 99,
+    default = 30,
+    page = Wishes,
+    translation = Wishes_GenieChanceNoWish,
+}
+
+option Wishes.GenieInfiniteWishesJoke
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_InfiniteWishesJoke,
+}
+
+option Wishes.GenieKillNearbyZombies
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_KillNearbyZombies,
+}

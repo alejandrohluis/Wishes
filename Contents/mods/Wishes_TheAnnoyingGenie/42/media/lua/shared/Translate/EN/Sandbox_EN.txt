@@ -1,0 +1,15 @@
+Sandbox_EN = {
+    Sandbox_Wishes_GenieWishes = "- The Annoying Genie -",
+
+    Sandbox_Wishes_GenieWishAmount = "Amount of Genie Wishes",
+    Sandbox_Wishes_GenieWishAmount_tooltip = "Pick the amount of wishes one can ask to each genie.",
+
+    Sandbox_Wishes_GenieChanceNoWish = "Slacking chance",
+    Sandbox_Wishes_GenieChanceNoWish_tooltip = "The chance for the genie to avoid granting you a wish.",
+
+    Sandbox_Wishes_InfiniteWishesJoke = "Wish for Infinite wishes",
+    Sandbox_Wishes_InfiniteWishesJoke_tooltip = "Wish for infinite wishes. <RGB:0.4,0.8,0.4> \n Spoiler: This wish is a joke, it won't give you more wishes.",
+
+    Sandbox_Wishes_KillNearbyZombies = "Kill all nearby zombies",
+    Sandbox_Wishes_KillNearbyZombies_tooltip = "Kills all zombies near the player. (In the chunk he is currently standing in)"
+}

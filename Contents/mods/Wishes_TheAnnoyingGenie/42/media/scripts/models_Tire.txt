@@ -1,0 +1,19 @@
+module DP
+{
+    imports
+    {
+        Base,
+    }
+
+    model TireMag_Ground
+    {
+        mesh = WorldItems/TireMagModel_Ground,
+        texture = WorldItems/TireMag1,
+        scale = 0.4,
+    }
+    model TireMag
+    {
+        mesh = TireMag_Reading,
+        texture = TireMagReading,
+    }
+}    

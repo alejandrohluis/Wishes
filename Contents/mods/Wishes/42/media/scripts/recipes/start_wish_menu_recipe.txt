@@ -1,0 +1,19 @@
+module DP
+{
+    craftRecipe StartWishingMenu
+    {	
+		Category 		= Wishes,
+		Tags            = AnySurfaceCraft,
+		Time 			= 10,
+		NeedToBeLearn	= false,
+		OnCreate		= RecipeCodeOnCreate.StartWishingMenu,
+		inputs
+        {
+            item 1 [Base.LugWrench],
+        }
+		outputs
+		{   
+            item 1 Base.LugWrench,
+		}
+	}
+}

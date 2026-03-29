@@ -1,0 +1,9 @@
+name=Wishes - Dragon Balls
+id=Wishes-DragonBall
+description=Collect all 7 dragon balls from the popular anime series Dragon Ball, scattered around the county, and you will summon the mighty Shen-Long!
+author=Dios Pato
+versionMin=42.0
+modversion=1.0
+poster=poster.png
+icon=icon.png
+require=\WishesBase

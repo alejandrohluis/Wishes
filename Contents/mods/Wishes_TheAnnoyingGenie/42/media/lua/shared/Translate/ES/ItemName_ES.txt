@@ -1,0 +1,3 @@
+ItemName_ES = {
+    ItemName_DP.TireMag = "Como armar ruedas",
+}

@@ -1,0 +1,9 @@
+name=Wishes - The Annoying Genie
+id=Wishes-GenieLamp
+description=Come on, rub the lamp! A genie might come out to give you what you wish for, but beware, as he may not grant ALL your desires...
+author=Dios Pato
+versionMin=42.0
+modversion=1.0
+poster=poster.png
+icon=icon.png
+require=\WishesBase

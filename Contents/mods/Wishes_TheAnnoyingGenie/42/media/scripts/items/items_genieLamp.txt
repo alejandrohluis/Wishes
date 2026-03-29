@@ -1,0 +1,16 @@
+module DP
+{
+	item GenieLamp
+	{
+		DisplayName 	 	= Genie Lamp,
+		DisplayCategory 	= Trash,
+		Type 			 	= Drainable,
+		Weight 			 	= 2.0,
+		UseDelta			= 0.4,
+		UseWhileEquipped 	= False,
+		Icon 			 	= GenieLamp,
+		StaticModel			= DP.GenieLamp,
+		WorldStaticModel 	= DP.GenieLamp_Ground,
+		Tags 				= Wishes,
+	}
+}

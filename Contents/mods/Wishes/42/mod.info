@@ -1,0 +1,8 @@
+name=Wishes
+id=WishesBase
+description=Adds wishes to the game. 
+description=IMPORTANT: To be able to ask for them you must choose AT LEAST one method by activating the correlating mods.
+author=Dios Pato
+modversion=1.0
+poster=poster.png
+icon=icon.png
