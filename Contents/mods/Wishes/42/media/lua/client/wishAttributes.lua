@@ -119,7 +119,7 @@ WishEffects.skillLevelUpOnce = function(char, wish)
 end
 
 -- player weight (NOT carry weight)
-WishEffects.setIdealWeight = function(char)
+WishEffects.setIdealWeight = function(char, _wish)
     local nutrition = char:getNutrition();
     nutrition:setWeight(80);
     nutrition:applyTraitFromWeight();
@@ -127,7 +127,7 @@ WishEffects.setIdealWeight = function(char)
 end
 
 -- healing
-WishEffects.healUp = function(char)
+WishEffects.healUp = function(char, _wish)
     local bodyDamage = char:getBodyDamage();
     local bodyParts = bodyDamage:getBodyParts();
     for i = 0, bodyParts:size()-1 do
@@ -137,7 +137,7 @@ WishEffects.healUp = function(char)
     return bodyDamage:getHealth() == 100.0;
 end
 
-WishEffects.cureSickness = function(char)
+WishEffects.cureSickness = function(char, _wish)
     local bodyDamage = char:getBodyDamage();
     if not bodyDamage:IsInfected() then
         return false;
@@ -150,6 +150,11 @@ WishEffects.cureSickness = function(char)
     bodyDamage:setInfectionTime(-1.0);
     bodyDamage:setInfectionMortalityDuration(-1.0);
     return true;
+end
+
+WishEffects.extraWishes = function(_char, wish, panel)
+    -- panel:sayWish();
+    return false;
 end
 
 -- WishEffects.obtainWeapon = function(char, weapon)

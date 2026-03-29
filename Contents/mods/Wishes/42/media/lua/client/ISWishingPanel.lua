@@ -25,6 +25,7 @@ local function initialiseListbox(listbox, panel)
     listbox.doDrawItem = panel.doDrawWish;
     listbox:setOnMouseDownFunction(listbox, function(wish) panel:onClickWish(listbox, wish) end)
     listbox:setOnMouseDoubleClick(panel, panel.onDoubleClickItem);
+    listbox.drawBorder = true
     listbox.owner = panel;
 end
 
@@ -33,10 +34,7 @@ local function onDoWish(panel, button, wish)
         return;
     end
     local player = panel.player;
-    local wasWishedConsumed
-    if panel.wishAmount > 0 then
-        wasWishedConsumed = wish.effect(player,wish);
-    end
+    local wasWishedConsumed = wish.effect(player,wish,panel);
     if wasWishedConsumed then
         panel.wishAmount = panel.wishAmount - 1;
     end
@@ -104,9 +102,9 @@ function ISWishingPanel:createChildren()
     local maxHeight = self.owner:getHeight();
 
     local tablePad = 20;
-    self.tableWidth = (maxWidth / 3.0) - (tablePad * 3.0);
+    self.tableWidth = (maxWidth / 3.0) - (tablePad * 6.0);
     self.wishTableHeight = #self.wishes * (UI_BORDER_SPACING + BUTTON_HGT);
-    self.optionsTableHeight = maxHeight - 60 - UI_BORDER_SPACING - (BUTTON_HGT * 2.0);
+    self.tableMaxHeight = maxHeight - 60 - UI_BORDER_SPACING - (BUTTON_HGT * 2.0);
     self.topOfLists = UI_BORDER_SPACING + BUTTON_HGT;
     self.buttonHgt = 25;
     self.buttonPad = 6;
@@ -121,7 +119,6 @@ function ISWishingPanel:createChildren()
     -- wish list
     self.listboxWishes = ISScrollingListBox:new(tablePad, self.topOfLists, self.tableWidth, self.wishTableHeight);
     initialiseListbox(self.listboxWishes, self)
-    self.listboxWishes.drawBorder = true
     self:addChild(self.listboxWishes);
 
     local offset = tablePad + self.tableWidth;
@@ -129,7 +126,7 @@ function ISWishingPanel:createChildren()
     local noColor = {r=0,g=0,b=0,a=0}
 
     -- category list for wishes that have different type of options
-    self.listboxCategory = ISScrollingListBox:new(tableOffsetX, self.topOfLists, self.tableWidth, self.optionsTableHeight)
+    self.listboxCategory = ISScrollingListBox:new(tableOffsetX, self.topOfLists, self.tableWidth, self.tableMaxHeight)
     initialiseListbox(self.listboxCategory, self)
     self.listboxCategory.backgroundColor = noColor;
     self.listboxCategory:setVisible(false);
@@ -137,7 +134,7 @@ function ISWishingPanel:createChildren()
 
     tableOffsetX = tableOffsetX + offset;
     -- options list
-    self.listboxOptions = ISScrollingListBox:new(tableOffsetX, self.topOfLists, self.tableWidth, self.optionsTableHeight)
+    self.listboxOptions = ISScrollingListBox:new(tableOffsetX, self.topOfLists, self.tableWidth, self.tableMaxHeight)
     initialiseListbox(self.listboxOptions, self)
     self.listboxOptions.backgroundColor = noColor;
     self.listboxOptions:setVisible(false);
@@ -167,10 +164,10 @@ function ISWishingPanel:onClickWish(listbox, wish)
     -- this is for joypads
     self.selectedList = listbox;
     if (listbox == self.listboxWishes) then
-        self.listboxCategory.selected = -1;
-        self.listboxOptions.selected = -1;
+        hideListbox(self.listboxCategory);
+        hideListbox(self.listboxOptions);
     elseif (listbox == self.listboxCategory) then
-        self.listboxOptions.selected = -1;
+        hideListbox(self.listboxOptions);
     end
 end
 
@@ -268,6 +265,7 @@ function ISWishingPanel:addCategoryToList(wish)
         category.effect = effect;
         self.listboxCategory:addItem(category.label, category);
     end
+    self.listboxCategory.height = math.min(self.tableMaxHeight, #categories * BUTTON_HGT);
     self.listboxCategory.selected = optionsCategorySelection;
     self.listboxOptions.selected = optionsSelection;
 end
@@ -290,6 +288,7 @@ function ISWishingPanel:addOptionsToList(wish)
         local tooltip = option.data.getDescription and option.data:getDescription();
         self.listboxOptions:addItem(option.label, option, tooltip);
     end
+    self.listboxOptions.height = math.min(self.tableMaxHeight, #options * BUTTON_HGT);
     self.listboxOptions.selected = optionsSelection;
 end
 

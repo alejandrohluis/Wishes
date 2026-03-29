@@ -8,7 +8,7 @@ recMedia["4bc43dcf-b046-4d0a-b100-cee0d37ed67d"] = {
 	author = nil,
 	extra = nil,
 	spawning = 0,
-	category = "Home-VHS",
+	category = "Retail-VHS",
 	lines = {
         -- opening
 		{ text = "RM_c0335416-f0f3-44a4-bc0a-1c6e31ad2740", r = 0.19, g = 0.65, b = 0.76, codes = "BOR-1" },

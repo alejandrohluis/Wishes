@@ -38,8 +38,9 @@ function ISWishingWindow:close()
     self:removeFromUIManager();
 end
 
-function ISWishingWindow:initialise(wishList, wishAmount)
+function ISWishingWindow:initialise(windowName, wishList, wishAmount)
     ISCollapsableWindow.initialise(self);
+    self.title = windowName;
     if not self.panel then
         self.wishes = wishList;
         self.wishAmount = wishAmount;
@@ -62,7 +63,7 @@ function ISWishingWindow:new(x, y, player, playerIndex)
 	instance.backgroundColor.a = 0.9;
     instance.minimumWidth = 1050;
     instance.minimumHeight = 600;
-	instance:setResizable(true);
+	instance:setResizable(false);
     instance.visibleOnStartup = false;
     instance.player = player;
 	instance.playerIndex = playerIndex;
