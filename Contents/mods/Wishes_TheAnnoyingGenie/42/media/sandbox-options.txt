@@ -4,41 +4,89 @@ option Wishes.GenieWishes
 {
     type = label,
     page = Wishes,
-    translation = Wishes_GenieWishes,
+    translation = Wishes_GL_GenieWishes,
 }
 
-option Wishes.GenieWishAmount
+option Wishes.GL_Setting_MaxWishes
 {
-    type = int,
+    type = integer,
     min = 1,
-    max = 10,
-    default = 3,
+    max = 3,
+    default = 1,
     page = Wishes,
-    translation = Wishes_GenieWishAmount,
+    translation = Wishes_GL_GenieWishAmount,
 }
 
-option Wishes.GenieChanceNoWish
+option Wishes.GL_Wish_ChanceNoWish
 {
-    type = int,
+    type = integer,
     min = 0,
     max = 99,
     default = 30,
     page = Wishes,
-    translation = Wishes_GenieChanceNoWish,
+    translation = Wishes_GL_GenieChanceNoWish,
 }
 
-option Wishes.GenieInfiniteWishesJoke
+option Wishes.GL_Wish_Trait
 {
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_InfiniteWishesJoke,
+    translation = Wishes_GL_KillNearbyZombies,
 }
-
-option Wishes.GenieKillNearbyZombies
+option Wishes.GL_Wish_SkillLevelUpUntil
+{
+    type = boolean,
+    default = false,
+    page = Wishes,
+    translation = Wishes_GL_KillNearbyZombies,
+}
+option Wishes.GL_Wish_SkillLevelUp
 {
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_KillNearbyZombies,
+    translation = Wishes_GL_KillNearbyZombies,
+}
+option Wishes.GL_Wish_HealInjury
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_GL_KillNearbyZombies,
+}
+option Wishes.GL_Wish_HealSickness
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_GL_KillNearbyZombies,
+}
+option Wishes.GL_Wish_Weight
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_GL_KillNearbyZombies,
+}
+option Wishes.GL_Wish_Wealth
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_GL_KillNearbyZombies,
+}
+option Wishes.GL_Wish_InfiniteWishes
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_GL_InfiniteWishesJoke,
+}
+option Wishes.GL_Wish_KillNearbyZombies
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_GL_KillNearbyZombies,
 }

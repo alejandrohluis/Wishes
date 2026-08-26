@@ -19,7 +19,7 @@ end
 function ISWishingWindow:createChildren()
 	ISCollapsableWindow.createChildren(self);
 
-    self.panel = ISWishingPanel:new(0, 8, self.width, self.height, self.player, self.playerIndex, self, self.wishes, self.wishAmount);
+    self.panel = ISWishingPanel:new(0, 8, self.width, self.height, self.player, self.playerIndex, self, self.wishingStyle);
     self.panel:initialise();
     self:addView(self.panel);
 
@@ -38,14 +38,16 @@ function ISWishingWindow:close()
     self:removeFromUIManager();
 end
 
-function ISWishingWindow:initialise(windowName, wishList, wishAmount)
+function ISWishingWindow:initialise(wishStyle)
     ISCollapsableWindow.initialise(self);
-    self.title = windowName;
+    self.wishingStyle = wishStyle
+    self.title = wishStyle.name;
     if not self.panel then
-        self.wishes = wishList;
-        self.wishAmount = wishAmount;
+        self.wishes = wishStyle.wishList;
+        self.wishAmount = wishStyle.wishAmount;
     else
-        self.panel:updateWishData(wishList, wishAmount);
+        -- self.panel:updateWishData(wishStyle.wishList, wishStyle.wishAmount);
+        self.panel:updateWishData(self.wishes, self.wishAmount);
     end
 end
 

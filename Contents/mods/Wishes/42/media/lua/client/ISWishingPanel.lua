@@ -1,10 +1,9 @@
-
+require "WishAttributes.lua"
 
 ISWishingPanel = ISPanel:derive("ISWishingPanel");
 
 local UIFontSmall = UIFont.Small
 local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFontSmall);
--- local FONT_HGT_MEDIUM = getTextManager():getFontHeight(UIFont.Medium);
 local UI_BORDER_SPACING = 10;
 local BUTTON_HGT = FONT_HGT_SMALL + 6;
 
@@ -33,36 +32,38 @@ local function onDoWish(panel, button, wish)
     if button.internal ~= "YES" then
         return;
     end
-    local player = panel.player;
-    local wasWishedConsumed = wish.effect(player,wish,panel);
-    if wasWishedConsumed then
-        panel.wishAmount = panel.wishAmount - 1;
-    end
-    if panel.wishAmount == 0 then
+    sendClientCommand(panel.player, "Wishes", "GrantWish", { wishID = wish.effect , optionID = wish } )
+    -- local player = panel.player;
+    -- wish.effect(player,wish,panel);
+    if panel.wishAmount <= 0 then
         panel:close();
         return
     end
     panel:updateWishesLabel();
+    panel:clearCategories()
 end
 
 local function getWishColor(wish, player)
     local colors = {
         wish = { r = 0.8, g = 1, b = 0.8, a = 1 },
-        neutral = { r = 0.7, g = 0.7, b = 0.7, a = 1 },
+        other = { r = 0.7, g = 0.7, b = 0.7, a = 1 },
         good = { r = 0, g = 0.7, b = 0, a = 1 },
         bad = { r = 0.7, g = 0, b = 0, a = 1 },
-        bug = { r = 0, g = 0, b = 1, a = 1}
+        neutral = { r = 0, g = 0, b = 0.7, a = 1}
     }
     if not wish.data then
         return colors.wish;
     end
     local isTrait = wish.data.getLabel;
     if not isTrait then
-        return colors.neutral;
+        return colors.other;
     end
     local traitDefinition = wish.data;
     local trait = traitDefinition:getType();
     local cost = traitDefinition:getCost();
+    if cost == 0 then
+        return colors.neutral;
+    end
     if cost > 0 then
         if player:hasTrait(trait) then
             return colors.bad;
@@ -76,9 +77,6 @@ local function getWishColor(wish, player)
         else
             return colors.bad;
         end
-    end
-    if cost == 0 then
-        return colors.bug;
     end
 end
 
@@ -98,37 +96,40 @@ function ISWishingPanel:initialise()
 end
 
 function ISWishingPanel:createChildren()
-    local maxWidth = self.owner:getWidth();
-    local maxHeight = self.owner:getHeight();
+    self.maxWidth = self.owner:getWidth();
+    self.maxHeight = self.owner:getHeight();
 
-    local tablePad = 20;
-    self.tableWidth = (maxWidth / 3.0) - (tablePad * 6.0);
+    self.tablePad = 20;
+    self.tableWidth = (self.maxWidth / 3.0) - (self.tablePad * 6.0);
     self.wishTableHeight = #self.wishes * (UI_BORDER_SPACING + BUTTON_HGT);
-    self.tableMaxHeight = maxHeight - 60 - UI_BORDER_SPACING - (BUTTON_HGT * 2.0);
+    self.tableMaxHeight = self.maxHeight - 60 - UI_BORDER_SPACING - (BUTTON_HGT * 2.0);
     self.topOfLists = UI_BORDER_SPACING + BUTTON_HGT;
     self.buttonHgt = 25;
     self.buttonPad = 6;
 
+    local offset = self.tablePad + self.tableWidth;
+    local tableOffsetX = self.tablePad + offset;
+
+    -- self.portrait = ISWishPortrait:new(0, 0, self.tableWidth, (self.maxHeight - UI_BORDER_SPACING * 4), getTexture("media/textures/shenlong.png"));
+    self.portrait = ISWishPortrait:new(self.tablePad, UI_BORDER_SPACING, self.tableWidth, (self.maxHeight - UI_BORDER_SPACING * 4), self.style:getTexture());
+    self.portrait:initialise();
+    self:addChild(self.portrait);
+
+    -- todo: add translation (using getText("UI_")...)
     -- wishes label
-    self.remainingWishesLabel = ISLabel:new(tablePad, UI_BORDER_SPACING, BUTTON_HGT, "Wishes remaining: " .. tostring(self.wishAmount), 1, 1, 1, 1, UIFontSmall, true);
-    -- self.remainingWishesLabel = ISLabel:new(self.tablePad, UI_BORDER_SPACING, BUTTON_HGT, getText("UI_characreation_choosentraits") , 1, 1, 1, 1, UIFontSmall, true);
+    self.remainingWishesLabel = ISLabel:new(tableOffsetX, UI_BORDER_SPACING, BUTTON_HGT, ("Wishes remaining: " .. tostring(self.wishAmount)), 1, 1, 1, 1, UIFontSmall, true);
 	self.remainingWishesLabel:initialise();
-    self.remainingWishesLabel:instantiate();
     self:addChild(self.remainingWishesLabel);
 
     -- wish list
-    self.listboxWishes = ISScrollingListBox:new(tablePad, self.topOfLists, self.tableWidth, self.wishTableHeight);
+    self.listboxWishes = ISScrollingListBox:new(tableOffsetX, self.topOfLists, self.tableWidth, self.wishTableHeight);
     initialiseListbox(self.listboxWishes, self)
     self:addChild(self.listboxWishes);
 
-    local offset = tablePad + self.tableWidth;
-    local tableOffsetX = tablePad + offset;
-    local noColor = {r=0,g=0,b=0,a=0}
-
+    tableOffsetX = tableOffsetX + offset;
     -- category list for wishes that have different type of options
     self.listboxCategory = ISScrollingListBox:new(tableOffsetX, self.topOfLists, self.tableWidth, self.tableMaxHeight)
     initialiseListbox(self.listboxCategory, self)
-    self.listboxCategory.backgroundColor = noColor;
     self.listboxCategory:setVisible(false);
     self:addChild(self.listboxCategory);
 
@@ -136,7 +137,6 @@ function ISWishingPanel:createChildren()
     -- options list
     self.listboxOptions = ISScrollingListBox:new(tableOffsetX, self.topOfLists, self.tableWidth, self.tableMaxHeight)
     initialiseListbox(self.listboxOptions, self)
-    self.listboxOptions.backgroundColor = noColor;
     self.listboxOptions:setVisible(false);
     self:addChild(self.listboxOptions);
 
@@ -149,8 +149,15 @@ function ISWishingPanel:updateWishData(wishes, wishAmount)
     self:updateWishesLabel();
     self.selectedList = nil;
     self.listboxWishes.selected = 1;
-    hideListbox(self.listboxCategory);
-    hideListbox(self.listboxOptions)
+    self:clearCategories()
+end
+
+function ISWishingPanel:consumeWish(wishesConsumed)
+    self.wishAmount = self.wishAmount - wishesConsumed
+end
+
+function ISWishingPanel:canPerformWish(wishesToConsume)
+    return self.wishAmount - wishesToConsume >= 0
 end
 
 function ISWishingPanel:updateWishesLabel()
@@ -159,13 +166,17 @@ function ISWishingPanel:updateWishesLabel()
     end
 end
 
+function ISWishingPanel:clearCategories()
+    hideListbox(self.listboxCategory)
+    hideListbox(self.listboxOptions)
+end
+
 function ISWishingPanel:onClickWish(listbox, wish)
     self:clearModal();
     -- this is for joypads
     self.selectedList = listbox;
     if (listbox == self.listboxWishes) then
-        hideListbox(self.listboxCategory);
-        hideListbox(self.listboxOptions);
+        self:clearCategories()
     elseif (listbox == self.listboxCategory) then
         hideListbox(self.listboxOptions);
     end
@@ -180,13 +191,15 @@ end
 function ISWishingPanel:onDoubleClickItem(item)
     local player = self.player;
 
-    if not item.isOption then
-        if item.options then
+    if not item.data then
+        local isSelectorWish = item.options ~= nil
+        if isSelectorWish then
             self.listboxCategory:setVisible(true);
             self:addCategoryToList(item);
             return
         end
-        if item.children then
+        local isCategory = item.children ~= nil
+        if isCategory then
             self.listboxOptions:setVisible(true);
             self:addOptionsToList(item);
             return
@@ -196,9 +209,6 @@ function ISWishingPanel:onDoubleClickItem(item)
     end
 
     local wish = item;
-    if not wish.isEnabled then
-        return
-    end
     local width = 250.0;
     local height = 150.0;
     local x = self.owner:getX() + (self.owner:getWidth() / 2.0) - (width / 2.0);
@@ -233,32 +243,32 @@ function ISWishingPanel:doDrawWish(y, item, alt)
     return y
 end
 
+-- Wish panel workflow:
+-- all wishes => category => options
+
 --- ISWishingPanel:addWishesToList()  
---- Adds all existing wishes to the listbox
+--- Adds all existing wishes to its listbox
 function ISWishingPanel:addWishesToList()
     local wishSelection = self.listboxWishes.selected;
     self.listboxWishes:clear();
     local allWishes = self.wishes;
     for i = 1, #allWishes do
-        -- local key = wishKeys[i];
         local wish = allWishes[i];
-        if wish.isEnabled then
-            local tooltip = "Wish to " .. wish.label;
-            self.listboxWishes:addItem(wish.label, wish, tooltip);
-        end
+        local tooltip = "Wish to " .. wish.label;
+        self.listboxWishes:addItem(wish.label, wish, tooltip);
     end
     self.listboxWishes.selected = wishSelection;
 end
 
 
 --- ISWishingPanel:addCategoryToList(wish)  
---- Adds all categories to the listbox
+--- Adds all categories to its listbox
 function ISWishingPanel:addCategoryToList(wish)
     local optionsCategorySelection = self.listboxCategory.selected;
     local optionsSelection = self.listboxOptions.selected;
     self.listboxCategory:clear();
     self.listboxOptions:clear();
-    local categories = wish.options;
+    local categories = wish:options(self.player);
     local effect = wish.effect;
     for i = 1, #categories do
         local category = categories[i];
@@ -271,16 +281,14 @@ function ISWishingPanel:addCategoryToList(wish)
 end
 
 --- ISWishingPanel:addOptionsToList(wish)  
---- Adds all options to the listbox
-function ISWishingPanel:addOptionsToList(wish)
+--- Adds all options to its listbox
+function ISWishingPanel:addOptionsToList(category)
     local optionsSelection = self.listboxOptions.selected;
     self.listboxOptions:clear();
-    local options = wish.children;
-    local effect = wish.effect;
+    local options = category.children;
+    local effect = category.effect;
     for i = 1 , #options do
         local option = {};
-        option.isEnabled = true;
-        option.isOption = true;
         option.data = options[i];
         local labelMethod = option.data.getLabel or option.data.getName;
         option.label = labelMethod(option.data);
@@ -298,7 +306,7 @@ end
 
 ----------------------------------------------------------------------------------
 
-function ISWishingPanel:new(x, y, width, height, player, playerNum, owner, wishList, wishAmount)
+function ISWishingPanel:new(x, y, width, height, player, playerNum, owner, style)
     local o = {}
     o = ISPanel:new(x, y, width, height)
     setmetatable(o, self)
@@ -311,8 +319,9 @@ function ISWishingPanel:new(x, y, width, height, player, playerNum, owner, wishL
     -- o.backgroundColor = { r = 0, g = 0, b = 0, a = 0.8 }
     o.variableColor = { r = 0.9, g = 0.55, b = 0.1, a = 1 };
     o.selectedList = nil;
-    o.wishAmount = wishAmount;
-    o.wishes = wishList;
+    o.style = style
+    o.wishAmount = style.wishAmount;
+    o.wishes = style.wishList;
     return o
 end
 

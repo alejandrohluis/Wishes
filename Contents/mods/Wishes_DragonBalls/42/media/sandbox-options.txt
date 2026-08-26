@@ -1,23 +1,16 @@
 VERSION = 1,
 
 
-option Wishes.DB.Setting_MaxWishes
+option Wishes.DB_Setting_MaxWishes
 {
     type = integer,
     min = 1,
     max = 10,
     default = 3,
     page = WishesDragonBall,
-    translation = Wishes_DBMaxWishes,
+    translation = Wishes_DB_MaxWishes,
 }
 
-option Wishes.DB_Wish_MoreWishes
-{
-    type = boolean,
-    default = true,
-    page = WishesDragonBall,
-    translation = Wishes_DBMoreWishes,
-}
 option Wishes.DB_Wish_Trait
 {
     type = boolean,
@@ -59,4 +52,32 @@ option Wishes.DB_Wish_Weight
     default = true,
     page = WishesDragonBall,
     translation = Wishes_DB,
+}
+option Wishes.DB_Wish_UnlockPotential
+{
+    type = boolean,
+    default = true,
+    page = WishesDragonBall,
+    translation = Wishes_DB,
+}
+option Wishes.DB_Wish_Teleport
+{
+    type = boolean,
+    default = true,
+    page = WishesDragonBall,
+    translation = Wishes_DB,
+}
+option Wishes.DB_Wish_Inmortality
+{
+    type = boolean,
+    default = true,
+    page = WishesDragonBall,
+    translation = Wishes_DB,
+}
+option Wishes.DB_Wish_MoreWishes
+{
+    type = boolean,
+    default = true,
+    page = WishesDragonBall,
+    translation = Wishes_DB_MoreWishes,
 }

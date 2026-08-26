@@ -1,6 +1,6 @@
 module DP
 {
-    craftRecipe StartWishingMenu
+    craftRecipe Debug_WishingMenu
     {	
 		Category 		= Wishes,
 		Tags            = AnySurfaceCraft,

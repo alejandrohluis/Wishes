@@ -3,14 +3,25 @@ module DP
 	item GenieLamp
 	{
 		DisplayName 	 	= Genie Lamp,
-		DisplayCategory 	= Trash,
-		Type 			 	= Drainable,
+		DisplayCategory 	= Junk,
+		ItemType 			= base:drainable,
 		Weight 			 	= 2.0,
-		UseDelta			= 0.4,
-		UseWhileEquipped 	= False,
+		UseDelta			= 0.34,
+		UseWhileEquipped 	= false,
+		ReplaceOnDeplete 	= DP.GoldLamp,
 		Icon 			 	= GenieLamp,
 		StaticModel			= DP.GenieLamp,
-		WorldStaticModel 	= DP.GenieLamp_Ground,
-		Tags 				= Wishes,
+		WorldStaticModel    = DP.GenieLamp_Ground,
+	}
+	item GoldLamp
+	{
+		DisplayName 	 	= Golden Lamp,
+		DisplayCategory 	= Junk,
+		ItemType 			= base:normal,
+		Weight 			 	= 2.0,
+		UseWhileEquipped 	= false,
+		Icon 			 	= GenieLamp,
+		StaticModel			= DP.GenieLamp,
+		WorldStaticModel    = DP.GenieLamp_Ground,
 	}
 }

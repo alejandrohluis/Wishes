@@ -20,14 +20,25 @@ module DP
         }
 		outputs
 		{   
-            item 1 DP.DragonBall_1,
-            item 1 DP.DragonBall_2,
-            item 1 DP.DragonBall_3,
-            item 1 DP.DragonBall_4,
-            item 1 DP.DragonBall_5,
-            item 1 DP.DragonBall_6,
-            item 1 DP.DragonBall_7,
             item 7 Base.LargeStone,
+		}
+    }
+    
+    craftRecipe Debug_AskWish_DB
+    {
+        Category 		= Wishes,
+        timedAction     = Making,
+		Tags            = InHandCraft;CanBeDoneFromFloor,
+		Time 			= 10,
+		NeedToBeLearn	= false,
+		OnCreate		= RecipeCodeOnCreate.SummonShenron,
+		inputs
+        {
+            item 1 [Base.Wrench],
+        }
+		outputs
+		{   
+            item 1 Base.Wrench,
 		}
     }
 }
