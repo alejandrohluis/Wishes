@@ -32,7 +32,7 @@ local function onDoWish(panel, button, wish)
     if button.internal ~= "YES" then
         return;
     end
-    sendClientCommand(panel.player, "Wishes", "GrantWish", { wishID = wish.effect , optionID = wish } )
+    sendClientCommand(panel.player, "Wishes", "GrantWish", { wishID = wish.id , optionID = wish.label } )
     -- local player = panel.player;
     -- wish.effect(player,wish,panel);
     if panel.wishAmount <= 0 then
@@ -272,6 +272,7 @@ function ISWishingPanel:addCategoryToList(wish)
     local effect = wish.effect;
     for i = 1, #categories do
         local category = categories[i];
+        category.id = wish.id;
         category.effect = effect;
         self.listboxCategory:addItem(category.label, category);
     end
@@ -289,6 +290,7 @@ function ISWishingPanel:addOptionsToList(category)
     local effect = category.effect;
     for i = 1 , #options do
         local option = {};
+        option.id = category.id
         option.data = options[i];
         local labelMethod = option.data.getLabel or option.data.getName;
         option.label = labelMethod(option.data);

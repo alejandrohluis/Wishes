@@ -97,75 +97,67 @@ local function removeTrait(player, trait)
 end
 
 -- function WishEffects:modifyTrait(char, wish)
-WishEffects.modifyTrait = function(char, selectedOption, panel)
-    local maxWishesConsumed = 1
-    if not panel:canPerformWish(maxWishesConsumed) then return end
-    local trait = selectedOption.data:getType();
+WishEffects.modifyTrait = function(char, selectedOptionID)
+    local selectedOption = WishWhitelist_ModifyTrait[selectedOptionID]
+    if not selectedOption then return end
+
+    local trait = selectedOption:getType();
     local hasTrait = char:hasTrait(trait);
     if hasTrait then
         removeTrait(char, trait)
     else
         obtainTrait(char, trait)
     end
-    panel:consumeWish(maxWishesConsumed)
 end
 
 -- skills
-WishEffects.skillLevelUpUntil = function(char, selectedOption, panel)
-    local maxWishesConsumed = 1
-    if not panel:canPerformWish(maxWishesConsumed) then return end
-    local perk = selectedOption.data:getType();
+WishEffects.skillLevelUpUntil = function(char, selectedOptionID)
+    local selectedOption = WishWhitelist_SkillLevelUntil[selectedOptionID]
+    if not selectedOption then return end
+
+    local perk = selectedOption:getType();
     local perkLevel = char:getPerkLevel(perk);
-    local startingPerkLevel = perkLevel;
+    -- local startingPerkLevel = perkLevel;
     local maxLevel = 5;
     while perkLevel < maxLevel do
         char:LevelPerk(perk);
         perkLevel = perkLevel + 1;
     end
-    if startingPerkLevel ~= perkLevel then
-        panel:consumeWish(maxWishesConsumed)
-    end
+    -- if startingPerkLevel ~= perkLevel then
+    -- end
 end
 
-WishEffects.skillLevelUpOnce = function(char, selectedOption, panel)
-    local maxWishesConsumed = 1
-    if not panel:canPerformWish(maxWishesConsumed) then return end
-    local perk = selectedOption.data:getType();
-    local startingPerkLevel = char:getPerkLevel(perk);
+WishEffects.skillLevelUpOnce = function(char, selectedOptionID)
+    local selectedOption = WishWhitelist_SkillLevelOnce[selectedOptionID]
+    if not selectedOption then return end
+
+    local perk = selectedOption:getType();
+    -- local startingPerkLevel = char:getPerkLevel(perk);
     char:LevelPerk(perk);
-    local perkLevel = char:getPerkLevel(perk);
-    if perkLevel == (startingPerkLevel + 1) then
-        panel:consumeWish(maxWishesConsumed)
-    end
+    -- local perkLevel = char:getPerkLevel(perk);
+    -- if perkLevel == (startingPerkLevel + 1) then
+    -- end
 end
 
 -- player weight (NOT carry weight)
-WishEffects.setIdealWeight = function(char, _selectedOption, panel)
-    local maxWishesConsumed = 1
-    if not panel:canPerformWish(maxWishesConsumed) then return end
+WishEffects.setIdealWeight = function(char, _selectedOptionID)
     local nutrition = char:getNutrition();
     nutrition:setWeight(80);
     nutrition:applyTraitFromWeight();
-    panel:consumeWish(maxWishesConsumed)
 end
 
 -- healing
-WishEffects.healUp = function(char, _selectedOption, panel)
-    local maxWishesConsumed = 1
-    if not panel:canPerformWish(maxWishesConsumed) then return end
+WishEffects.healUp = function(char, _selectedOptionID)
     local bodyDamage = char:getBodyDamage();
     local bodyParts = bodyDamage:getBodyParts();
     for i = 0, bodyParts:size()-1 do
         bodyParts:get(i):RestoreToFullHealth();
     end
     bodyDamage:Update();
-    panel:consumeWish(maxWishesConsumed)
 end
 
 -- consumes 2 wishes
-WishEffects.cureSickness = function(char, _selectedOption, panel)
-    local maxWishesConsumed = 2
-    if not panel:canPerformWish(maxWishesConsumed) then return end
+WishEffects.cureSickness = function(char, _selectedOptionID)
 
     local bodyDamage = char:getBodyDamage();
     if not bodyDamage:IsInfected() then return end
@@ -177,37 +169,30 @@ WishEffects.cureSickness = function(char, _selectedOption, panel)
     bodyDamage:setInfected(false);
     bodyDamage:setInfectionTime(-1.0);
     bodyDamage:setInfectionMortalityDuration(-1.0);
-    panel:consumeWish(maxWishesConsumed)
 end
 
 -- wish to obtain a specific item from a list of options
-WishEffects.obtainItem = function(char, selectedOption, panel)
-    local maxWishesConsumed = 1
-    if not panel:canPerformWish(maxWishesConsumed) then return end
+WishEffects.obtainItem = function(char, selectedOptionID)
+    local selectedOption = WishWhitelist_ObtainItem[selectedOptionID]
+    if not selectedOption then return end
+
+    local createItemMethod = instanceItem
     for i = 1, selectedOption.quantity do
-        local item = instanceItem(selectedOption.data)
+        local item = createItemMethod(selectedOption.item)
         char:getInventory():AddItem(item)
     end
-    panel:consumeWish(maxWishesConsumed)
 end
 
-WishEffects.endWishing = function(_char, _selectedOption, panel)
-    panel:close()
+WishEffects.endWishing = function(_char, _selectedOptionID)
 end
 
-WishEffects.repairItem = function(_char, _selectedOption, panel)
-    local maxWishesConsumed = 1
-    if not panel:canPerformWish(maxWishesConsumed) then return end
-    panel:consumeWish(maxWishesConsumed)
+WishEffects.repairItem = function(_char, selectedOptionID)
 end
 
-WishEffects.obtainWeapons = function(_char, _selectedOption, panel)
-    local maxWishesConsumed = 1
-    if not panel:canPerformWish(maxWishesConsumed) then return end
-    panel:consumeWish(maxWishesConsumed)
+WishEffects.obtainWeapons = function(_char, selectedOptionID)
 end
 
-WishEffects.extraWishes = function(_char, _selectedOption, panel)
+WishEffects.extraWishes = function(_char, _selectedOptionID)
 end
 
 -- WishEffects.obtainWeapon = function(char, weapon)
