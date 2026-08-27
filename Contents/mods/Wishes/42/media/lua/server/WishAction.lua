@@ -1,3 +1,5 @@
+require "WishAttributes.lua"
+
 WishWhitelist = {
     modifyTrait       = { cost = 1, effect = WishEffects.modifyTrait },
     skillLevelUpUntil = { cost = 1, effect = WishEffects.skillLevelUpUntil },
@@ -12,46 +14,35 @@ WishWhitelist = {
     extraWishes       = { cost = 1, effect = WishEffects.extraWishes },
 }
 
-WishWhitelist_ModifyTrait = {}
-WishBlacklist_ModifyTrait = {}
-WishWhitelist_SkillLevelUntil = {}
-WishWhitelist_SkillLevelOnce = {}
-WishWhitelist_ObtainItem = {}
+----------------------------------------------------------------------------------
+--- WishAction
+----------------------------------------------------------------------------------
+-- WishAction = {}
 
-local function initializeModifyTraitWhitelist()
-    local traitsArray = CharacterTraitDefinition.getTraits();
-    local traits = {}
-    for i = traitsArray:size()-1, 0, -1 do
-        local trait = traitsArray:get(i)
-        if trait:getCost() ~= 0 then
-            traits[i] = trait
-        end
-    end
-    WishWhitelist_ModifyTrait = traits
-end
-
-Wisheffects = {}
-
-Wisheffects.GrantWish = function (player, args)
+-- WishAction.GrantWish = function (player, args)
     
-end
+-- end
 
 local function canPerformWish(player, wish)
-    
+    -- return wish.isEnabled and wish.cost - player:getModData().availableWishes >= 0
+    return true
 end
 
 local function OnClientCommand(module, command, player, args)
     if module ~= "Wishes" then return end
     if command ~= "GrantWish" then return end
     if not args or not args.wishID then return end
+    print("GrantWish command called")
 
     local wishToPerform = WishWhitelist[args.wishID]
+
     -- if wish is not in the whitelist
     if not wishToPerform then return end
 
     if not canPerformWish(player, wishToPerform) then return end
 
-    wishToPerform.effect(player, args.label)
+    wishToPerform:effect(player, args.optionID)
+    print("GrantWish command effect done")
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

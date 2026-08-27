@@ -32,7 +32,7 @@ local function onDoWish(panel, button, wish)
     if button.internal ~= "YES" then
         return;
     end
-    sendClientCommand(panel.player, "Wishes", "GrantWish", { wishID = wish.id , optionID = wish.label } )
+    sendClientCommand(panel.player, "Wishes", "GrantWish", { wishID = wish.wishID , optionID = wish.optionID } )
     -- local player = panel.player;
     -- wish.effect(player,wish,panel);
     if panel.wishAmount <= 0 then
@@ -41,43 +41,6 @@ local function onDoWish(panel, button, wish)
     end
     panel:updateWishesLabel();
     panel:clearCategories()
-end
-
-local function getWishColor(wish, player)
-    local colors = {
-        wish = { r = 0.8, g = 1, b = 0.8, a = 1 },
-        other = { r = 0.7, g = 0.7, b = 0.7, a = 1 },
-        good = { r = 0, g = 0.7, b = 0, a = 1 },
-        bad = { r = 0.7, g = 0, b = 0, a = 1 },
-        neutral = { r = 0, g = 0, b = 0.7, a = 1}
-    }
-    if not wish.data then
-        return colors.wish;
-    end
-    local isTrait = wish.data.getLabel;
-    if not isTrait then
-        return colors.other;
-    end
-    local traitDefinition = wish.data;
-    local trait = traitDefinition:getType();
-    local cost = traitDefinition:getCost();
-    if cost == 0 then
-        return colors.neutral;
-    end
-    if cost > 0 then
-        if player:hasTrait(trait) then
-            return colors.bad;
-        else
-            return colors.good;
-        end
-    end
-    if cost < 0 then
-        if player:hasTrait(trait) then
-            return colors.good;
-        else
-            return colors.bad;
-        end
-    end
 end
 
 ----------------------------------------------------------------------------------
@@ -191,21 +154,17 @@ end
 function ISWishingPanel:onDoubleClickItem(item)
     local player = self.player;
 
-    if not item.data then
-        local isSelectorWish = item.options ~= nil
-        if isSelectorWish then
-            self.listboxCategory:setVisible(true);
-            self:addCategoryToList(item);
-            return
-        end
-        local isCategory = item.children ~= nil
-        if isCategory then
-            self.listboxOptions:setVisible(true);
-            self:addOptionsToList(item);
-            return
-        end
-        hideListbox(self.listboxOptions)
-        hideListbox(self.listboxCategory)
+    local hasCategories = item.categories ~= nil
+    if hasCategories then
+        self.listboxCategory:setVisible(true);
+        self:addCategoryToList(item);
+        return
+    end
+    local hasOptions = item.options ~= nil
+    if hasOptions then
+        self.listboxOptions:setVisible(true);
+        self:addOptionsToList(item);
+        return
     end
 
     local wish = item;
@@ -233,7 +192,7 @@ function ISWishingPanel:doDrawWish(y, item, alt)
     end
 
     local offsetX = 16;
-    local colorText = getWishColor(wish, self.owner.player);
+    local colorText = wish.color or { r = 0.8, g = 1, b = 0.8, a = 1 }
     local dy = (self.itemheight - FONT_HGT_SMALL) / 2.0;
     -- wish label
     self:drawText(wish.label, offsetX, y + dy, colorText.r, colorText.g, colorText.b, colorText.a, UIFontSmall);
@@ -268,12 +227,10 @@ function ISWishingPanel:addCategoryToList(wish)
     local optionsSelection = self.listboxOptions.selected;
     self.listboxCategory:clear();
     self.listboxOptions:clear();
-    local categories = wish:options(self.player);
-    local effect = wish.effect;
+    local categories = wish:categories(self.player);
     for i = 1, #categories do
         local category = categories[i];
-        category.id = wish.id;
-        category.effect = effect;
+        category.wishID = wish.wishID;
         self.listboxCategory:addItem(category.label, category);
     end
     self.listboxCategory.height = math.min(self.tableMaxHeight, #categories * BUTTON_HGT);
@@ -286,17 +243,15 @@ end
 function ISWishingPanel:addOptionsToList(category)
     local optionsSelection = self.listboxOptions.selected;
     self.listboxOptions:clear();
-    local options = category.children;
-    local effect = category.effect;
+    local options = category.options;
     for i = 1 , #options do
-        local option = {};
-        option.id = category.id
-        option.data = options[i];
-        local labelMethod = option.data.getLabel or option.data.getName;
-        option.label = labelMethod(option.data);
-        option.effect = effect;
-        local tooltip = option.data.getDescription and option.data:getDescription();
-        self.listboxOptions:addItem(option.label, option, tooltip);
+        -- needs an ID and a label
+        local option = options[i];
+        option.wishID = category.wishID
+        if not option.color then
+            option.color = category.color
+        end
+        self.listboxOptions:addItem(option.label, option, option.tooltip);
     end
     self.listboxOptions.height = math.min(self.tableMaxHeight, #options * BUTTON_HGT);
     self.listboxOptions.selected = optionsSelection;
