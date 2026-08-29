@@ -32,14 +32,14 @@ local function onDoWish(panel, button, wish)
     if button.internal ~= "YES" then
         return;
     end
-    sendClientCommand(panel.player, "Wishes", "GrantWish", { wishID = wish.wishID , optionID = wish.optionID } )
+    local wishData = { wishID = wish.wishID }
+    if wish.optionID then
+        wishData.optionID = wish.optionID
+    end
+    print("sending command with: WishID = ".. wishData.wishID .. " ; OptionID = ".. wishData.optionID )
+    sendClientCommand(panel.player, "Wishes", "GrantWish", wishData )
     -- local player = panel.player;
     -- wish.effect(player,wish,panel);
-    if panel.wishAmount <= 0 then
-        panel:close();
-        return
-    end
-    panel:updateWishesLabel();
     panel:clearCategories()
 end
 
@@ -73,7 +73,7 @@ function ISWishingPanel:createChildren()
     local offset = self.tablePad + self.tableWidth;
     local tableOffsetX = self.tablePad + offset;
 
-    self.portrait = ISWishPortrait:new(self.tablePad, UI_BORDER_SPACING, self.tableWidth, (self.maxHeight - UI_BORDER_SPACING * 4), self.style:getTexture());
+    self.portrait = ISWishPortrait:new(self.tablePad, UI_BORDER_SPACING, self.tableWidth, (self.maxHeight - UI_BORDER_SPACING * 4), self.texturePath);
     self.portrait:initialise();
     self:addChild(self.portrait);
 
@@ -114,8 +114,15 @@ function ISWishingPanel:updateWishData(wishes, wishAmount)
     self:clearCategories()
 end
 
+function ISWishingPanel:getMeErrors()
+    local onservcommand = Events.OnServerCommand
+    print("[Wishes] [ERROR] OnServerCommand Event = "..onservcommand)
+end
+
 function ISWishingPanel:setRemainingWishes(remainingWishes)
     self.wishAmount = remainingWishes
+    self:updateWishesLabel()
+    self:getMeErrors()
 end
 
 function ISWishingPanel:updateWishesLabel()
@@ -271,9 +278,9 @@ function ISWishingPanel:new(x, y, width, height, player, playerNum, owner, style
     -- o.backgroundColor = { r = 0, g = 0, b = 0, a = 0.8 }
     o.variableColor = { r = 0.9, g = 0.55, b = 0.1, a = 1 };
     o.selectedList = nil;
-    o.style = style
-    o.wishAmount = style.wishAmount;
-    o.wishes = style.wishList;
+    o.texturePath = style:getTexturePath()
+    o.wishAmount = style:getWishAmount();
+    o.wishes = style:getWishesToDisplay();
     return o
 end
 

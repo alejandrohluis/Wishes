@@ -46,7 +46,7 @@ function Recipe.GenieLamp(craftRecipeData, player)
     session:addWish("obtainItem", 1, sandbox.GL_Wish_Wealth)
     session:addWish("infiniteWishes", 0, false)
     session:addWish("slayZeds", 0, false)
-    wishStyle:setEnabledWishes(session:getWishes())
+    wishStyle:setEnabledWishes(session:getWishes(), wishes)
 
-    startWishingMenu(player, wishStyle);
+    startWishingMenu(playerID, wishStyle);
 end

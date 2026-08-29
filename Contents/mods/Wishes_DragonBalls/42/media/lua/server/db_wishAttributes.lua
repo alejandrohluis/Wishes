@@ -61,9 +61,7 @@ end
  - takes up 3 wishes
 ]]--
 WishEffects.inmortality = function(char, _selectedOption, panel)
-    local maxWishesConsumed = 3
-    if not panel:canPerformWish(maxWishesConsumed) then return end
-    panel:consumeWish(maxWishesConsumed)
+    return true
 end
 
 --[[ improveDragonBalls:  
@@ -78,7 +76,5 @@ end
     + stage 6: lets you craft robotic db 2, 4, 6 ; also lets you turn any "organic" db into db 7  
 ]]--
 WishEffects.improveDragonBalls = function(char, _selectedOption, panel)
-    local maxWishesConsumed = SandboxVars.Wishes.DB_DragonBallImprovementCost
-    if not panel:canPerformWish(maxWishesConsumed) then return end
-    panel:consumeWish(maxWishesConsumed)
+    return true
 end

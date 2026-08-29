@@ -9,10 +9,7 @@ function ISWishingWindow:toggleWindow()
     if self:getIsVisible() then
         self:close();
     else
-        self:addToUIManager();
-        self:setVisible(true);
-        self:bringToTop();
-        self.tooltipForced = nil;
+        self:startMenu()
     end
 end
 
@@ -34,10 +31,14 @@ function ISWishingWindow:createChildren()
 end
 
 function ISWishingWindow:close()
+    if self.panel then
+        self.panel:close()
+    end
     self:setVisible(false);
     self:removeFromUIManager();
 end
 function ISWishingWindow:updateWishesRemaining(remainingWishes)
+    if not self.panel then return end
     self.panel:setRemainingWishes(remainingWishes)
 end
 
@@ -57,6 +58,9 @@ end
 function ISWishingWindow:startMenu()
     self:setVisible(true);
     self:addToUIManager();
+    self:bringToTop();
+    self.tooltipForced = nil;
+    print("[Wishes] [startMenu] player ID = "..self.playerIndex)
 end
 
 function ISWishingWindow:new(x, y, player, playerIndex)
@@ -82,15 +86,16 @@ function WishingSystemHandleOnCreatePlayer(playerIndex, player)
         return;
     end
 
-    if (not (WishingWindows[player])) then
+    if (not (WishingWindows[playerIndex])) then
+        print("[Wishes] [CreatePlayer] creating player under id = "..playerIndex)
         local x = getPlayerScreenLeft(playerIndex);
         local y = getPlayerScreenTop(playerIndex);
-        WishingWindows[player] = ISWishingWindow:new(x, y, player, playerIndex);
+        WishingWindows[playerIndex] = ISWishingWindow:new(x, y, player, playerIndex);
     end
 end
 
 function WishingSystemHandleOnPlayerDeath(player)
-    local WishingWindow = WishingWindows[player];
+    local WishingWindow = WishingWindows[player:getPlayerNum()];
 	if WishingWindow then
 		WishingWindow:setVisible(false);
 		WishingWindow:removeFromUIManager();
@@ -114,8 +119,8 @@ Events.OnCreatePlayer.Add(WishingSystemHandleOnCreatePlayer)
 Events.OnPlayerDeath.Add(WishingSystemHandleOnPlayerDeath)
 Events.OnResolutionChange.Add(WishingSystemHandleOnResolutionChange)
 
-local function OnServerCommand(module, command, player, args)
-    if module ~= "Wishes" then return end
+local function WishingSystemUpdateWindow(command, args)
+    local player = getPlayer()
     local playerID = player:getPlayerNum()
     if not WishingWindows[playerID] then return end
     if command == "ConsumeWish" then
@@ -126,4 +131,10 @@ local function OnServerCommand(module, command, player, args)
     end
 end
 
-Events.OnServerCommand.Add(OnServerCommand)
+local function WishingSystemReceiveWindowUpdates(module, command, args)
+    if module ~= "Wishes" then return end
+
+    WishingSystemUpdateWindow(command, args)
+end
+
+Events.OnServerCommand.Add(WishingSystemReceiveWindowUpdates)

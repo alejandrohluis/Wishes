@@ -86,11 +86,14 @@ local function OnClientCommand(module, command, player, args)
     if consumeWish then
         playerSession:removeNWishes(wishToPerform.cost)
         sendServerCommand(player, "Wishes", "ConsumeWish", { remainingWishes = playerSession:getRemainingWishes() })
+        print("[Wishes] [ServerCommand] Consume Wish command sent")
     end
     if not playerSession:hasRemainingWishes() then
         playerSession:close()
-        sendServerCommand(player, "Wishes", "CloseWindow")
+        sendServerCommand(player, "Wishes", "CloseWindow", nil)
+        print("[Wishes] [ServerCommand] Close Window command sent")
     end
+    print("[Wishes] [ServerCommand] Remaining wishes: "..playerSession:getRemainingWishes())
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

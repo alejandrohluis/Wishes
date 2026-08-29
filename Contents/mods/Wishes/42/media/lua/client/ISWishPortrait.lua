@@ -20,7 +20,7 @@ function ISWishPortrait:initialise()
     ISUIElement:initialise();
 end
 
-function ISWishPortrait:new(x,y, width, height, texture)
+function ISWishPortrait:new(x,y, width, height, texturePath)
     local o = {};
     o = ISUIElement:new(x,y,width,height);
     setmetatable(o,self);
@@ -30,6 +30,6 @@ function ISWishPortrait:new(x,y, width, height, texture)
     o.y = y/2;
     o.w = width;
     o.h = height;
-    o.texture = texture;
+    o.texture = getTexture(texturePath);
     return o;
 end
