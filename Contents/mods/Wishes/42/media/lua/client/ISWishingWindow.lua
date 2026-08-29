@@ -37,6 +37,9 @@ function ISWishingWindow:close()
     self:setVisible(false);
     self:removeFromUIManager();
 end
+function ISWishingWindow:updateWishesRemaining(remainingWishes)
+    self.panel:setRemainingWishes(remainingWishes)
+end
 
 function ISWishingWindow:initialise(wishStyle)
     ISCollapsableWindow.initialise(self);
@@ -110,3 +113,17 @@ end
 Events.OnCreatePlayer.Add(WishingSystemHandleOnCreatePlayer)
 Events.OnPlayerDeath.Add(WishingSystemHandleOnPlayerDeath)
 Events.OnResolutionChange.Add(WishingSystemHandleOnResolutionChange)
+
+local function OnServerCommand(module, command, player, args)
+    if module ~= "Wishes" then return end
+    local playerID = player:getPlayerNum()
+    if not WishingWindows[playerID] then return end
+    if command == "ConsumeWish" then
+        WishingWindows[playerID]:updateWishesRemaining(args.remainingWishes)
+    end
+    if command == "CloseWindow" then
+        WishingWindows[playerID]:close()
+    end
+end
+
+Events.OnServerCommand.Add(OnServerCommand)

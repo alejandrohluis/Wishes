@@ -73,13 +73,12 @@ function ISWishingPanel:createChildren()
     local offset = self.tablePad + self.tableWidth;
     local tableOffsetX = self.tablePad + offset;
 
-    -- self.portrait = ISWishPortrait:new(0, 0, self.tableWidth, (self.maxHeight - UI_BORDER_SPACING * 4), getTexture("media/textures/shenlong.png"));
     self.portrait = ISWishPortrait:new(self.tablePad, UI_BORDER_SPACING, self.tableWidth, (self.maxHeight - UI_BORDER_SPACING * 4), self.style:getTexture());
     self.portrait:initialise();
     self:addChild(self.portrait);
 
     -- todo: add translation (using getText("UI_")...)
-    -- wishes label
+    -- available wishes label
     self.remainingWishesLabel = ISLabel:new(tableOffsetX, UI_BORDER_SPACING, BUTTON_HGT, ("Wishes remaining: " .. tostring(self.wishAmount)), 1, 1, 1, 1, UIFontSmall, true);
 	self.remainingWishesLabel:initialise();
     self:addChild(self.remainingWishesLabel);
@@ -115,12 +114,8 @@ function ISWishingPanel:updateWishData(wishes, wishAmount)
     self:clearCategories()
 end
 
-function ISWishingPanel:consumeWish(wishesConsumed)
-    self.wishAmount = self.wishAmount - wishesConsumed
-end
-
-function ISWishingPanel:canPerformWish(wishesToConsume)
-    return self.wishAmount - wishesToConsume >= 0
+function ISWishingPanel:setRemainingWishes(remainingWishes)
+    self.wishAmount = remainingWishes
 end
 
 function ISWishingPanel:updateWishesLabel()

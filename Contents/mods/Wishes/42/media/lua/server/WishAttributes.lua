@@ -118,40 +118,38 @@ end
 
 -- function WishEffects:modifyTrait(char, selectedOptionID)
 WishEffects.modifyTrait = function(self, char, traitID)
-    if not WishWhitelist_ModifyTrait[traitID] then return end
+    if not WishWhitelist_ModifyTrait[traitID] then return false end
     local trait = getTraitFromID(traitID)
     local hasTrait = char:hasTrait(trait);
     if hasTrait then
-        removeTrait(char, trait)
+        return removeTrait(char, trait)
     else
-        obtainTrait(char, trait)
+        return obtainTrait(char, trait)
     end
 end
 
 -- skills
 WishEffects.skillLevelUpUntil = function(self, char, skillID)
-    if not WishWhitelist_SkillLevelUntil[skillID] then return end
+    if not WishWhitelist_SkillLevelUntil[skillID] then return false end
 
     local perk = PerkFactory.Perks.FromString(skillID)
     local perkLevel = char:getPerkLevel(perk);
-    -- local startingPerkLevel = perkLevel;
+    local startingPerkLevel = perkLevel;
     local maxLevel = 5;
     while perkLevel < maxLevel do
         char:LevelPerk(perk);
         perkLevel = perkLevel + 1;
     end
-    -- if startingPerkLevel ~= perkLevel then
-    -- end
+    return startingPerkLevel ~= perkLevel
 end
 
 WishEffects.skillLevelUpOnce = function(self, char, skillID)
-    if not WishWhitelist_SkillLevelOnce[skillID] then return end
+    if not WishWhitelist_SkillLevelOnce[skillID] then return false end
     local perk = PerkFactory.Perks.FromString(skillID)
-    -- local startingPerkLevel = char:getPerkLevel(perk);
+    local startingPerkLevel = char:getPerkLevel(perk);
     char:LevelPerk(perk);
-    -- local perkLevel = char:getPerkLevel(perk);
-    -- if perkLevel == (startingPerkLevel + 1) then
-    -- end
+    local perkLevel = char:getPerkLevel(perk);
+    return perkLevel == (startingPerkLevel + 1)
 end
 
 -- player weight (NOT carry weight)
@@ -159,6 +157,7 @@ WishEffects.setIdealWeight = function(self, char, _selectedOptionID)
     local nutrition = char:getNutrition();
     nutrition:setWeight(80);
     nutrition:applyTraitFromWeight();
+    return nutrition:getWeight() == 80
 end
 
 -- healing
@@ -169,13 +168,13 @@ WishEffects.healUp = function(self, char, _selectedOptionID)
         bodyParts:get(i):RestoreToFullHealth();
     end
     bodyDamage:Update();
+    return true
 end
 
 -- consumes 2 wishes
 WishEffects.cureSickness = function(self, char, _selectedOptionID)
-
     local bodyDamage = char:getBodyDamage();
-    if not bodyDamage:IsInfected() then return end
+    if not bodyDamage:IsInfected() then return false end
 
     local bodyParts = bodyDamage:getBodyParts();
     for i = 0, bodyParts:size()-1 do
@@ -184,30 +183,40 @@ WishEffects.cureSickness = function(self, char, _selectedOptionID)
     bodyDamage:setInfected(false);
     bodyDamage:setInfectionTime(-1.0);
     bodyDamage:setInfectionMortalityDuration(-1.0);
+    return true
 end
 
 -- wish to obtain a specific item from a list of options
 WishEffects.obtainItem = function(self, char, selectedOptionID)
     local selectedOption = WishWhitelist_ObtainItem[selectedOptionID]
-    if not selectedOption then return end
+    if not selectedOption then return false end
 
     local createItemMethod = instanceItem
     for i = 1, selectedOption.quantity do
         local item = createItemMethod(selectedOption.item)
         char:getInventory():AddItem(item)
     end
+    return true
 end
 
 WishEffects.endWishing = function(self, _char, _selectedOptionID)
+    -- todo
+    return true
 end
 
 WishEffects.repairItem = function(self, _char, selectedOptionID)
+    -- todo
+    return true
 end
 
 WishEffects.obtainWeapons = function(self, _char, selectedOptionID)
+    -- todo
+    return true
 end
 
 WishEffects.extraWishes = function(self, _char, _selectedOptionID)
+    -- todo
+    return true
 end
 
 

@@ -8,29 +8,23 @@ function WishStyle:getTexture()
     return getTexture(self.texturePath)
 end
 
-function WishStyle:new(name, allWishes, wishesPerSummoning, texturePath, itemSummonedWith)
+function WishStyle:new(name, wishesPerSummoning, texturePath)
     local o = {}
     setmetatable(o,self)
     self.__index = self
 
     o.name = name
-    o.wishList = allWishes
     o.wishAmount = wishesPerSummoning
     o.texturePath = texturePath
-    o.item = itemSummonedWith
-    o:filterEnabledWishes()
     return o
 end
 
-function WishStyle:filterEnabledWishes()
-    if not self.wishList then return end
+function WishStyle:setEnabledWishes(wishes)
+    self.wishList = wishes
+end
 
-    for i = #self.wishList, 1, -1 do
-        local wish = self.wishList[i]
-        if not wish.isEnabled then
-            table.remove(self.wishList, i)
-        end
-    end
+function WishStyle:getWishAmount()
+    return self.wishAmount
 end
 
 -- to be a valid wish it must have:
