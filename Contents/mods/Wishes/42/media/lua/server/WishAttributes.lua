@@ -118,7 +118,11 @@ end
 
 -- function WishEffects:modifyTrait(char, selectedOptionID)
 WishEffects.modifyTrait = function(char, traitID)
-    if not WishWhitelist_ModifyTrait[traitID] then return false end
+    print("[Wishes] [modifyTrait] effect activated under traitID = "..traitID)
+    if not WishWhitelist_ModifyTrait[traitID] then
+        print("[Wishes] [modifyTrait] This traitID is not in the whitelist for this wish")
+        return false
+    end
     local trait = getTraitFromID(traitID)
     local hasTrait = char:hasTrait(trait);
     if hasTrait then
@@ -334,10 +338,10 @@ end
 
 ------------------------------
 
-local function initializeWhitelists()
+local function initializeWishWhitelists()
     ModifyTrait_initWhitelist()
     SkillLevelUntil_initWhitelist()
     SkillLevelOnce_initWhitelist()
 end
 
-Events.OnGameStart.Add(initializeWhitelists)
+initializeWishWhitelists()

@@ -15,27 +15,12 @@ function WishStyle:new(name, wishesPerSummoning, texturePath)
     return o
 end
 
-function WishStyle:setEnabledWishes(wishes, wishesDisplay)
-    self.wishList = wishes
-    self.wishesToDisplay = wishesDisplay
-    -- local wishDisplayList = {}
-    -- for i = 1, #self.wishList do
-    --     local enabledWish = wishes[i]
-    --     for j = 1, #wishesDisplay do
-    --         local wish = wishesDisplay[j]
-    --         if wish.wishID == enabledWish.wishID then
-    --             table.insert(wishDisplayList, wish)
-    --         end
-    --     end
-    -- end
-end
-
 function WishStyle:getTexturePath()
     return self.texturePath
 end
 
 function WishStyle:getWishesToDisplay()
-    return self.wishesToDisplay
+    return self.wishList
 end
 
 function WishStyle:getWishAmount()

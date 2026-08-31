@@ -1,5 +1,5 @@
-require "WishAttributes.lua"
-require "WishAction.lua"
+require "WishAttributes"
+require "WishAction"
 
 WishOptions.getWealthItems = function()
     local lotteryItems = {
@@ -26,15 +26,31 @@ end
 
 local function addActions()
     local effects = WishEffects
-    WishAction:addEffect("modifyTrait", effects.modifyTrait)
-    WishAction:addEffect("skillLevelUpUntil", effects.skillLevelUpUntil)
-    WishAction:addEffect("skillLevelUpOnce", effects.skillLevelUpOnce)
-    WishAction:addEffect("idealWeight", effects.setIdealWeight)
-    WishAction:addEffect("heal", effects.healUp)
-    WishAction:addEffect("cureSickness", effects.cureSickness)
-    WishAction:addEffect("obtainItem", effects.obtainItem)
-    WishAction:addEffect("infiniteWishesGenie", effects.infiniteWishes)
-    WishAction:addEffect("slayZombiesGenie", effects.slayZeds)
+    print("[Wishes] [addActions] Adding actions to the WishAction list...")
+    local state = {}
+    state[1] = WishAction:addEffect("GenieLamp_modifyTrait", effects.modifyTrait)
+    state[2] = WishAction:addEffect("GenieLamp_skillLevelUpUntil", effects.skillLevelUpUntil)
+    state[3] = WishAction:addEffect("GenieLamp_skillLevelUpOnce", effects.skillLevelUpOnce)
+    state[4] = WishAction:addEffect("GenieLamp_idealWeight", effects.setIdealWeight)
+    state[5] = WishAction:addEffect("GenieLamp_heal", effects.healUp)
+    state[6] = WishAction:addEffect("GenieLamp_cureSickness", effects.cureSickness)
+    state[7] = WishAction:addEffect("GenieLamp_obtainItem", effects.obtainItem)
+    state[8] = WishAction:addEffect("GenieLamp_infiniteWishesGenie", effects.infiniteWishes)
+    state[9] = WishAction:addEffect("GenieLamp_slayZombiesGenie", effects.slayZeds)
+    local actionCompleted = false
+    for i = 1, #state do
+        if state[i] then
+            actionCompleted = true
+        else
+            actionCompleted = false
+            break
+        end
+    end
+    if actionCompleted then
+        print("[Wishes] [addActions] All actions added to the list")
+    else
+        print("[Wishes] [addActions] Not all actions were added to the list!!")
+    end
 end
 
-Events.OnGameStart.Add(addActions)
+addActions()

@@ -1,4 +1,4 @@
-require "WishAttributes.lua"
+require "WishAttributes"
 
 ISWishingPanel = ISPanel:derive("ISWishingPanel");
 
@@ -36,10 +36,7 @@ local function onDoWish(panel, button, wish)
     if wish.optionID then
         wishData.optionID = wish.optionID
     end
-    print("sending command with: WishID = ".. wishData.wishID .. " ; OptionID = ".. wishData.optionID )
     sendClientCommand(panel.player, "Wishes", "GrantWish", wishData )
-    -- local player = panel.player;
-    -- wish.effect(player,wish,panel);
     panel:clearCategories()
 end
 
@@ -114,15 +111,9 @@ function ISWishingPanel:updateWishData(wishes, wishAmount)
     self:clearCategories()
 end
 
-function ISWishingPanel:getMeErrors()
-    local onservcommand = Events.OnServerCommand
-    print("[Wishes] [ERROR] OnServerCommand Event = "..onservcommand)
-end
-
 function ISWishingPanel:setRemainingWishes(remainingWishes)
     self.wishAmount = remainingWishes
     self:updateWishesLabel()
-    self:getMeErrors()
 end
 
 function ISWishingPanel:updateWishesLabel()
@@ -213,8 +204,12 @@ function ISWishingPanel:addWishesToList()
     local wishSelection = self.listboxWishes.selected;
     self.listboxWishes:clear();
     local allWishes = self.wishes;
+    local wishDefinitions = WishDefinitions
+    -- local getLabel = getText
     for i = 1, #allWishes do
-        local wish = allWishes[i];
+        local wishID = allWishes[i];
+        local wishDefinition = wishDefinitions[wishID]
+        local wish = { wishID = wishID , label = wishDefinition.label , categories = wishDefinition.categories }
         local tooltip = "Wish to " .. wish.label;
         self.listboxWishes:addItem(wish.label, wish, tooltip);
     end
@@ -247,7 +242,6 @@ function ISWishingPanel:addOptionsToList(category)
     self.listboxOptions:clear();
     local options = category.options;
     for i = 1 , #options do
-        -- needs an ID and a label
         local option = options[i];
         option.wishID = category.wishID
         if not option.color then
@@ -259,15 +253,11 @@ function ISWishingPanel:addOptionsToList(category)
     self.listboxOptions.selected = optionsSelection;
 end
 
-function ISWishingPanel:close()
-    self.owner:close()
-end
-
 ----------------------------------------------------------------------------------
 
-function ISWishingPanel:new(x, y, width, height, player, playerNum, owner, style)
+function ISWishingPanel:new(width, height, player, playerNum, owner, wishList, wishesPerSummoning, texturePath)
     local o = {}
-    o = ISPanel:new(x, y, width, height)
+    o = ISPanel:new(0, 8, width, height)
     setmetatable(o, self)
     self.__index = self
 
@@ -278,9 +268,9 @@ function ISWishingPanel:new(x, y, width, height, player, playerNum, owner, style
     -- o.backgroundColor = { r = 0, g = 0, b = 0, a = 0.8 }
     o.variableColor = { r = 0.9, g = 0.55, b = 0.1, a = 1 };
     o.selectedList = nil;
-    o.texturePath = style:getTexturePath()
-    o.wishAmount = style:getWishAmount();
-    o.wishes = style:getWishesToDisplay();
+    o.texturePath = texturePath
+    o.wishAmount = wishesPerSummoning
+    o.wishes = wishList
     return o
 end
 

@@ -16,7 +16,7 @@ end
 function ISWishingWindow:createChildren()
 	ISCollapsableWindow.createChildren(self);
 
-    self.panel = ISWishingPanel:new(0, 8, self.width, self.height, self.player, self.playerIndex, self, self.wishingStyle);
+    self.panel = ISWishingPanel:new(self.width, self.height, self.player, self.playerIndex, self, self.wishList, self.wishAmount, self.texturePath);
     self.panel:initialise();
     self:addView(self.panel);
 
@@ -31,9 +31,6 @@ function ISWishingWindow:createChildren()
 end
 
 function ISWishingWindow:close()
-    if self.panel then
-        self.panel:close()
-    end
     self:setVisible(false);
     self:removeFromUIManager();
 end
@@ -44,14 +41,14 @@ end
 
 function ISWishingWindow:initialise(wishStyle)
     ISCollapsableWindow.initialise(self);
-    self.wishingStyle = wishStyle
     self.title = wishStyle.name;
     if not self.panel then
-        self.wishes = wishStyle.wishList;
+        self.wishList = wishStyle.wishList;
         self.wishAmount = wishStyle.wishAmount;
+        self.texturePath = wishStyle.texturePath
     else
         -- self.panel:updateWishData(wishStyle.wishList, wishStyle.wishAmount);
-        self.panel:updateWishData(self.wishes, self.wishAmount);
+        self.panel:updateWishData(self.wishList, self.wishAmount);
     end
 end
 
@@ -122,11 +119,18 @@ Events.OnResolutionChange.Add(WishingSystemHandleOnResolutionChange)
 local function WishingSystemUpdateWindow(command, args)
     local player = getPlayer()
     local playerID = player:getPlayerNum()
-    if not WishingWindows[playerID] then return end
+    local wishingWindow = WishingWindows[playerID]
+    if not wishingWindow then return end
+    if command == "StartWishingMenu" then
+        local wishStyle = WishStyle:new(args.wishStyle.name, args.wishStyle.wishAmount, args.wishStyle.texturePath)
+        wishStyle.wishList = args.wishStyle.wishes
+        wishingWindow:initialise(wishStyle)
+        wishingWindow:startMenu()
+    end
     if command == "ConsumeWish" then
         WishingWindows[playerID]:updateWishesRemaining(args.remainingWishes)
     end
-    if command == "CloseWindow" then
+    if command == "StopWishingMenu" then
         WishingWindows[playerID]:close()
     end
 end
