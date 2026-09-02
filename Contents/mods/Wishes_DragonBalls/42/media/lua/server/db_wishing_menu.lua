@@ -1,42 +1,33 @@
+require "WishActions"
+
 local Recipe = RecipeCodeOnCreate;
 
-local function startWishingMenu(player, wishStyle)
-    local window = WishingWindows[player];
-    window:initialise(wishStyle);
-    window:startMenu();
-end
-
 function Recipe.SummonShenron(craftRecipeData, player)
-    local effects = WishEffects;
-    local options = WishOptions;
     local sandbox = SandboxVars.Wishes
+    local playerID = player:getPlayerNum()
 
-    local wishes = {
-        -- modify trait
-        { label = "Get/Remove a Trait",                isEnabled = sandbox.DB_Wish_Trait,             effect = effects.modifyTrait,       options = options.getTraits },
-        -- level up skill until
-        { label = "Level up your skill up to level 5", isEnabled = sandbox.DB_Wish_SkillLevelUpUntil, effect = effects.skillLevelUpUntil, options = options.getSkills },
-        -- level up skill once
-        { label = "Level up your skill once",          isEnabled = sandbox.DB_Wish_SkillLevelUp,      effect = effects.skillLevelUpOnce,  options = options.getSkills },
-        -- heal injuries
-        { label = "Heal all injuries",                 isEnabled = sandbox.DB_Wish_HealInjury,        effect = effects.healUp },
-        -- cure sickness
-        { label = "Cure all sickness",                 isEnabled = sandbox.DB_Wish_HealSickness,      effect = effects.cureSickness },
-        -- ideal weight
-        { label = "Ideal Weight",                      isEnabled = sandbox.DB_Wish_Weight,            effect = effects.setIdealWeight },
-        -- extra wishes
-        { label = "Upgrade Dragon Balls",              isEnabled = sandbox.DB_Wish_MoreWishes,        effect = effects.improveDragonBalls },
-        -- potential unlock
-        { label = "Unlock your body's potential",      isEnabled = sandbox.DB_Wish_UnlockPotential,   effect = effects.potentialUnlock },
-        -- teleportFriend
-        { label = "Teleport a friend or fiend",        isEnabled = sandbox.DB_Wish_Teleport,          effect = effects.teleportFriend },
-        -- inmortality
-        { label = "Inmortality!",                      isEnabled = sandbox.DB_Wish_Inmortality,       effect = effects.inmortality },
-    };
-    local wishAmount = sandbox.DB_Setting_MaxWishes;
+    local shenron = WishStyle:new("Shenron", sandbox.DB_Setting_MaxWishes, "media/textures/portrait/shenlong.png")
 
-    local wishStyle = WishStyle:new("Shenlong", wishes, wishAmount, "media/textures/portrait/shenlong.png")
-    startWishingMenu(player, wishStyle);
+    local session = WishingSession:new(playerID, wishStyle)
+    session:addWish("Shenron_modifyTrait", 1, sandbox.DB_Wish_Trait)
+    session:addWish("Shenron_skillLevelUpUntil", 1, sandbox.DB_Wish_SkillLevelUpUntil)
+    session:addWish("Shenron_skillLevelUpOnce", 1, sandbox.DB_Wish_SkillLevelUp)
+    session:addWish("Shenron_heal", 1, sandbox.DB_Wish_HealInjury)
+    session:addWish("Shenron_cureSickness", 2, sandbox.DB_Wish_HealSickness)
+    session:addWish("Shenron_idealWeight", 1, sandbox.DB_Wish_Weight)
+    session:addWish("Shenron_obtainItem", 1, sandbox.DB_Wish_Upgrade)
+    session:addWish("Shenron_potentialUnlock", 0, sandbox.DB_Wish_PotentialUnlock)
+    session:addWish("Shenron_teleport", 0, sandbox.DB_Wish_Teleport)
+    session:addWish("Shenron_inmortality", 0, sandbox.DB_Wish_Inmortality)
+    session:addWish("Shenron_upgrade", 0, sandbox.DB_Wish_Upgrade)
+
+    local shenronData = {
+        name = shenron.name,
+        wishAmount = shenron.wishAmount,
+        texturePath = shenron.texturePath,
+        wishes = session:getWishIDs()
+    }
+    sendServerCommand(player, "Wishes", "StartWishingMenu", { wishStyle = shenronData })
 end
 
 -- deseos pedidos en dbz ; (!)[deseo] posibles deseos

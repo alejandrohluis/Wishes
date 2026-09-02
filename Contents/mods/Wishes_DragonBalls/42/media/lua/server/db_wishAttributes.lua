@@ -1,4 +1,5 @@
-require "WishAttributes.lua"
+require "WishAttributes"
+require "WishAction"
 
 --[[ 
 type of dragon balls:
@@ -10,13 +11,9 @@ type of dragon balls:
         can be used as a replacement for organic dragon balls
 ]]--
 -- deseos pedidos en dbz ; (!)[deseo] posibles deseos
--- calzones                     (!)[darle calzones]
-
 -- revivir a un ser             (?)
 
--- helado                       (!)[darle helado]
-
--- que shen long se vaya        (!)[retirar a shenron]
+-- que shen long se vaya        (!)[cerrar menu]
 
 -- reparar potara               (!)[reparar un item]
 
@@ -25,8 +22,8 @@ type of dragon balls:
 
 WishOptions.getDBItems = function()
     local lotteryItems = {
-        { label = "Ice Cream" , data = "Base.IceCream" , quantity = 1 },
-        { label = "The Best Pair of Underwear in the Whole World" , data = "Base.Trunks" , quantity = 1 }
+        { label = "Ice Cream" , optionID = "DB_IceCream" },
+        { label = "The Best Pair of Underwear in the Whole World" , optionID = "DB_PairOfTrunks" }
     }
     return lotteryItems
 end
@@ -40,20 +37,18 @@ end
     - if all physical skills are maxed and there is no perk to be given, does not consume the wish.  
  - takes up 2 wishes
 ]]--  
--- WishEffects.potentialUnlock = function(char, _selectedOption, panel)
---     local maxWishesConsumed = 2
---     if not panel:canPerformWish(maxWishesConsumed) then return end
---     panel:consumeWish(maxWishesConsumed)
--- end
+WishEffects.potentialUnlock = function(char, _selectedOption, panel)
+    -- TODO. not a priority
+    return false
+end
 
---[[ teleport friend: 
- - teleports a player to the current wisher's position
+--[[ teleport ally: 
+ - teleports a player from the same faction to the current wisher's position
 ]]--
--- WishEffects.teleportFriend = function(char, _selectedOption, panel)
---     local maxWishesConsumed = 1
---     if not panel:canPerformWish(maxWishesConsumed) then return end
---     panel:consumeWish(maxWishesConsumed)
--- end
+WishEffects.teleportAlly = function(char, _selectedOption, panel)
+    -- TODO. not a priority
+    return false
+end
 
 --[[ inmortality: 
  - grants a temporary god-mode style wish  
@@ -61,7 +56,8 @@ end
  - takes up 3 wishes
 ]]--
 WishEffects.inmortality = function(char, _selectedOption, panel)
-    return true
+    -- TODO. not a priority
+    return false
 end
 
 --[[ improveDragonBalls:  
@@ -76,5 +72,26 @@ end
     + stage 6: lets you craft robotic db 2, 4, 6 ; also lets you turn any "organic" db into db 7  
 ]]--
 WishEffects.improveDragonBalls = function(char, _selectedOption, panel)
-    return true
+    -- TODO. not a priority
+    return false
 end
+
+local function dragon_ball_addActions()
+    local effects = WishEffects
+    WishAction:addEffect("Shenron_modifyTrait", effects.modifyTrait)
+    WishAction:addEffect("Shenron_skillLevelUpUntil", effects.skillLevelUpUntil)
+    WishAction:addEffect("Shenron_skillLevelUpOnce", effects.skillLevelUpOnce)
+    WishAction:addEffect("Shenron_idealWeight", effects.setIdealWeight)
+    WishAction:addEffect("Shenron_heal", effects.healUp)
+    WishAction:addEffect("Shenron_cureSickness", effects.cureSickness)
+    WishAction:addEffect("Shenron_obtainItem", effects.obtainItem)
+    WishAction:addEffect("Shenron_potentialUnlock", effects.potentialUnlock)
+    WishAction:addEffect("Shenron_teleport", effects.teleportAlly)
+    WishAction:addEffect("Shenron_inmortality", effects.inmortality)
+    WishAction:addEffect("Shenron_upgrade", effects.improveDragonBalls)
+
+    WishWhitelist_ObtainItem["DB_IceCream"] = { minQuantity = 1 , maxQuantity = 1 , itemID = "Base.Icecream" }
+    WishWhitelist_ObtainItem["DB_PairOfTrunks"] = { minQuantity = 1 , maxQuantity = 1 , itemID = "Base.Underpants_White" }
+end
+
+dragon_ball_addActions()

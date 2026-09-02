@@ -1,9 +1,9 @@
 WishingWindows = {}
 
 local ISWishingWindow = ISCollapsableWindow:derive("ISWishingWindow")
-local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFont.Small)
-local UI_BORDER_SPACING = 10
-local BUTTON_HGT = FONT_HGT_SMALL + 6
+-- local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFont.Small)
+-- local UI_BORDER_SPACING = 10
+-- local BUTTON_HGT = FONT_HGT_SMALL + 6
 
 function ISWishingWindow:toggleWindow()
     if self:getIsVisible() then
@@ -57,7 +57,6 @@ function ISWishingWindow:startMenu()
     self:addToUIManager();
     self:bringToTop();
     self.tooltipForced = nil;
-    print("[Wishes] [startMenu] player ID = "..self.playerIndex)
 end
 
 function ISWishingWindow:new(x, y, player, playerIndex)
@@ -79,12 +78,9 @@ function ISWishingWindow:new(x, y, player, playerIndex)
 end
 
 function WishingSystemHandleOnCreatePlayer(playerIndex, player)
-    if getCore():isDedicated() then
-        return;
-    end
+    if getCore():isDedicated() then return end
 
     if (not (WishingWindows[playerIndex])) then
-        print("[Wishes] [CreatePlayer] creating player under id = "..playerIndex)
         local x = getPlayerScreenLeft(playerIndex);
         local y = getPlayerScreenTop(playerIndex);
         WishingWindows[playerIndex] = ISWishingWindow:new(x, y, player, playerIndex);
@@ -100,15 +96,16 @@ function WishingSystemHandleOnPlayerDeath(player)
 end
 
 function WishingSystemHandleOnResolutionChange(oldw, oldh, neww, newh)
-	if (getPlayer() == nil) then
-        return;
-    end
+	if not getPlayer() then return end
+
+    local getScreenLeft = getPlayerScreenLeft
+    local getScreenTop = getPlayerScreenTop
 
 	for playerIndex=0, getNumActivePlayers() - 1 do
-        local x = getPlayerScreenLeft(playerIndex);
-        local y = getPlayerScreenTop(playerIndex);
-        self:setX(x + 300);
-        self:setY(y + 100);
+        local x = getScreenLeft(playerIndex);
+        local y = getScreenTop(playerIndex);
+        WishingWindows[playerIndex]:setX(x + 300);
+        WishingWindows[playerIndex]:setY(y + 100);
 	end
 end
 

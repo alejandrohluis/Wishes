@@ -29,9 +29,8 @@ local function initialiseListbox(listbox, panel)
 end
 
 local function onDoWish(panel, button, wish)
-    if button.internal ~= "YES" then
-        return;
-    end
+    if button.internal ~= "YES" then return end
+
     local wishData = { wishID = wish.wishID }
     if wish.optionID then
         wishData.optionID = wish.optionID

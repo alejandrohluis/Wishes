@@ -116,13 +116,9 @@ local function removeTrait(player, trait)
     return not player:hasTrait(trait)
 end
 
--- function WishEffects:modifyTrait(char, selectedOptionID)
+-- adds/removes a selected trait to/from the player
 WishEffects.modifyTrait = function(char, traitID)
-    print("[Wishes] [modifyTrait] effect activated under traitID = "..traitID)
-    if not WishWhitelist_ModifyTrait[traitID] then
-        print("[Wishes] [modifyTrait] This traitID is not in the whitelist for this wish")
-        return false
-    end
+    if not WishWhitelist_ModifyTrait[traitID] then return false end
     local trait = getTraitFromID(traitID)
     local hasTrait = char:hasTrait(trait);
     if hasTrait then
@@ -132,7 +128,7 @@ WishEffects.modifyTrait = function(char, traitID)
     end
 end
 
--- skills
+-- levels up a selected skill until reaching a certain level
 WishEffects.skillLevelUpUntil = function(char, skillID)
     if not WishWhitelist_SkillLevelUntil[skillID] then return false end
 
@@ -147,6 +143,7 @@ WishEffects.skillLevelUpUntil = function(char, skillID)
     return startingPerkLevel ~= perkLevel
 end
 
+-- levels up a selected skill once
 WishEffects.skillLevelUpOnce = function(char, skillID)
     if not WishWhitelist_SkillLevelOnce[skillID] then return false end
     local perk = PerkFactory.Perks.FromString(skillID)
@@ -156,7 +153,7 @@ WishEffects.skillLevelUpOnce = function(char, skillID)
     return perkLevel == (startingPerkLevel + 1)
 end
 
--- player weight (NOT carry weight)
+-- sets the player weight to the ideal weight
 WishEffects.setIdealWeight = function(char, _selectedOptionID)
     local nutrition = char:getNutrition();
     nutrition:setWeight(80);
@@ -164,7 +161,7 @@ WishEffects.setIdealWeight = function(char, _selectedOptionID)
     return nutrition:getWeight() == 80
 end
 
--- healing
+-- heals the player's health bar to full HP. does not heal any sickness 
 WishEffects.healUp = function(char, _selectedOptionID)
     local bodyDamage = char:getBodyDamage();
     local bodyParts = bodyDamage:getBodyParts();
@@ -175,7 +172,7 @@ WishEffects.healUp = function(char, _selectedOptionID)
     return true
 end
 
--- consumes 2 wishes
+-- cure all sickness the player has (whether that may be Zombie Infection or queasy-type sickness)
 WishEffects.cureSickness = function(char, _selectedOptionID)
     local bodyDamage = char:getBodyDamage();
     if not bodyDamage:IsInfected() then return false end
@@ -191,61 +188,61 @@ WishEffects.cureSickness = function(char, _selectedOptionID)
 end
 
 -- wish to obtain a specific item from a list of options
-WishEffects.obtainItem = function(char, selectedOptionID)
-    local selectedOption = WishWhitelist_ObtainItem[selectedOptionID]
-    if not selectedOption then return false end
+WishEffects.obtainItem = function(char, optionID)
+    local itemData = WishWhitelist_ObtainItem[optionID]
+    if not itemData then return false end
 
     local createItemMethod = instanceItem
-    for i = 1, selectedOption.quantity do
-        local item = createItemMethod(selectedOption.item)
-        char:getInventory():AddItem(item)
+    local updateInventoryMethod = sendAddItemToContainer
+    local itemID = itemData.itemID
+    local itemQuantity = 1
+    if itemData.minQuantity <= itemData.maxQuantity then
+        itemQuantity = ZombRand(itemData.minQuantity, itemData.maxQuantity + 1)
+    end
+    local itemDataModifier = itemData.itemDataModifier
+
+    for _ = 1, itemQuantity do
+        local generatedItem = createItemMethod(itemID)
+        if not generatedItem then return false end
+        if itemDataModifier then
+            itemDataModifier(generatedItem)
+        end
+        char:getInventory():AddItem(generatedItem)
+        updateInventoryMethod(char:getInventory(), generatedItem)
     end
     return true
 end
 
 WishEffects.endWishing = function(_char, _selectedOptionID)
-    -- todo
-    return true
+    -- TODO. not a priority
+    return false
 end
 
 WishEffects.repairItem = function(_char, selectedOptionID)
-    -- todo
-    return true
+    -- TODO. not a priority
+    return false
 end
 
 WishEffects.obtainWeapons = function(_char, selectedOptionID)
-    -- todo
-    return true
+    -- TODO. not a priority
+    return false
 end
 
 WishEffects.extraWishes = function(_char, _selectedOptionID)
-    -- todo
-    return true
+    -- TODO. not a priority
+    return false
 end
-
-
--- WishEffects.obtainWeapon = function(char, weapon)
---      return 0;
--- end
 
 -- deseos no pedidos en dbz pero interesantes:
 -- pastillas para niveles temporales
-----------------------------------------------------------------------------------
---- All Existing Wishes
-----------------------------------------------------------------------------------
--- modifyTrait (get / remove a trait)
--- skillLevelUpUntil (level up a skill until a certain level)
--- skillLevelUpOnce (level up a skill once)
--- healInjuries 
--- cureSickness 
--- idealWeight (set the player to the ideal weight, NOT carry weight)
+-- carryweight infinito por una hora/dia
 
 -- wishes that need implementation:
--- 1. add a weapon/tool
--- 2. add a gun (with its corresponding ammo box)
--- 3. add materials
--- 4. godmode for a day
--- 5. 
+-- 1. adds a melee weapon/tool
+-- 2. adds a gun (with its corresponding ammo box)
+-- 3. adds materials (like planks, boxes of nails, etc...)
+-- 4. untraceable from zombies for a day (basically activate the "invisible" cheat)
+-- 5. infinite carryweight for a day/hour
 
 ----------------------------------------------------------------------------------
 --- Wish Option Whitelists/Blacklists
@@ -265,11 +262,11 @@ WishBlacklist_ModifyTrait = {}
 
 WishWhitelist_SkillLevelUntil = {}
 WishWhitelistForce_SkillLevelUntil = {}
-WishBlacklist_SkillLevelUntil = {}
+WishBlacklist_SkillLevelUntil = { "Agility" }
 
 WishWhitelist_SkillLevelOnce = {}
 WishWhitelistForce_SkillLevelOnce = {}
-WishBlacklist_SkillLevelOnce = {}
+WishBlacklist_SkillLevelOnce = { "Agility" }
 
 WishWhitelist_ObtainItem = {}
 

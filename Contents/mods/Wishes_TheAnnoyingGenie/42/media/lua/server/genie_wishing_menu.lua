@@ -6,9 +6,9 @@ function Recipe.GenieLamp(craftRecipeData, player)
     local sandbox = SandboxVars.Wishes
     local playerID = player:getPlayerNum()
 
-    local wishStyle = WishStyle:new("The Genie of the Lamp", sandbox.GL_Setting_MaxWishes, "media/textures/portrait/normal_genie.png")
+    local genie = WishStyle:new("The Genie of the Lamp", sandbox.GL_Setting_MaxWishes, "media/textures/portrait/normal_genie.png")
 
-    local session = WishingSession:new(playerID, wishStyle)
+    local session = WishingSession:new(playerID, genie)
     session:addWish("GenieLamp_modifyTrait", 1, sandbox.GL_Wish_Trait)
     session:addWish("GenieLamp_skillLevelUpUntil", 1, sandbox.GL_Wish_SkillLevelUpUntil)
     session:addWish("GenieLamp_skillLevelUpOnce", 1, sandbox.GL_Wish_SkillLevelUp)
@@ -19,11 +19,11 @@ function Recipe.GenieLamp(craftRecipeData, player)
     session:addWish("GenieLamp_infiniteWishes", 0, false)
     session:addWish("GenieLamp_slayZeds", 0, false)
 
-    local styleToSend = {
-        name = wishStyle.name,
-        wishAmount = wishStyle.wishAmount,
-        texturePath = wishStyle.texturePath,
+    local genieData = {
+        name = genie.name,
+        wishAmount = genie.wishAmount,
+        texturePath = genie.texturePath,
         wishes = session:getWishIDs()
     }
-    sendServerCommand(player, "Wishes", "StartWishingMenu", { wishStyle = styleToSend })
+    sendServerCommand(player, "Wishes", "StartWishingMenu", { wishStyle = genieData })
 end
