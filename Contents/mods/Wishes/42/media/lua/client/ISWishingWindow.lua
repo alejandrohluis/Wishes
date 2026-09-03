@@ -11,14 +11,6 @@ local wishingWindow = DPWishes.Window
 -- local UI_BORDER_SPACING = 10
 -- local BUTTON_HGT = FONT_HGT_SMALL + 6
 
-function wishingWindow:toggleWindow()
-    if self:getIsVisible() then
-        self:close();
-    else
-        self:startMenu()
-    end
-end
-
 function wishingWindow:createChildren()
 	ISCollapsableWindow.createChildren(self);
 
@@ -33,14 +25,19 @@ function wishingWindow:createChildren()
 end
 
 function wishingWindow:close()
-    self:setVisible(false);
+    ISPanel.close(self)
     self:removeFromUIManager();
-    if self.panel then
-        self.panel:close()
-        self.panel:setVisible(false)
-        self.panel:removeFromUIManager(false)
-    end
+    self:closePanel()
 end
+
+function wishingWindow:closePanel()
+    if not self.panel then return end
+    self.panel:close()
+    self.panel:removeFromUIManager()
+    self:removeChild(self.panel)
+    self.panel = nil
+end
+
 function wishingWindow:updateWishesRemaining(remainingWishes)
     if not self.panel then return end
     self.panel:setRemainingWishes(remainingWishes)
@@ -49,13 +46,14 @@ end
 function wishingWindow:initialise(wishStyle, wishes)
     ISCollapsableWindow.initialise(self);
     self.title = wishStyle.name;
-    if not self.panel then
-        self.wishList = wishes
-        self.wishAmount = wishStyle.wishAmount;
-        self.texturePath = wishStyle.texturePath
-    else
-        self.panel:updateWishData(self.wishList, self.wishAmount);
-    end
+    self.wishList = wishes
+    self.wishAmount = wishStyle.wishAmount;
+    self.texturePath = wishStyle.texturePath
+
+    self:closePanel()
+    self.panel = ISWishingPanel:new(self.width, self.height, self.player, self.playerIndex, self, self.wishList, self.wishAmount, self.texturePath);
+    self.panel:initialise();
+    self:addChild(self.panel);
 end
 
 function wishingWindow:startMenu()
@@ -63,10 +61,6 @@ function wishingWindow:startMenu()
     self:addToUIManager();
     self:bringToTop();
     self.tooltipForced = nil;
-    if self.panel then return end
-    self.panel = ISWishingPanel:new(self.width, self.height, self.player, self.playerIndex, self, self.wishList, self.wishAmount, self.texturePath);
-    self.panel:initialise();
-    self:addChild(self.panel);
 end
 
 function wishingWindow:new(x, y, player, playerIndex)

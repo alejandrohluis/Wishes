@@ -100,6 +100,7 @@ function ISWishingPanel:createChildren()
 end
 
 function ISWishingPanel:close()
+    ISPanel.close(self)
     self.listboxCategory:clear()
     self:removeChild(self.listboxCategory)
     self.listboxCategory = nil
