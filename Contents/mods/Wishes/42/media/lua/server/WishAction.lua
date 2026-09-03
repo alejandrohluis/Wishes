@@ -1,11 +1,18 @@
 require "WishAttributes"
 
+DPWishes = DPWishes or {}
+
 ----------------------------------------------------------------------------------
 --- WishAction
 ----------------------------------------------------------------------------------
-WishingSession = {}
+DPWishes.Session = {}
 
-function WishingSession:new(playerID, style)
+local wishingSession = DPWishes.Session
+
+function wishingSession:new(playerID, style)
+    if wishingSession[playerID] then
+        wishingSession[playerID]:close()
+    end
     local o = {}
     setmetatable(o, self)
     self.__index = self
@@ -14,30 +21,27 @@ function WishingSession:new(playerID, style)
     o.wishAmount = style.wishAmount
     o.player = playerID
     o.whitelistedWishes = {}
-    if WishingSession[playerID] then
-        WishingSession[playerID]:close()
-    end
-    WishingSession[playerID] = o
+    wishingSession[playerID] = o
     return o
 end
 
-function WishingSession:removeNWishes(wishesToRemove)
+function wishingSession:removeNWishes(wishesToRemove)
     self.wishAmount = self.wishAmount - wishesToRemove
 end
 
-function WishingSession:hasRemainingWishes()
+function wishingSession:hasRemainingWishes()
     return self.wishAmount > 0
 end
 
-function WishingSession:getRemainingWishes()
+function wishingSession:getRemainingWishes()
     return self.wishAmount
 end
 
-function WishingSession:getWishes()
+function wishingSession:getWishes()
     return self.whitelistedWishes
 end
 
-function WishingSession:getWishIDs()
+function wishingSession:getWishIDs()
     local ids = {}
     for wishID, _ in pairs(self.whitelistedWishes) do 
         table.insert(ids, wishID)
@@ -45,51 +49,105 @@ function WishingSession:getWishIDs()
     return ids
 end
 
-function WishingSession:getWish(wishID)
+function wishingSession:getWish(wishID)
     return self.whitelistedWishes[wishID]
 end
 
-function WishingSession:addWish(wishID, wishCost, isEnabled)
+function wishingSession:addWish(wishID, wishCost, isEnabled)
     if not isEnabled then return end
     self.whitelistedWishes[wishID] = { cost = wishCost }
 end
 
-function WishingSession:close()
+function wishingSession:close()
     self.whitelistedWishes = nil
-    WishingSession[self.player] = nil
+    wishingSession[self.player] = nil
 end
 
 ----------------------------------------------------------------------------------
 --- WishAction
 ----------------------------------------------------------------------------------
-WishAction = {}
+DPWishes.Action = {}
 
-function WishAction:addEffect(identifier, effect)
-    if WishAction[identifier] then
+local wishAction = DPWishes.Action
+
+function wishAction:addEffect(identifier, effect)
+    if wishAction[identifier] then
         return false
     end
     if not effect then
         return false
     end
-    WishAction[identifier] = effect
-    return WishAction[identifier] ~= nil
+    wishAction[identifier] = effect
+    return wishAction[identifier] ~= nil
 end
 
-function WishAction:removeEffect(identifier)
-    if not WishAction[identifier] then return end
-    WishAction[identifier] = nil
+function wishAction:removeEffect(identifier)
+    if not wishAction[identifier] then return end
+    wishAction[identifier] = nil
+end
+
+function wishAction:handleCommand(command, args)
+    local wishingWindows = DPWishes.WindowsList
+    local player = getPlayer()
+    local playerID = player:getOnlineID()
+    local playerWishingWindow = wishingWindows[playerID]
+    if not playerWishingWindow then
+        -- local x = getPlayerScreenLeft(playerID);
+        -- local y = getPlayerScreenTop(playerID);
+        -- wishingWindows[playerID] = DPWishes.Window:new(x, y, player, playerID)
+        return
+    end
+    if command == "StartWishingMenu" then
+        local wishStyle = DPWishes.Style:new(args.wishStyle.name, args.wishStyle.wishAmount, args.wishStyle.texturePath)
+        local wishes = args.enabledWishes
+        playerWishingWindow:initialise(wishStyle, wishes)
+        playerWishingWindow:startMenu()
+    end
+    if command == "ConsumeWish" then
+        wishingWindows[playerID]:updateWishesRemaining(args.remainingWishes)
+    end
+    if command == "StopWishingMenu" then
+        wishingWindows[playerID]:close()
+    end
+end
+
+function wishAction:startWishingMenu(player, wishingData, wishes)
+    local isMultiplayer = isClient() or isServer()
+    if isMultiplayer then
+        sendServerCommand(player, "DP_Wishes", "StartWishingMenu", { wishStyle = wishingData , enabledWishes = wishes })
+    else
+        DPWishes.Action:handleCommand("StartWishingMenu", { wishStyle = wishingData , enabledWishes = wishes })
+    end
+end
+
+function wishAction:stopWishingMenu(player)
+    local isMultiplayer = isClient() or isServer()
+    if isMultiplayer then
+        sendServerCommand(player, "DP_Wishes", "StopWishingMenu", nil)
+    else
+        DPWishes.Action:handleCommand("StopWishingMenu", nil)
+    end
+end
+
+function wishAction:updateWishes(player, newWishes)
+    local isMultiplayer = isClient() or isServer()
+    if isMultiplayer then
+        sendServerCommand(player, "DP_Wishes", "ConsumeWish", { remainingWishes = newWishes })
+    else
+        DPWishes.Action:handleCommand("ConsumeWish", { remainingWishes = newWishes })
+    end
 end
 
 local function canPerformWish(availableWishes, wishID, wish)
-    return WishAction[wishID] ~= nil and availableWishes >= wish.cost
+    return wishAction[wishID] ~= nil and availableWishes >= wish.cost
 end
 
 local function OnClientCommand(module, command, player, args)
-    if module ~= "Wishes" then return end
+    if module ~= "DP_Wishes" then return end
     if command ~= "GrantWish" then return end
-    if not args or not args.wishID then return end
-    local playerID = player:getPlayerNum()
-    local playerSession = WishingSession[playerID]
+    if not args or not args.wishID or type(args.wishID) ~= "string" then return end
+    local playerID = player:getOnlineID()
+    local playerSession = wishingSession[playerID]
     if not playerSession then return end
 
     local wishID = args.wishID
@@ -97,17 +155,17 @@ local function OnClientCommand(module, command, player, args)
 
     -- if wish is not enabled for this session
     if not wishToPerform then return end
-    
+
     if not canPerformWish(playerSession:getRemainingWishes(), wishID, wishToPerform) then return end
 
-    local consumeWish = WishAction[wishID](player, args.optionID)
+    local consumeWish = wishAction[wishID](player, args.optionID)
     if consumeWish then
         playerSession:removeNWishes(wishToPerform.cost)
-        sendServerCommand(player, "Wishes", "ConsumeWish", { remainingWishes = playerSession:getRemainingWishes() })
+        wishAction:updateWishes(player, playerSession:getRemainingWishes())
     end
     if not playerSession:hasRemainingWishes() then
         playerSession:close()
-        sendServerCommand(player, "Wishes", "StopWishingMenu", nil)
+        wishAction:stopWishingMenu(player)
     end
 end
 
@@ -116,8 +174,8 @@ Events.OnClientCommand.Add(OnClientCommand)
 local function OnPlayerDeath(character)
     if not instanceof(character, "IsoPlayer") then return end
 
-    local playerID = character:getPlayerNum()
-    local session = WishingSession[playerID]
+    local playerID = character:getOnlineID()
+    local session = wishingSession[playerID]
     if session then
         session:close()
     end
@@ -125,7 +183,16 @@ end
 
 Events.OnCharacterDeath.Add(OnPlayerDeath)
 
--- local function OnDisconnectedPlayer(player)
---     local playerID = player:getPlayerNum()
---     WishingSession[playerID]:close()
--- end
+local function OnPlayerDisconnect(player)
+    print("[Wishes] Closing wishing session...")
+    local playerID = player:getOnlineID()
+    local session = wishingSession[playerID]
+    if session then
+        session:close()
+        print("[Wishes] Session succesfully closed.")
+    else
+        print("[Wishes] No session found.")
+    end
+end
+
+Events.OnDisconnect.Add(OnPlayerDisconnect)

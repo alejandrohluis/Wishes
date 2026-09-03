@@ -2,9 +2,13 @@
 ---   Wish Styles   ---
 -----------------------
 
-WishStyle = {}
+DPWishes = DPWishes or {}
 
-function WishStyle:new(name, wishesPerSummoning, texturePath)
+DPWishes.Style = {}
+
+local wishStyle = DPWishes.Style
+
+function wishStyle:new(name, wishesPerSummoning, texturePath)
     local o = {}
     setmetatable(o,self)
     self.__index = self
@@ -15,14 +19,14 @@ function WishStyle:new(name, wishesPerSummoning, texturePath)
     return o
 end
 
-function WishStyle:getTexturePath()
+function wishStyle:getTexturePath()
     return self.texturePath
 end
 
-function WishStyle:getWishesToDisplay()
+function wishStyle:getWishesToDisplay()
     return self.wishList
 end
 
-function WishStyle:getWishAmount()
+function wishStyle:getWishAmount()
     return self.wishAmount
 end

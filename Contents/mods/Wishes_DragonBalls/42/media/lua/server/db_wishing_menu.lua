@@ -1,14 +1,15 @@
-require "WishActions"
+require "WishAction"
+require "ISWishStyle"
 
 local Recipe = RecipeCodeOnCreate;
 
 function Recipe.SummonShenron(craftRecipeData, player)
     local sandbox = SandboxVars.Wishes
-    local playerID = player:getPlayerNum()
+    local playerID = player:getOnlineID()
 
-    local shenron = WishStyle:new("Shenron", sandbox.DB_Setting_MaxWishes, "media/textures/portrait/shenlong.png")
+    local shenron = DPWishes.Style:new("Shenron", sandbox.DB_Setting_MaxWishes, "media/textures/portrait/shenlong.png")
 
-    local session = WishingSession:new(playerID, wishStyle)
+    local session = DPWishes.Session:new(playerID, shenron)
     session:addWish("Shenron_modifyTrait", 1, sandbox.DB_Wish_Trait)
     session:addWish("Shenron_skillLevelUpUntil", 1, sandbox.DB_Wish_SkillLevelUpUntil)
     session:addWish("Shenron_skillLevelUpOnce", 1, sandbox.DB_Wish_SkillLevelUp)
@@ -25,9 +26,8 @@ function Recipe.SummonShenron(craftRecipeData, player)
         name = shenron.name,
         wishAmount = shenron.wishAmount,
         texturePath = shenron.texturePath,
-        wishes = session:getWishIDs()
     }
-    sendServerCommand(player, "Wishes", "StartWishingMenu", { wishStyle = shenronData })
+    DPWishes.Action:startWishingMenu(player, shenronData, session:getWishIDs())
 end
 
 -- deseos pedidos en dbz ; (!)[deseo] posibles deseos

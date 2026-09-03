@@ -6,8 +6,11 @@
 --- 
 --- Currently includes:
 --- Dragon Ball
+DPWishes = DPWishes or {}
 
-ISWishPortrait = ISUIElement:derive("WishPortrait");
+DPWishes.Portrait = ISUIElement:derive("DPWishPortrait");
+
+local ISWishPortrait = DPWishes.Portrait
 
 function ISWishPortrait:render()
     -- local width = 240;

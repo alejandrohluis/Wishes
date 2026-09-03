@@ -1,5 +1,3 @@
-require "WishAttributes"
-
 ISWishingPanel = ISPanel:derive("ISWishingPanel");
 
 local UIFontSmall = UIFont.Small
@@ -16,16 +14,16 @@ local function hideListbox(listbox)
     listbox:setVisible(false);
 end
 
-local function initialiseListbox(listbox, panel)
+local function initialiseListbox(listbox, owner)
     listbox:initialise();
     listbox:instantiate();
     listbox.itemheight = BUTTON_HGT;
     listbox.selected = 1;
-    listbox.doDrawItem = panel.doDrawWish;
-    listbox:setOnMouseDownFunction(listbox, function(wish) panel:onClickWish(listbox, wish) end)
-    listbox:setOnMouseDoubleClick(panel, panel.onDoubleClickItem);
+    listbox.doDrawItem = owner.doDrawWish;
+    listbox:setOnMouseDownFunction(listbox, function(wish) owner:onClickWish(listbox, wish) end)
+    listbox:setOnMouseDoubleClick(owner, owner.onDoubleClickItem);
     listbox.drawBorder = true
-    listbox.owner = panel;
+    listbox.owner = owner;
 end
 
 local function onDoWish(panel, button, wish)
@@ -35,7 +33,7 @@ local function onDoWish(panel, button, wish)
     if wish.optionID then
         wishData.optionID = wish.optionID
     end
-    sendClientCommand(panel.player, "Wishes", "GrantWish", wishData )
+    sendClientCommand(panel.player, "DP_Wishes", "GrantWish", wishData )
     panel:clearCategories()
 end
 
@@ -69,7 +67,7 @@ function ISWishingPanel:createChildren()
     local offset = self.tablePad + self.tableWidth;
     local tableOffsetX = self.tablePad + offset;
 
-    self.portrait = ISWishPortrait:new(self.tablePad, UI_BORDER_SPACING, self.tableWidth, (self.maxHeight - UI_BORDER_SPACING * 4), self.texturePath);
+    self.portrait = DPWishes.Portrait:new(self.tablePad, UI_BORDER_SPACING, self.tableWidth, (self.maxHeight - UI_BORDER_SPACING * 4), self.texturePath);
     self.portrait:initialise();
     self:addChild(self.portrait);
 
@@ -99,6 +97,25 @@ function ISWishingPanel:createChildren()
     self:addChild(self.listboxOptions);
 
     self:addWishesToList();
+end
+
+function ISWishingPanel:close()
+    self.listboxCategory:clear()
+    self:removeChild(self.listboxCategory)
+    self.listboxCategory = nil
+
+    self.listboxOptions:clear()
+    self:removeChild(self.listboxOptions)
+    self.listboxOptions = nil
+
+    self.listboxWishes:clear()
+    self:removeChild(self.listboxWishes)
+    self.listboxWishes = nil
+
+    self:removeChild(self.portrait)
+    self.portrait = nil
+    self:removeChild(self.remainingWishesLabel)
+    self.remainingWishesLabel = nil
 end
 
 function ISWishingPanel:updateWishData(wishes, wishAmount)
@@ -203,7 +220,7 @@ function ISWishingPanel:addWishesToList()
     local wishSelection = self.listboxWishes.selected;
     self.listboxWishes:clear();
     local allWishes = self.wishes;
-    local wishDefinitions = WishDefinitions
+    local wishDefinitions = DPWishes.Definitions
     -- local getLabel = getText
     for i = 1, #allWishes do
         local wishID = allWishes[i];

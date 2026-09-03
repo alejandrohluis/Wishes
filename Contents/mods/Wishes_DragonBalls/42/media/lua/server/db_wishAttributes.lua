@@ -1,6 +1,9 @@
 require "WishAttributes"
 require "WishAction"
 
+local wishOptions = DPWishes.Options
+local wishEffects = DPWishes.Effects
+
 --[[ 
 type of dragon balls:
     organic:
@@ -20,7 +23,7 @@ type of dragon balls:
 -- deseos no pedidos en dbz pero interesantes:
 -- pastillas para niveles temporales
 
-WishOptions.getDBItems = function()
+wishOptions.getDBItems = function()
     local lotteryItems = {
         { label = "Ice Cream" , optionID = "DB_IceCream" },
         { label = "The Best Pair of Underwear in the Whole World" , optionID = "DB_PairOfTrunks" }
@@ -37,7 +40,7 @@ end
     - if all physical skills are maxed and there is no perk to be given, does not consume the wish.  
  - takes up 2 wishes
 ]]--  
-WishEffects.potentialUnlock = function(char, _selectedOption, panel)
+wishEffects.potentialUnlock = function(char, _selectedOption, panel)
     -- TODO. not a priority
     return false
 end
@@ -45,7 +48,7 @@ end
 --[[ teleport ally: 
  - teleports a player from the same faction to the current wisher's position
 ]]--
-WishEffects.teleportAlly = function(char, _selectedOption, panel)
+wishEffects.teleportAlly = function(char, _selectedOption, panel)
     -- TODO. not a priority
     return false
 end
@@ -55,7 +58,7 @@ end
  - heals all injuries, acts like the god-mode cheat for combat only (without all the unrelated weight/trait stuff)  
  - takes up 3 wishes
 ]]--
-WishEffects.inmortality = function(char, _selectedOption, panel)
+wishEffects.inmortality = function(char, _selectedOption, panel)
     -- TODO. not a priority
     return false
 end
@@ -71,27 +74,29 @@ end
     + stage 5: adds a wish option (inmortality)
     + stage 6: lets you craft robotic db 2, 4, 6 ; also lets you turn any "organic" db into db 7  
 ]]--
-WishEffects.improveDragonBalls = function(char, _selectedOption, panel)
+wishEffects.improveDragonBalls = function(char, _selectedOption, panel)
     -- TODO. not a priority
     return false
 end
 
 local function dragon_ball_addActions()
-    local effects = WishEffects
-    WishAction:addEffect("Shenron_modifyTrait", effects.modifyTrait)
-    WishAction:addEffect("Shenron_skillLevelUpUntil", effects.skillLevelUpUntil)
-    WishAction:addEffect("Shenron_skillLevelUpOnce", effects.skillLevelUpOnce)
-    WishAction:addEffect("Shenron_idealWeight", effects.setIdealWeight)
-    WishAction:addEffect("Shenron_heal", effects.healUp)
-    WishAction:addEffect("Shenron_cureSickness", effects.cureSickness)
-    WishAction:addEffect("Shenron_obtainItem", effects.obtainItem)
-    WishAction:addEffect("Shenron_potentialUnlock", effects.potentialUnlock)
-    WishAction:addEffect("Shenron_teleport", effects.teleportAlly)
-    WishAction:addEffect("Shenron_inmortality", effects.inmortality)
-    WishAction:addEffect("Shenron_upgrade", effects.improveDragonBalls)
+    local effects = wishEffects
+    local action = DPWishes.Action
+    action:addEffect("Shenron_modifyTrait", effects.modifyTrait)
+    action:addEffect("Shenron_skillLevelUpUntil", effects.skillLevelUpUntil)
+    action:addEffect("Shenron_skillLevelUpOnce", effects.skillLevelUpOnce)
+    action:addEffect("Shenron_idealWeight", effects.setIdealWeight)
+    action:addEffect("Shenron_heal", effects.healUp)
+    action:addEffect("Shenron_cureSickness", effects.cureSickness)
+    action:addEffect("Shenron_obtainItem", effects.obtainItem)
+    action:addEffect("Shenron_potentialUnlock", effects.potentialUnlock)
+    action:addEffect("Shenron_teleport", effects.teleportAlly)
+    action:addEffect("Shenron_inmortality", effects.inmortality)
+    action:addEffect("Shenron_upgrade", effects.improveDragonBalls)
 
-    WishWhitelist_ObtainItem["DB_IceCream"] = { minQuantity = 1 , maxQuantity = 1 , itemID = "Base.Icecream" }
-    WishWhitelist_ObtainItem["DB_PairOfTrunks"] = { minQuantity = 1 , maxQuantity = 1 , itemID = "Base.Underpants_White" }
+    local itemWhitelist = DPWishes.FilteringLists.Whitelist_ObtainItem
+    itemWhitelist["DB_IceCream"] = { minQuantity = 1 , maxQuantity = 1 , itemID = "Base.Icecream" }
+    itemWhitelist["DB_PairOfTrunks"] = { minQuantity = 1 , maxQuantity = 1 , itemID = "Base.Underpants_White" }
 end
 
-dragon_ball_addActions()
+Events.OnGameStart.Add(dragon_ball_addActions)

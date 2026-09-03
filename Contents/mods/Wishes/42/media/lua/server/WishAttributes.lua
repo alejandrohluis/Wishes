@@ -5,14 +5,16 @@
 --  - Options
 --  - Effects
 
+DPWishes = DPWishes or {}
 
 ----------------------------------------------------------------------------------
 --- Options
 ----------------------------------------------------------------------------------
--- WishOptions = table.newarray();
-WishOptions = {};
+DPWishes.Options = {};
 
-WishOptions.getTraits = function(self, player)
+local wishOptions = DPWishes.Options
+
+wishOptions.getTraits = function(self, player)
     local traitsArray = CharacterTraitDefinition.getTraits();
     local traits = {
         { label = "Get a Good Trait" , options = {} , color = { r = 0, g = 0.7, b = 0, a = 1 } },
@@ -48,7 +50,7 @@ WishOptions.getTraits = function(self, player)
     return traits;
 end
 
-WishOptions.getSkills = function(self, _player)
+wishOptions.getSkills = function(self, _player)
     local skillsArray = PerkFactory.PerkList;
     local arraySize = skillsArray:size()-1;
     local skillNone = PerkFactory.Perks.None;
@@ -85,8 +87,9 @@ end
 ----------------------------------------------------------------------------------
 -- effect(player, wish)   
 -- Returns if the wish is consumed or not
-WishEffects = {};
+DPWishes.Effects = {};
 
+local wishEffects = DPWishes.Effects
 
 -- traits
 local function getTraitFromID(traitID)
@@ -117,8 +120,8 @@ local function removeTrait(player, trait)
 end
 
 -- adds/removes a selected trait to/from the player
-WishEffects.modifyTrait = function(char, traitID)
-    if not WishWhitelist_ModifyTrait[traitID] then return false end
+wishEffects.modifyTrait = function(char, traitID)
+    if not DPWishes.FilteringLists.Whitelist_ModifyTrait[traitID] then return false end
     local trait = getTraitFromID(traitID)
     local hasTrait = char:hasTrait(trait);
     if hasTrait then
@@ -129,8 +132,8 @@ WishEffects.modifyTrait = function(char, traitID)
 end
 
 -- levels up a selected skill until reaching a certain level
-WishEffects.skillLevelUpUntil = function(char, skillID)
-    if not WishWhitelist_SkillLevelUntil[skillID] then return false end
+wishEffects.skillLevelUpUntil = function(char, skillID)
+    if not DPWishes.FilteringLists.Whitelist_SkillLevelUntil[skillID] then return false end
 
     local perk = PerkFactory.Perks.FromString(skillID)
     local perkLevel = char:getPerkLevel(perk);
@@ -144,8 +147,8 @@ WishEffects.skillLevelUpUntil = function(char, skillID)
 end
 
 -- levels up a selected skill once
-WishEffects.skillLevelUpOnce = function(char, skillID)
-    if not WishWhitelist_SkillLevelOnce[skillID] then return false end
+wishEffects.skillLevelUpOnce = function(char, skillID)
+    if not DPWishes.FilteringLists.Whitelist_SkillLevelOnce[skillID] then return false end
     local perk = PerkFactory.Perks.FromString(skillID)
     local startingPerkLevel = char:getPerkLevel(perk);
     char:LevelPerk(perk);
@@ -154,7 +157,7 @@ WishEffects.skillLevelUpOnce = function(char, skillID)
 end
 
 -- sets the player weight to the ideal weight
-WishEffects.setIdealWeight = function(char, _selectedOptionID)
+wishEffects.setIdealWeight = function(char, _selectedOptionID)
     local nutrition = char:getNutrition();
     nutrition:setWeight(80);
     nutrition:applyTraitFromWeight();
@@ -162,7 +165,7 @@ WishEffects.setIdealWeight = function(char, _selectedOptionID)
 end
 
 -- heals the player's health bar to full HP. does not heal any sickness 
-WishEffects.healUp = function(char, _selectedOptionID)
+wishEffects.healUp = function(char, _selectedOptionID)
     local bodyDamage = char:getBodyDamage();
     local bodyParts = bodyDamage:getBodyParts();
     for i = 0, bodyParts:size()-1 do
@@ -173,7 +176,7 @@ WishEffects.healUp = function(char, _selectedOptionID)
 end
 
 -- cure all sickness the player has (whether that may be Zombie Infection or queasy-type sickness)
-WishEffects.cureSickness = function(char, _selectedOptionID)
+wishEffects.cureSickness = function(char, _selectedOptionID)
     local bodyDamage = char:getBodyDamage();
     if not bodyDamage:IsInfected() then return false end
 
@@ -188,8 +191,8 @@ WishEffects.cureSickness = function(char, _selectedOptionID)
 end
 
 -- wish to obtain a specific item from a list of options
-WishEffects.obtainItem = function(char, optionID)
-    local itemData = WishWhitelist_ObtainItem[optionID]
+wishEffects.obtainItem = function(char, optionID)
+    local itemData = DPWishes.FilteringLists.Whitelist_ObtainItem[optionID]
     if not itemData then return false end
 
     local createItemMethod = instanceItem
@@ -213,22 +216,22 @@ WishEffects.obtainItem = function(char, optionID)
     return true
 end
 
-WishEffects.endWishing = function(_char, _selectedOptionID)
+wishEffects.endWishing = function(_char, _selectedOptionID)
     -- TODO. not a priority
     return false
 end
 
-WishEffects.repairItem = function(_char, selectedOptionID)
+wishEffects.repairItem = function(_char, selectedOptionID)
     -- TODO. not a priority
     return false
 end
 
-WishEffects.obtainWeapons = function(_char, selectedOptionID)
+wishEffects.obtainWeapons = function(_char, selectedOptionID)
     -- TODO. not a priority
     return false
 end
 
-WishEffects.extraWishes = function(_char, _selectedOptionID)
+wishEffects.extraWishes = function(_char, _selectedOptionID)
     -- TODO. not a priority
     return false
 end
@@ -251,34 +254,38 @@ end
 -- only one list needs to be present if one decides to hardcode the table
 
 -- WishWhitelist_X : the full whitelisted options which it may have
-WishWhitelist_ModifyTrait = {}
+DPWishes.FilteringLists = {}
+
+local wishFilteringLists = DPWishes.FilteringLists
+
+wishFilteringLists.Whitelist_ModifyTrait = {}
 -- WishWhitelistForce_X : a whitelist to force certain options to appear in the list 
 --                        even if they don't fulfill the filtering criteria
-WishWhitelistForce_ModifyTrait = {}
+wishFilteringLists.WhitelistForce_ModifyTrait = {}
 -- WishBlacklist_X : a blacklist to ensure these specific traits don't appear in the list
 --                   even if they do fulfill the filtering criteria
-WishBlacklist_ModifyTrait = {}
+wishFilteringLists.Blacklist_ModifyTrait = {}
 
 
-WishWhitelist_SkillLevelUntil = {}
-WishWhitelistForce_SkillLevelUntil = {}
-WishBlacklist_SkillLevelUntil = { "Agility" }
+wishFilteringLists.Whitelist_SkillLevelUntil = {}
+wishFilteringLists.WhitelistForce_SkillLevelUntil = {}
+wishFilteringLists.Blacklist_SkillLevelUntil = { "Agility" }
 
-WishWhitelist_SkillLevelOnce = {}
-WishWhitelistForce_SkillLevelOnce = {}
-WishBlacklist_SkillLevelOnce = { "Agility" }
+wishFilteringLists.Whitelist_SkillLevelOnce = {}
+wishFilteringLists.WhitelistForce_SkillLevelOnce = {}
+wishFilteringLists.Blacklist_SkillLevelOnce = { "Agility" }
 
-WishWhitelist_ObtainItem = {}
+wishFilteringLists.Whitelist_ObtainItem = {}
 
 -------------------------------------------------------------------------------
 local function ModifyTrait_isTraitAllowed(trait, id)
-    if WishBlacklist_ModifyTrait[id] then return false end
-    if WishWhitelistForce_ModifyTrait[id] then return true end
+    if wishFilteringLists.Blacklist_ModifyTrait[id] then return false end
+    if wishFilteringLists.WhitelistForce_ModifyTrait[id] then return true end
     return trait:getCost() ~= 0
 end
 
 local function ModifyTrait_initWhitelist()
-    WishWhitelist_ModifyTrait = {}
+    wishFilteringLists.Whitelist_ModifyTrait = {}
 
     local traitsArray = CharacterTraitDefinition.getTraits();
     for i = 0, traitsArray:size()-1 do
@@ -286,49 +293,49 @@ local function ModifyTrait_initWhitelist()
         local traitID = tostring(trait:getType())
 
         if ModifyTrait_isTraitAllowed(trait, traitID) then
-            WishWhitelist_ModifyTrait[traitID] = true
+            wishFilteringLists.Whitelist_ModifyTrait[traitID] = true
         end
     end
 end
 
 local function SkillLevelUntil_isSkillAllowed(skill, id)
-    if WishBlacklist_SkillLevelUntil[id] then return false end
-    if WishWhitelistForce_SkillLevelUntil[id] then return true end
+    if wishFilteringLists.Blacklist_SkillLevelUntil[id] then return false end
+    if wishFilteringLists.WhitelistForce_SkillLevelUntil[id] then return true end
     local parent = skill:getParent();
     local skillNone = PerkFactory.Perks.None;
     return parent ~= skillNone
 end
 
 local function SkillLevelUntil_initWhitelist()
-    WishWhitelist_SkillLevelUntil = {}
+    wishFilteringLists.Whitelist_SkillLevelUntil = {}
 
     local skillsArray = PerkFactory.PerkList;
     for i = skillsArray:size()-1, 0, -1 do
         local skill = skillsArray:get(i);
         local skillID = skill:getId()
         if SkillLevelUntil_isSkillAllowed(skill, skillID) then
-            WishWhitelist_SkillLevelUntil[skillID] = true
+            wishFilteringLists.Whitelist_SkillLevelUntil[skillID] = true
         end
     end
 end
 
 local function SkillLevelOnce_isSkillAllowed(skill, id)
-    if WishBlacklist_SkillLevelOnce[id] then return false end
-    if WishWhitelistForce_SkillLevelOnce[id] then return true end
+    if wishFilteringLists.Blacklist_SkillLevelOnce[id] then return false end
+    if wishFilteringLists.WhitelistForce_SkillLevelOnce[id] then return true end
     local parent = skill:getParent();
     local skillNone = PerkFactory.Perks.None;
     return parent ~= skillNone
 end
 
 local function SkillLevelOnce_initWhitelist()
-    WishWhitelist_SkillLevelOnce = {}
+    wishFilteringLists.Whitelist_SkillLevelOnce = {}
 
     local skillsArray = PerkFactory.PerkList;
     for i = skillsArray:size()-1, 0, -1 do
         local skill = skillsArray:get(i);
         local skillID = skill:getId()
         if SkillLevelOnce_isSkillAllowed(skill, skillID) then
-            WishWhitelist_SkillLevelOnce[skillID] = true
+            wishFilteringLists.Whitelist_SkillLevelOnce[skillID] = true
         end
     end
 end

@@ -1,11 +1,17 @@
-WishingWindows = {}
+DPWishes = DPWishes or {}
 
-local ISWishingWindow = ISCollapsableWindow:derive("ISWishingWindow")
+DPWishes.WindowsList = {}
+
+local WishingWindows = DPWishes.WindowsList
+
+DPWishes.Window = ISCollapsableWindow:derive("DP_ISWishingWindow")
+
+local wishingWindow = DPWishes.Window
 -- local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFont.Small)
 -- local UI_BORDER_SPACING = 10
 -- local BUTTON_HGT = FONT_HGT_SMALL + 6
 
-function ISWishingWindow:toggleWindow()
+function wishingWindow:toggleWindow()
     if self:getIsVisible() then
         self:close();
     else
@@ -13,16 +19,12 @@ function ISWishingWindow:toggleWindow()
     end
 end
 
-function ISWishingWindow:createChildren()
+function wishingWindow:createChildren()
 	ISCollapsableWindow.createChildren(self);
-
-    self.panel = ISWishingPanel:new(self.width, self.height, self.player, self.playerIndex, self, self.wishList, self.wishAmount, self.texturePath);
-    self.panel:initialise();
-    self:addView(self.panel);
 
     -- Only save window layout for single player
     if (self.playerIndex == 0) then
-        ISLayoutManager.RegisterWindow('wishingwindow', ISWishingWindow, self);
+        ISLayoutManager.RegisterWindow('wishingwindow', wishingWindow, self);
     end
     self.visibleOnStartup = self:getIsVisible();
 
@@ -30,36 +32,44 @@ function ISWishingWindow:createChildren()
 	self.resizeWidget:bringToTop();
 end
 
-function ISWishingWindow:close()
+function wishingWindow:close()
     self:setVisible(false);
     self:removeFromUIManager();
+    if self.panel then
+        self.panel:close()
+        self.panel:setVisible(false)
+        self.panel:removeFromUIManager(false)
+    end
 end
-function ISWishingWindow:updateWishesRemaining(remainingWishes)
+function wishingWindow:updateWishesRemaining(remainingWishes)
     if not self.panel then return end
     self.panel:setRemainingWishes(remainingWishes)
 end
 
-function ISWishingWindow:initialise(wishStyle)
+function wishingWindow:initialise(wishStyle, wishes)
     ISCollapsableWindow.initialise(self);
     self.title = wishStyle.name;
     if not self.panel then
-        self.wishList = wishStyle.wishList;
+        self.wishList = wishes
         self.wishAmount = wishStyle.wishAmount;
         self.texturePath = wishStyle.texturePath
     else
-        -- self.panel:updateWishData(wishStyle.wishList, wishStyle.wishAmount);
         self.panel:updateWishData(self.wishList, self.wishAmount);
     end
 end
 
-function ISWishingWindow:startMenu()
+function wishingWindow:startMenu()
     self:setVisible(true);
     self:addToUIManager();
     self:bringToTop();
     self.tooltipForced = nil;
+    if self.panel then return end
+    self.panel = ISWishingPanel:new(self.width, self.height, self.player, self.playerIndex, self, self.wishList, self.wishAmount, self.texturePath);
+    self.panel:initialise();
+    self:addChild(self.panel);
 end
 
-function ISWishingWindow:new(x, y, player, playerIndex)
+function wishingWindow:new(x, y, player, playerIndex)
 	local instance = ISCollapsableWindow:new(x + 200, y + 100, 1050, 600);
 	setmetatable(instance, self);
 	self.__index = self;
@@ -77,25 +87,25 @@ function ISWishingWindow:new(x, y, player, playerIndex)
     return instance
 end
 
-function WishingSystemHandleOnCreatePlayer(playerIndex, player)
+local function WindowOnCreatePlayer(playerIndex, player)
     if getCore():isDedicated() then return end
 
     if (not (WishingWindows[playerIndex])) then
         local x = getPlayerScreenLeft(playerIndex);
         local y = getPlayerScreenTop(playerIndex);
-        WishingWindows[playerIndex] = ISWishingWindow:new(x, y, player, playerIndex);
+        WishingWindows[playerIndex] = wishingWindow:new(x, y, player, playerIndex);
     end
 end
 
-function WishingSystemHandleOnPlayerDeath(player)
-    local WishingWindow = WishingWindows[player:getPlayerNum()];
+local function WindowOnPlayerDeath(player)
+    local WishingWindow = WishingWindows[player:getOnlineID()];
 	if WishingWindow then
 		WishingWindow:setVisible(false);
 		WishingWindow:removeFromUIManager();
 	end
 end
 
-function WishingSystemHandleOnResolutionChange(oldw, oldh, neww, newh)
+local function WindowOnResolutionChange(oldw, oldh, neww, newh)
 	if not getPlayer() then return end
 
     local getScreenLeft = getPlayerScreenLeft
@@ -109,33 +119,14 @@ function WishingSystemHandleOnResolutionChange(oldw, oldh, neww, newh)
 	end
 end
 
-Events.OnCreatePlayer.Add(WishingSystemHandleOnCreatePlayer)
-Events.OnPlayerDeath.Add(WishingSystemHandleOnPlayerDeath)
-Events.OnResolutionChange.Add(WishingSystemHandleOnResolutionChange)
+Events.OnCreatePlayer.Add(WindowOnCreatePlayer)
+Events.OnPlayerDeath.Add(WindowOnPlayerDeath)
+Events.OnResolutionChange.Add(WindowOnResolutionChange)
 
-local function WishingSystemUpdateWindow(command, args)
-    local player = getPlayer()
-    local playerID = player:getPlayerNum()
-    local wishingWindow = WishingWindows[playerID]
-    if not wishingWindow then return end
-    if command == "StartWishingMenu" then
-        local wishStyle = WishStyle:new(args.wishStyle.name, args.wishStyle.wishAmount, args.wishStyle.texturePath)
-        wishStyle.wishList = args.wishStyle.wishes
-        wishingWindow:initialise(wishStyle)
-        wishingWindow:startMenu()
-    end
-    if command == "ConsumeWish" then
-        WishingWindows[playerID]:updateWishesRemaining(args.remainingWishes)
-    end
-    if command == "StopWishingMenu" then
-        WishingWindows[playerID]:close()
-    end
-end
-
-local function WishingSystemReceiveWindowUpdates(module, command, args)
+local function WindowReceiveUpdate(module, command, args)
     if module ~= "Wishes" then return end
 
-    WishingSystemUpdateWindow(command, args)
+    DPWishes.Action:handleCommand(command, args)
 end
 
-Events.OnServerCommand.Add(WishingSystemReceiveWindowUpdates)
+Events.OnServerCommand.Add(WindowReceiveUpdate)
