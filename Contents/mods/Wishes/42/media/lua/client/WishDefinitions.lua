@@ -3,6 +3,7 @@
 ----------------------------------------------------------------------------------
 --- This is a client-side table which has the information on the wish label and the categories
 --- It's crucial to add your own wishes as without this info your wishes will not be displayed in the panel
+--- For examples, check out any of the base addons for files named X_WishDefinitions.lua 
 
 DPWishes = DPWishes or {}
 

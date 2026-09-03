@@ -49,10 +49,12 @@ function wishingWindow:initialise(wishStyle, wishes)
     self.wishList = wishes
     self.wishAmount = wishStyle.wishAmount;
     self.texturePath = wishStyle.texturePath
+    self.showCloseButton = false
 
     self:closePanel()
     self.panel = ISWishingPanel:new(self.width, self.height, self.player, self.playerIndex, self, self.wishList, self.wishAmount, self.texturePath);
     self.panel:initialise();
+    if self.panel.closeButton then self.panel.closeButton:setVisible(false) end
     self:addChild(self.panel);
 end
 
@@ -68,7 +70,8 @@ function wishingWindow:new(x, y, player, playerIndex)
 	setmetatable(instance, self);
 	self.__index = self;
 
-    instance.title = "Make your Wish";
+    instance.showCloseButton = false
+    instance.title = getText("UI_WishWindowTitle");
 	instance.backgroundColor.a = 0.9;
     instance.minimumWidth = 1050;
     instance.minimumHeight = 600;

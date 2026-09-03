@@ -24,7 +24,7 @@ module DP
 		}
     }
     
-    craftRecipe Debug_AskWish_DB
+    craftRecipe AskWish_DB_DEBUG
     {
         Category 		= Wishes,
         timedAction     = Making,

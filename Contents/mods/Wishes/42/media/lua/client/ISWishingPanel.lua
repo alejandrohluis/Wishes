@@ -1,4 +1,6 @@
-ISWishingPanel = ISPanel:derive("ISWishingPanel");
+require "ISWishPortrait"
+
+ISWishingPanel = ISPanel:derive("DP_ISWishingPanel");
 
 local UIFontSmall = UIFont.Small
 local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFontSmall);
@@ -41,6 +43,10 @@ end
 --- ISWishingPanel
 ----------------------------------------------------------------------------------
 
+local function remainingWishesString(wishAmount)
+    return getText("UI_RemainingWishes") .. " " .. tostring(wishAmount)
+end
+
 function ISWishingPanel:initialise()
     ISPanel.initialise(self);
     self:updateWishesLabel();
@@ -71,9 +77,8 @@ function ISWishingPanel:createChildren()
     self.portrait:initialise();
     self:addChild(self.portrait);
 
-    -- todo: add translation (using getText("UI_")...)
     -- available wishes label
-    self.remainingWishesLabel = ISLabel:new(tableOffsetX, UI_BORDER_SPACING, BUTTON_HGT, ("Wishes remaining: " .. tostring(self.wishAmount)), 1, 1, 1, 1, UIFontSmall, true);
+    self.remainingWishesLabel = ISLabel:new(tableOffsetX, UI_BORDER_SPACING, BUTTON_HGT, remainingWishesString(self.wishAmount), 1, 1, 1, 1, UIFontSmall, true);
 	self.remainingWishesLabel:initialise();
     self:addChild(self.remainingWishesLabel);
 
@@ -135,7 +140,7 @@ end
 
 function ISWishingPanel:updateWishesLabel()
     if self.remainingWishesLabel then
-        self.remainingWishesLabel.name = "Wishes remaining: " .. tostring(self.wishAmount);
+        self.remainingWishesLabel.name = remainingWishesString(self.wishAmount);
     end
 end
 
@@ -183,7 +188,7 @@ function ISWishingPanel:onDoubleClickItem(item)
     local x = self.owner:getX() + (self.owner:getWidth() / 2.0) - (width / 2.0);
     local y = self.owner:getY() + (self.owner:getHeight() / 2.0) - (height / 2.0);
 
-    self.modal = ISModalDialog:new(x, y, width, height, "Are you sure you wish to " .. wish.label .. "?", true, self, onDoWish, player:getPlayerNum(), wish);
+    self.modal = ISModalDialog:new(x, y, width, height, wish.label, true, self, onDoWish, player:getPlayerNum(), wish);
     self.modal:initialise();
     self.modal:addToUIManager();
     self.modal:bringToTop();
@@ -222,12 +227,11 @@ function ISWishingPanel:addWishesToList()
     self.listboxWishes:clear();
     local allWishes = self.wishes;
     local wishDefinitions = DPWishes.Definitions
-    -- local getLabel = getText
     for i = 1, #allWishes do
         local wishID = allWishes[i];
         local wishDefinition = wishDefinitions[wishID]
         local wish = { wishID = wishID , label = wishDefinition.label , categories = wishDefinition.categories }
-        local tooltip = "Wish to " .. wish.label;
+        local tooltip = wish.label;
         self.listboxWishes:addItem(wish.label, wish, tooltip);
     end
     self.listboxWishes.selected = wishSelection;

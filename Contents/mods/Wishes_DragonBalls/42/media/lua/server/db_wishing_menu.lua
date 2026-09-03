@@ -7,7 +7,7 @@ function Recipe.SummonShenron(craftRecipeData, player)
     local sandbox = SandboxVars.Wishes
     local playerID = player:getOnlineID()
 
-    local shenron = DPWishes.Style:new("Shenron", sandbox.DB_Setting_MaxWishes, "media/textures/portrait/shenlong.png")
+    local shenron = DPWishes.Style:new("Shenron", sandbox.DB_Setting_WishesPerSummoning, "media/textures/portrait/shenlong.png")
 
     local session = DPWishes.Session:new(playerID, shenron)
     session:addWish("Shenron_modifyTrait", 1, sandbox.DB_Wish_Trait)

@@ -1,27 +1,3 @@
 {
-    "Sandbox_Wishes" : "Wishes",
-
-    "Sandbox_Wishes_WishDescriptions" : "Wishes Description",
-    "Sandbox_Wishes_WishDescriptions_tooltip" : "Enabling the wish checkbox will make the player be able to get that wish. <RGB:0.8,0,0> \n(This tickbox is merely a description, enabling or disabling it does nothing)",
-
-    "Sandbox_Wishes_Weight" : "Ideal Weight",
-    "Sandbox_Wishes_Weight_tooltip" : "Forever maintains the ideal weight (70) for the player.",
-
-    "Sandbox_Wishes_MaxPerk" : "Max Perk",
-    "Sandbox_Wishes_MaxPerk_tooltip" : "Let's the player choose a single perk to be leveled to the maximum.",
-
-    "Sandbox_Wishes_Trait" : "Get/Remove Trait",
-    "Sandbox_Wishes_Trait_tooltip" : "The player can choose to gain a positive trait or remove a negative one.",
-
-    "Sandbox_Wishes_KnoxInfection" : "Cure Zombie Infection",
-    "Sandbox_Wishes_KnoxInfection_tooltip" : "Detects if the player is infected. If they are, cures his Knox Infection. Doesn't use the wish if the player isn't infected.",
-
-    "Sandbox_Wishes_AmmoBoxes" : "Spawn Ammo Boxes",
-    "Sandbox_Wishes_AmmoBoxes_tooltip" : "Spawns 5 ammo boxes of every type of ammo on the ground.",
-
-    "Sandbox_Wishes_Weapons" : "Choose Weapons",
-    "Sandbox_Wishes_Weapons_tooltip" : "The player may choose 10 different melee/ranged weapons to obtain.",
-
-    "Sandbox_Wishes_Materials" : "Choose Materials",
-    "Sandbox_Wishes_Materials_tooltip" : "The player may choose a stack of 10 different materials to obtain."
+    "Sandbox_Wishes" : "Wishes / Wishing System"
 }

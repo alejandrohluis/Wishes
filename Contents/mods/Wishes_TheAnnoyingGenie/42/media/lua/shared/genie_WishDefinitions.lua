@@ -3,13 +3,14 @@ require "WishDefinitions"
 local function addGenieDefinitions()
     local options = DPWishes.Options
     local definitions = DPWishes.Definitions
-    definitions:addWishDefinition("GenieLamp_modifyTrait"       , "Get/Remove a Trait", options.getTraits)
-    definitions:addWishDefinition("GenieLamp_skillLevelUpUntil" , "Level up your skill up to level 5", options.getSkills)
-    definitions:addWishDefinition("GenieLamp_skillLevelUpOnce"  , "Level up your skill once", options.getSkills)
-    definitions:addWishDefinition("GenieLamp_heal"              , "Heal all injuries")
-    definitions:addWishDefinition("GenieLamp_cureSickness"      , "Cure all sickness")
-    definitions:addWishDefinition("GenieLamp_idealWeight"       , "Ideal Weight")
-    definitions:addWishDefinition("GenieLamp_obtainItem"        , "Infinite Wealth", options.getWealthItems)
+    local getTranslation = getText
+    definitions:addWishDefinition("GenieLamp_modifyTrait"       , getTranslation("UI_GenieLamp_modifyTrait"), options.getTraits)
+    definitions:addWishDefinition("GenieLamp_skillLevelUpUntil" , getTranslation("UI_GenieLamp_skillLevelUpUntil"), options.getSkills)
+    definitions:addWishDefinition("GenieLamp_skillLevelUpOnce"  , getTranslation("UI_GenieLamp_skillLevelUpOnce"), options.getSkills)
+    definitions:addWishDefinition("GenieLamp_heal"              , getTranslation("UI_GenieLamp_heal"))
+    definitions:addWishDefinition("GenieLamp_cureSickness"      , getTranslation("UI_GenieLamp_cureSickness"))
+    definitions:addWishDefinition("GenieLamp_idealWeight"       , getTranslation("UI_GenieLamp_idealWeight"))
+    definitions:addWishDefinition("GenieLamp_obtainItem"        , getTranslation("UI_GenieLamp_wealth"), options.getWealthItems)
     -- definitions:addWishDefinition("GenieLamp_infiniteWishes"    , "")
     -- definitions:addWishDefinition("GenieLamp_slayZeds"          , "")
 end

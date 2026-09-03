@@ -1,83 +1,99 @@
 VERSION = 1,
 
+option Wishes.DB_Divider
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_DB_Divider,
+}
 
-option Wishes.DB_Setting_MaxWishes
+option Wishes.DB_Setting_WishesPerSummoning
 {
     type = integer,
     min = 1,
     max = 10,
     default = 3,
-    page = WishesDragonBall,
-    translation = Wishes_DB_MaxWishes,
+    page = Wishes,
+    translation = Wishes_DB_WishPerSummoning,
 }
 
 option Wishes.DB_Wish_Trait
 {
     type = boolean,
     default = true,
-    page = WishesDragonBall,
-    translation = Wishes_DB,
+    page = Wishes,
+    translation = Wishes_DB_ModifyTrait,
 }
 option Wishes.DB_Wish_SkillLevelUpUntil
 {
     type = boolean,
     default = true,
-    page = WishesDragonBall,
-    translation = Wishes_DB,
+    page = Wishes,
+    translation = Wishes_DB_SkillLevelUpUntil,
 }
-option Wishes.DB_Wish_SkillLevelUp
+option Wishes.DB_LevelingLimit
+{
+    type = integer,
+    min = 1,
+    max = 10,
+    default = 5,
+    page = Wishes,
+    translation = Wishes_DB_LevelingLimit,
+}
+option Wishes.DB_Wish_SkillLevelUpOnce
 {
     type = boolean,
     default = true,
-    page = WishesDragonBall,
-    translation = Wishes_DB,
+    page = Wishes,
+    translation = Wishes_DB_SkillLevelUpOnce,
 }
 option Wishes.DB_Wish_HealInjury
 {
     type = boolean,
     default = true,
-    page = WishesDragonBall,
-    translation = Wishes_DB,
+    page = Wishes,
+    translation = Wishes_DB_HealInjury,
 }
 option Wishes.DB_Wish_HealSickness
 {
     type = boolean,
     default = true,
-    page = WishesDragonBall,
-    translation = Wishes_DB,
+    page = Wishes,
+    translation = Wishes_DB_HealSickness,
 }
 option Wishes.DB_Wish_Weight
 {
     type = boolean,
     default = true,
-    page = WishesDragonBall,
-    translation = Wishes_DB,
+    page = Wishes,
+    translation = Wishes_DB_IdealWeight,
 }
-option Wishes.DB_Wish_UnlockPotential
+option Wishes.DB_Wish_PotentialUnlock
 {
     type = boolean,
     default = true,
-    page = WishesDragonBall,
-    translation = Wishes_DB,
+    page = Wishes,
+    translation = Wishes_DB_PotentialUnlock,
 }
 option Wishes.DB_Wish_Teleport
 {
     type = boolean,
     default = true,
-    page = WishesDragonBall,
-    translation = Wishes_DB,
+    page = Wishes,
+    translation = Wishes_DB_Teleport,
 }
 option Wishes.DB_Wish_Inmortality
 {
     type = boolean,
     default = true,
-    page = WishesDragonBall,
-    translation = Wishes_DB,
+    page = Wishes,
+    translation = Wishes_DB_Inmortality,
 }
-option Wishes.DB_Wish_MoreWishes
+option Wishes.DB_Wish_UpgradeDragonBalls
 {
     type = boolean,
     default = true,
-    page = WishesDragonBall,
-    translation = Wishes_DB_MoreWishes,
+    page = Wishes,
+    translation = Wishes_DB_UpgradeDragonBalls,
 }

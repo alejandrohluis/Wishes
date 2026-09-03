@@ -1,3 +1,0 @@
-ItemName_AR = {
-    ItemName_DP.GenieLamp = "How to Assemble Tires",
-}
