@@ -1,4 +1,5 @@
 {
     "UI_RemainingWishes": "Deseos restantes:",
-    "UI_WishWindowTitle": "Pide tu deseo"
+    "UI_WishWindowTitle": "Pide tu deseo",
+    "UI_WishCost" : "Costo:"
 }

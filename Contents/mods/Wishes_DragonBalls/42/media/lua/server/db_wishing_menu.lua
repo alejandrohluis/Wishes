@@ -4,23 +4,22 @@ require "ISWishStyle"
 local Recipe = RecipeCodeOnCreate;
 
 function Recipe.SummonShenron(craftRecipeData, player)
-    local sandbox = SandboxVars.Wishes
+    local sandbox = SandboxVars.WishesDragonBalls
     local playerID = player:getOnlineID()
-
-    local shenron = DPWishes.Style:new("Shenron", sandbox.DB_Setting_WishesPerSummoning, "media/textures/portrait/shenlong.png")
+    local shenron = DPWishes.Style:new("Shenron", sandbox.Setting_WishesPerSummoning, "media/textures/portrait/shenlong.png")
 
     local session = DPWishes.Session:new(playerID, shenron)
-    session:addWish("Shenron_modifyTrait", 1, sandbox.DB_Wish_Trait)
-    session:addWish("Shenron_skillLevelUpUntil", 1, sandbox.DB_Wish_SkillLevelUpUntil)
-    session:addWish("Shenron_skillLevelUpOnce", 1, sandbox.DB_Wish_SkillLevelUp)
-    session:addWish("Shenron_heal", 1, sandbox.DB_Wish_HealInjury)
-    session:addWish("Shenron_cureSickness", 2, sandbox.DB_Wish_HealSickness)
-    session:addWish("Shenron_idealWeight", 1, sandbox.DB_Wish_Weight)
-    session:addWish("Shenron_obtainItem", 1, sandbox.DB_Wish_Upgrade)
-    session:addWish("Shenron_potentialUnlock", 0, sandbox.DB_Wish_PotentialUnlock)
-    session:addWish("Shenron_teleport", 0, sandbox.DB_Wish_Teleport)
-    session:addWish("Shenron_inmortality", 0, sandbox.DB_Wish_Inmortality)
-    session:addWish("Shenron_upgrade", 0, sandbox.DB_Wish_Upgrade)
+    session:addWish("Shenron_modifyTrait"       , sandbox.WishCost_ModifyTrait        , sandbox.WishEnable_ModifyTrait)
+    session:addWish("Shenron_skillLevelUpUntil" , sandbox.WishCost_SkillLevelUpUntil  , sandbox.WishEnable_SkillLevelUpUntil)
+    session:addWish("Shenron_skillLevelUpOnce"  , sandbox.WishCost_SkillLevelUpOnce   , sandbox.WishEnable_SkillLevelUpOnce)
+    session:addWish("Shenron_heal"              , sandbox.WishCost_HealInjury         , sandbox.WishEnable_HealInjury)
+    session:addWish("Shenron_cureSickness"      , sandbox.WishCost_HealSickness       , sandbox.WishEnable_HealSickness)
+    session:addWish("Shenron_idealWeight"       , sandbox.WishCost_IdealWeight        , sandbox.WishEnable_Weight)
+    session:addWish("Shenron_obtainItem"        , sandbox.WishCost_ObtainSpecialItem  , sandbox.WishEnable_ObtainSpecialItem)
+    session:addWish("Shenron_potentialUnlock"   , sandbox.WishCost_PotentialUnlock    , sandbox.WishEnable_PotentialUnlock)
+    session:addWish("Shenron_teleport"          , sandbox.WishCost_Teleport           , sandbox.WishEnable_Teleport)
+    session:addWish("Shenron_inmortality"       , sandbox.WishCost_Inmortality        , sandbox.WishEnable_Inmortality)
+    session:addWish("Shenron_upgrade"           , sandbox.WishCost_UpgradeDragonBalls , sandbox.WishEnable_UpgradeDragonBalls)
 
     local shenronData = {
         name = shenron.name,

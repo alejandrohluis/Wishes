@@ -24,9 +24,11 @@ type of dragon balls:
 -- pastillas para niveles temporales
 
 wishOptions.getDBItems = function()
+    local getTranslation = getText
+    local getItemTranslation = getItemNameFromFullType
     local lotteryItems = {
-        { label = "Ice Cream" , optionID = "DB_IceCream" },
-        { label = "The Best Pair of Underwear in the Whole World" , optionID = "DB_PairOfTrunks" }
+        { label = getItemTranslation("Base.Icecream") , optionID = "DB_IceCream" },
+        { label = getTranslation("UI_Shenron_Option_ItemUnderwear"), optionID = "DB_PairOfTrunks" }
     }
     return lotteryItems
 end
@@ -54,8 +56,7 @@ wishEffects.teleportAlly = function(char, _selectedOption, panel)
 end
 
 --[[ inmortality: 
- - grants a temporary god-mode style wish  
- - heals all injuries, acts like the god-mode cheat for combat only (without all the unrelated weight/trait stuff)  
+ - grants a temporary invisibility effect
  - takes up 3 wishes
 ]]--
 wishEffects.inmortality = function(char, _selectedOption, panel)

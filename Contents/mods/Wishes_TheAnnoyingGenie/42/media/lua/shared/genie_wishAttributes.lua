@@ -5,10 +5,11 @@ local wishOptions = DPWishes.Options
 local wishEffects = DPWishes.Effects
 
 wishOptions.getWealthItems = function()
+    local getItemTranslation = getItemNameFromFullType
     local lotteryItems = {
-        { label = "Lottery Ticket" , optionID = "GL_Wealth_LotteryTicket" },
-        { label = "Money" ,          optionID = "GL_Wealth_Money" },
-        { label = "Gold Bars",       optionID = "GL_Wealth_GoldBar" },
+        { label = getItemTranslation("Base.ScratchTicket"), optionID = "GL_Wealth_LotteryTicket" },
+        { label = getItemTranslation("Base.Money"),         optionID = "GL_Wealth_Money" },
+        { label = getItemTranslation("Base.GoldBar"),       optionID = "GL_Wealth_GoldBar" },
     }
     return lotteryItems
 end

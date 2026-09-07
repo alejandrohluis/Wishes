@@ -73,7 +73,7 @@ function ISWishingPanel:createChildren()
     local offset = self.tablePad + self.tableWidth;
     local tableOffsetX = self.tablePad + offset;
 
-    self.portrait = DPWishes.Portrait:new(self.tablePad, UI_BORDER_SPACING, self.tableWidth, (self.maxHeight - UI_BORDER_SPACING * 4), self.texturePath);
+    self.portrait = DPWishes.Portrait:new(self.tablePad, self.tablePad, self.tableWidth, (self.maxHeight - UI_BORDER_SPACING * 4), self.texturePath);
     self.portrait:initialise();
     self:addChild(self.portrait);
 
@@ -230,9 +230,8 @@ function ISWishingPanel:addWishesToList()
     for i = 1, #allWishes do
         local wishID = allWishes[i];
         local wishDefinition = wishDefinitions[wishID]
-        local wish = { wishID = wishID , label = wishDefinition.label , categories = wishDefinition.categories }
-        local tooltip = wish.label;
-        self.listboxWishes:addItem(wish.label, wish, tooltip);
+        local wish = { wishID = wishID , label = wishDefinition.label , description = wishDefinition.description , categories = wishDefinition.categories }
+        self.listboxWishes:addItem(wish.label, wish, wish.description);
     end
     self.listboxWishes.selected = wishSelection;
 end

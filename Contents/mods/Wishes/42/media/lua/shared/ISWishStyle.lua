@@ -23,10 +23,6 @@ function wishStyle:getTexturePath()
     return self.texturePath
 end
 
-function wishStyle:getWishesToDisplay()
-    return self.wishList
-end
-
 function wishStyle:getWishAmount()
     return self.wishAmount
 end

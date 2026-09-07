@@ -269,11 +269,11 @@ wishFilteringLists.Blacklist_ModifyTrait = {}
 
 wishFilteringLists.Whitelist_SkillLevelUntil = {}
 wishFilteringLists.WhitelistForce_SkillLevelUntil = {}
-wishFilteringLists.Blacklist_SkillLevelUntil = { "Agility" }
+wishFilteringLists.Blacklist_SkillLevelUntil = { Agility = true }
 
 wishFilteringLists.Whitelist_SkillLevelOnce = {}
 wishFilteringLists.WhitelistForce_SkillLevelOnce = {}
-wishFilteringLists.Blacklist_SkillLevelOnce = { "Agility" }
+wishFilteringLists.Blacklist_SkillLevelOnce = { Agility = true }
 
 wishFilteringLists.Whitelist_ObtainItem = {}
 
@@ -348,4 +348,4 @@ local function initializeWishWhitelists()
     SkillLevelOnce_initWhitelist()
 end
 
-initializeWishWhitelists()
+Events.OnGameStart.Add(initializeWishWhitelists())

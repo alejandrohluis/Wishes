@@ -107,7 +107,7 @@ function wishAction:handleCommand(command, args)
         wishingWindows[playerID]:updateWishesRemaining(args.remainingWishes)
     end
     if command == "StopWishingMenu" then
-        wishingWindows[playerID]:close()
+        wishingWindows[playerID]:forceClose()
     end
 end
 

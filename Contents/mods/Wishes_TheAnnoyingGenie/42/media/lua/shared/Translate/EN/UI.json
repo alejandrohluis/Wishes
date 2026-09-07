@@ -1,9 +1,22 @@
 {
-    "UI_GenieLamp_modifyTrait": "I wish to change my traits!",
-    "UI_GenieLamp_skillLevelUpUntil": "I wish to level up my skill as much as your power can!",
-    "UI_GenieLamp_skillLevelUpOnce": "I wish to level up my skill just once!",
-    "UI_GenieLamp_heal": "I wish to heal all my injuries!",
-    "UI_GenieLamp_cureSickness": "I wish to cure any and all sicknesses!",
-    "UI_GenieLamp_idealWeight": "I wish to have the perfect weight for my body!",
-    "UI_GenieLamp_wealth": "I wish for infinite wealth!"
+    "UI_GenieLamp_modifyTrait": "Modify Trait",
+    "UI_GenieLamp_modifyTrait_description": "I wish to change my traits!",
+
+    "UI_GenieLamp_skillLevelUpUntil": "Level up a skill many times",
+    "UI_GenieLamp_skillLevelUpUntil_description": "I wish to level up my skill as much as your power can!",
+
+    "UI_GenieLamp_skillLevelUpOnce": "Level up a skill once",
+    "UI_GenieLamp_skillLevelUpOnce_description": "I wish to level up my skill just once!",
+
+    "UI_GenieLamp_heal": "Heal injuries",
+    "UI_GenieLamp_heal_description": "I wish to heal all my injuries!",
+
+    "UI_GenieLamp_cureSickness": "Cure sickness",
+    "UI_GenieLamp_cureSickness_description": "I wish to cure any and all sicknesses!",
+
+    "UI_GenieLamp_idealWeight": "Ideal weight",
+    "UI_GenieLamp_idealWeight_description": "I wish to have the perfect weight for my body!",
+
+    "UI_GenieLamp_wealth": "Wealth",
+    "UI_GenieLamp_wealth_description": "I wish for infinite wealth!"
 }

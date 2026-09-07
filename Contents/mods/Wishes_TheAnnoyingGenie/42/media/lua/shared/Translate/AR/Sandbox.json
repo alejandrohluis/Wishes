@@ -1,40 +1,43 @@
 {
-    "Sandbox_Wishes_GL_Divider" : "·····==={}===·····   El Genio Garca   ·····==={}===·····",
+    "Sandbox_Wishes_GenieLamp_Divider" : "·····==={}===·····   El Genio Garca   ·····==={}===·····",
 
-    "Sandbox_Wishes_GL_LampWishAmount" : "Cantidad de deseos",
-    "Sandbox_Wishes_GL_LampWishAmount_tooltip" : "<RGB:1,1,0.75> La cantidad de deseos que podes pedir por cada manoseo de la lampara. Tene en cuenta que la lampara se puede manosear 3 veces y despues se acaba.",
+    "Sandbox_Wishes_GenieLamp_LampWishAmount" : "Cantidad de deseos",
+    "Sandbox_Wishes_GenieLamp_LampWishAmount_tooltip" : "<RGB:1,1,0.75> La cantidad de deseos que podes pedir por cada manoseo de la lampara. Tene en cuenta que la lampara se puede manosear 3 veces y despues se acaba.",
+    
+    "Sandbox_Wishes_GenieLamp_Cost" : "Costo del deseo",
+    "Sandbox_Wishes_GenieLamp_Cost_tooltip" : "<RGB:1,1,0.75> La cantidad de deseos que consume el deseo superior.",
 
-    "Sandbox_Wishes_GL_GenieChanceNoWish" : "Chance de que te cague",
-    "Sandbox_Wishes_GL_GenieChanceNoWish_tooltip" : "<RGB:1,0,0> AVISO: Esta opción todavía NO está implementada!\n <RGB:1,1,0.75>  La probabilidad de que el genio decida no darte un deseo, o peor...",
+    "Sandbox_Wishes_GenieLamp_GenieChanceNoWish" : "Chance de que te cague",
+    "Sandbox_Wishes_GenieLamp_GenieChanceNoWish_tooltip" : "<RGB:1,0,0> AVISO: Esta opción todavía NO está implementada!\n <RGB:1,1,0.75>  La probabilidad de que el genio decida no darte un deseo, o peor...",
 
-    "Sandbox_Wishes_GL_ModifyTrait" : "Deseo: Conseguir/Sacarse un Rasgo",
-    "Sandbox_Wishes_GL_ModifyTrait_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> Poder obtener un nuevo rasgo (trait) ó removerse uno, ya sea positivo o negativo.",
+    "Sandbox_Wishes_GenieLamp_ModifyTrait" : "Deseo: Conseguir/Sacarse un Rasgo",
+    "Sandbox_Wishes_GenieLamp_ModifyTrait_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> Poder obtener un nuevo rasgo (trait) ó removerse uno, ya sea positivo o negativo.",
 
-    "Sandbox_Wishes_GL_SkillLevelUpUntil" : "Deseo: Subir de nivel una habilidad hasta X nivel.",
-    "Sandbox_Wishes_GL_SkillLevelUpUntil_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> Permite subir de nivel una habilidad del jugador hasta el nivel seleccionado proximamente.",
+    "Sandbox_Wishes_GenieLamp_SkillLevelUpUntil" : "Deseo: Subir de nivel una habilidad hasta X nivel.",
+    "Sandbox_Wishes_GenieLamp_SkillLevelUpUntil_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> Permite subir de nivel una habilidad del jugador hasta el nivel seleccionado proximamente.",
 
-    "Sandbox_Wishes_GL_LevelingLimit" : "Maximo nivel de habilidad",
-    "Sandbox_Wishes_GL_LevelingLimit_tooltip" : "<RGB:1,1,0.75> El máximo nivel que puede subirse con el deseo \"Subir de nivel una habilidad hasta X nivel\".",
+    "Sandbox_Wishes_GenieLamp_LevelingLimit" : "Maximo nivel de habilidad",
+    "Sandbox_Wishes_GenieLamp_LevelingLimit_tooltip" : "<RGB:1,1,0.75> El máximo nivel que puede subirse con el deseo \"Subir de nivel una habilidad hasta X nivel\".",
 
-    "Sandbox_Wishes_GL_SkillLevelUpOnce" : "Deseo: Subir de nivel una habilidad una vez",
-    "Sandbox_Wishes_GL_SkillLevelUpOnce_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> Lo que dice arriba sorete, no sabes leer?? Habilita subir de nivel una habilidad elegida una única vez.",
+    "Sandbox_Wishes_GenieLamp_SkillLevelUpOnce" : "Deseo: Subir de nivel una habilidad una vez",
+    "Sandbox_Wishes_GenieLamp_SkillLevelUpOnce_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> Lo que dice arriba sorete, no sabes leer?? Habilita subir de nivel una habilidad elegida una única vez.",
 
-    "Sandbox_Wishes_GL_HealInjury" : "Deseo: Curar cualquier herida",
-    "Sandbox_Wishes_GL_HealInjury_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> Cura todas las heridas del jugador, lo cual NO incluye enfermedades o la infeccion Knox (virus zombie)",
+    "Sandbox_Wishes_GenieLamp_HealInjury" : "Deseo: Curar cualquier herida",
+    "Sandbox_Wishes_GenieLamp_HealInjury_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> Cura todas las heridas del jugador, lo cual NO incluye enfermedades o la infeccion Knox (virus zombie)",
 
-    "Sandbox_Wishes_GL_HealSickness" : "Deseo: Curar cualquier enfermedad",
-    "Sandbox_Wishes_GL_HealSickness_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> Cura todas las enfermedades del jugador, lo cual SI incluye la infeccion Knox, pero NO incluye curarse las heridas abiertas",
+    "Sandbox_Wishes_GenieLamp_HealSickness" : "Deseo: Curar cualquier enfermedad",
+    "Sandbox_Wishes_GenieLamp_HealSickness_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> Cura todas las enfermedades del jugador, lo cual SI incluye la infeccion Knox, pero NO incluye curarse las heridas abiertas",
 
-    "Sandbox_Wishes_GL_IdealWeight" : "Deseo: Bajar/Subir al peso ideal",
-    "Sandbox_Wishes_GL_IdealWeight_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> El peso argentino no, ojala bajase el peso... El peso de KG se refiere, setea el peso del jugador al ideal (80).",
+    "Sandbox_Wishes_GenieLamp_IdealWeight" : "Deseo: Bajar/Subir al peso ideal",
+    "Sandbox_Wishes_GenieLamp_IdealWeight_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> El peso argentino no, ojala bajase el peso... El peso de KG se refiere, setea el peso del jugador al ideal (80).",
 
-    "Sandbox_Wishes_GL_Wealth" : "Deseo: Riquezas",
-    "Sandbox_Wishes_GL_Wealth_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> Permite desear por riquezas. Por si queres ver guita, yo quiero ver guita.",
+    "Sandbox_Wishes_GenieLamp_Wealth" : "Deseo: Riquezas",
+    "Sandbox_Wishes_GenieLamp_Wealth_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> Permite desear por riquezas. Por si queres ver guita, yo quiero ver guita.",
 
-    "Sandbox_Wishes_GL_InfiniteWishesJoke" : "Deseo: Deseos infinitos",
-    "Sandbox_Wishes_GL_InfiniteWishesJoke_tooltip" : "<RGB:1,0,0> AVISO: Este deseo todavía NO está implementado!\n <RGB:1,1,0.75> Poder desear por deseos infinitos. <RGB:0.8,0.3,0.3> \n Spoiler: Este deseo es un chiste, no te va a dar mas deseos boludito, que te creiste.",
+    "Sandbox_Wishes_GenieLamp_InfiniteWishesJoke" : "Deseo: Deseos infinitos",
+    "Sandbox_Wishes_GenieLamp_InfiniteWishesJoke_tooltip" : "<RGB:1,0,0> AVISO: Este deseo todavía NO está implementado!\n <RGB:1,1,0.75> Poder desear por deseos infinitos. <RGB:0.8,0.3,0.3> \n Spoiler: Este deseo es un chiste, no te va a dar mas deseos boludito, que te creiste.",
 
-    "Sandbox_Wishes_GL_KillNearbyZombies" : "Deseo: Matar a todos los zomboids cercanos",
-    "Sandbox_Wishes_GL_KillNearbyZombies_tooltip" : "<RGB:1,0,0> AVISO: Este deseo todavía NO está implementado!\n <RGB:1,1,0.75> Elimina a todos los zombies que esten en el chunk del jugador"
+    "Sandbox_Wishes_GenieLamp_KillNearbyZombies" : "Deseo: Matar a todos los zomboids cercanos",
+    "Sandbox_Wishes_GenieLamp_KillNearbyZombies_tooltip" : "<RGB:1,0,0> AVISO: Este deseo todavía NO está implementado!\n <RGB:1,1,0.75> Elimina a todos los zombies que esten en el chunk del jugador"
 
 }

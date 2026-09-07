@@ -3,14 +3,14 @@ require "WishDefinitions"
 local function addGenieDefinitions()
     local options = DPWishes.Options
     local definitions = DPWishes.Definitions
-    local getTranslation = getText
-    definitions:addWishDefinition("GenieLamp_modifyTrait"       , getTranslation("UI_GenieLamp_modifyTrait"), options.getTraits)
-    definitions:addWishDefinition("GenieLamp_skillLevelUpUntil" , getTranslation("UI_GenieLamp_skillLevelUpUntil"), options.getSkills)
-    definitions:addWishDefinition("GenieLamp_skillLevelUpOnce"  , getTranslation("UI_GenieLamp_skillLevelUpOnce"), options.getSkills)
-    definitions:addWishDefinition("GenieLamp_heal"              , getTranslation("UI_GenieLamp_heal"))
-    definitions:addWishDefinition("GenieLamp_cureSickness"      , getTranslation("UI_GenieLamp_cureSickness"))
-    definitions:addWishDefinition("GenieLamp_idealWeight"       , getTranslation("UI_GenieLamp_idealWeight"))
-    definitions:addWishDefinition("GenieLamp_obtainItem"        , getTranslation("UI_GenieLamp_wealth"), options.getWealthItems)
+    local sandboxCost = SandboxVars.WishesGenieLamp
+    definitions:addWishDefinition("GenieLamp_modifyTrait"       , "UI_GenieLamp_modifyTrait", sandboxCost.WishCost_ModifyTrait , options.getTraits)
+    definitions:addWishDefinition("GenieLamp_skillLevelUpUntil" , "UI_GenieLamp_skillLevelUpUntil", sandboxCost.WishCost_SkillLevelUpUntil , options.getSkills)
+    definitions:addWishDefinition("GenieLamp_skillLevelUpOnce"  , "UI_GenieLamp_skillLevelUpOnce", sandboxCost.WishCost_SkillLevelUp , options.getSkills)
+    definitions:addWishDefinition("GenieLamp_heal"              , "UI_GenieLamp_heal", sandboxCost.WishCost_HealInjury  )
+    definitions:addWishDefinition("GenieLamp_cureSickness"      , "UI_GenieLamp_cureSickness", sandboxCost.WishCost_HealSickness  )
+    definitions:addWishDefinition("GenieLamp_idealWeight"       , "UI_GenieLamp_idealWeight", sandboxCost.WishCost_IdealWeight  )
+    definitions:addWishDefinition("GenieLamp_obtainItem"        , "UI_GenieLamp_wealth", sandboxCost.WishCost_Wealth , options.getWealthItems)
     -- definitions:addWishDefinition("GenieLamp_infiniteWishes"    , "")
     -- definitions:addWishDefinition("GenieLamp_slayZeds"          , "")
 end

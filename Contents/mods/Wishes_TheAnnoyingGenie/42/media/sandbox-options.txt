@@ -1,24 +1,24 @@
 VERSION = 1,
 
-option Wishes.GL_Divider
+option WishesGenieLamp.Divider
 {
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_GL_Divider,
+    translation = Wishes_GenieLamp_Divider,
 }
 
-option Wishes.GL_Setting_MaxWishes
+option WishesGenieLamp.MaxWishes
 {
     type = integer,
     min = 1,
     max = 3,
     default = 1,
     page = Wishes,
-    translation = Wishes_GL_LampWishAmount,
+    translation = Wishes_GenieLamp_LampWishAmount,
 }
 
-option Wishes.GL_Wish_ChanceNoWish
+option WishesGenieLamp.ChanceNoWish
 {
     type = integer,
     min = 0,
@@ -26,78 +26,159 @@ option Wishes.GL_Wish_ChanceNoWish
     default = 30,
     asPercent = true,
     page = Wishes,
-    translation = Wishes_GL_GenieChanceNoWish,
+    translation = Wishes_GenieLamp_GenieChanceNoWish,
 }
 
-option Wishes.GL_Wish_Trait
+option WishesGenieLamp.WishEnable_ModifyTrait
 {
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_GL_ModifyTrait,
+    translation = Wishes_GenieLamp_ModifyTrait,
 }
-option Wishes.GL_Wish_SkillLevelUpUntil
+option WishesGenieLamp.WishCost_ModifyTrait
+{
+    type = integer,
+    min = 1,
+    max = 3,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_GenieLamp_Cost,
+}
+option WishesGenieLamp.WishEnable_SkillLevelUpUntil
 {
     type = boolean,
     default = false,
     page = Wishes,
-    translation = Wishes_GL_SkillLevelUpUntil,
+    translation = Wishes_GenieLamp_SkillLevelUpUntil,
 }
-option Wishes.GL_LevelingLimit
+option WishesGenieLamp.WishCost_SkillLevelUpUntil
+{
+    type = integer,
+    min = 1,
+    max = 3,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_GenieLamp_Cost,
+}
+option WishesGenieLamp.LevelingLimit
 {
     type = integer,
     min = 1,
     max = 10,
     default = 5,
     page = Wishes,
-    translation = Wishes_GL_LevelingLimit,
+    translation = Wishes_GenieLamp_LevelingLimit,
 }
-option Wishes.GL_Wish_SkillLevelUp
+option WishesGenieLamp.WishEnable_SkillLevelUp
 {
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_GL_SkillLevelUpOnce,
+    translation = Wishes_GenieLamp_SkillLevelUpOnce,
 }
-option Wishes.GL_Wish_HealInjury
+option WishesGenieLamp.WishCost_SkillLevelUp
+{
+    type = integer,
+    min = 1,
+    max = 3,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_GenieLamp_Cost,
+}
+option WishesGenieLamp.WishEnable_HealInjury
 {
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_GL_HealInjury,
+    translation = Wishes_GenieLamp_HealInjury,
 }
-option Wishes.GL_Wish_HealSickness
+option WishesGenieLamp.WishCost_HealInjury
+{
+    type = integer,
+    min = 1,
+    max = 3,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_GenieLamp_Cost,
+}
+option WishesGenieLamp.WishEnable_HealSickness
 {
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_GL_HealSickness,
+    translation = Wishes_GenieLamp_HealSickness,
 }
-option Wishes.GL_Wish_IdealWeight
+option WishesGenieLamp.WishCost_HealSickness
+{
+    type = integer,
+    min = 1,
+    max = 3,
+    default = 2,
+    page = Wishes,
+    translation = Wishes_GenieLamp_Cost,
+}
+option WishesGenieLamp.WishEnable_IdealWeight
 {
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_GL_IdealWeight,
+    translation = Wishes_GenieLamp_IdealWeight,
 }
-option Wishes.GL_Wish_Wealth
+option WishesGenieLamp.WishCost_IdealWeight
+{
+    type = integer,
+    min = 1,
+    max = 3,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_GenieLamp_Cost,
+}
+option WishesGenieLamp.WishEnable_Wealth
 {
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_GL_Wealth,
+    translation = Wishes_GenieLamp_Wealth,
 }
-option Wishes.GL_Wish_InfiniteWishes
+option WishesGenieLamp.WishCost_Wealth
+{
+    type = integer,
+    min = 1,
+    max = 3,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_GenieLamp_Cost,
+}
+option WishesGenieLamp.WishEnable_InfiniteWishes
 {
     type = boolean,
-    default = true,
+    default = false,
     page = Wishes,
-    translation = Wishes_GL_InfiniteWishesJoke,
+    translation = Wishes_GenieLamp_InfiniteWishesJoke,
 }
-option Wishes.GL_Wish_KillNearbyZombies
+option WishesGenieLamp.WishCost_InfiniteWishes
+{
+    type = integer,
+    min = 1,
+    max = 3,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_GenieLamp_Cost,
+}
+option WishesGenieLamp.WishEnable_KillNearbyZombies
 {
     type = boolean,
-    default = true,
+    default = false,
     page = Wishes,
-    translation = Wishes_GL_KillNearbyZombies,
+    translation = Wishes_GenieLamp_KillNearbyZombies,
+}
+option WishesGenieLamp.WishCost_KillNearbyZombies
+{
+    type = integer,
+    min = 1,
+    max = 3,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_GenieLamp_Cost,
 }

@@ -1,43 +1,46 @@
 {
-    "Sandbox_Wishes_DB_Divider" : "---o----o----o--- Dragon ---o--- Balls ---o----o----o---",
+    "Sandbox_Wishes_DragonBalls_Divider" : "---o----o----o--- Dragon ---o--- Balls ---o----o----o---",
 
-    "Sandbox_Wishes_DB_WishPerSummoning" : "Wishes per Summoning",
-    "Sandbox_Wishes_DB_WishPerSummoning_tooltip" : "<RGB:0.4,0.8,0.4> The amount of wishes granted for every Shenron's summoning.",
+    "Sandbox_Wishes_DragonBalls_WishPerSummoning" : "Wishes per Summoning",
+    "Sandbox_Wishes_DragonBalls_WishPerSummoning_tooltip" : "<RGB:0.4,0.8,0.4> The amount of wishes granted for every Shenron's summoning.",
 
-    "Sandbox_Wishes_DB_ModifyTrait" : "Wish: Get/Remove a Trait",
-    "Sandbox_Wishes_DB_ModifyTrait_tooltip" : "<RGB:0.4,0.8,0.4> Wish to get or remove a trait, whether it may be positive or negative.",
+    "Sandbox_Wishes_DragonBalls_Cost" : "Wish Cost",
+    "Sandbox_Wishes_DragonBalls_Cost_tooltip" : "<RGB:0.4,0.8,0.4> The amount of wishes consumed by wishing for the wish above.",
 
-    "Sandbox_Wishes_DB_SkillLevelUpUntil" : "Wish: Level Up a Skill until level X",
-    "Sandbox_Wishes_DB_SkillLevelUpUntil_tooltip" : "<RGB:0.4,0.8,0.4> Wish to level up a player's skill until a certain level specified in the config below.",
+    "Sandbox_Wishes_DragonBalls_ModifyTrait" : "Wish: Get/Remove a Trait",
+    "Sandbox_Wishes_DragonBalls_ModifyTrait_tooltip" : "<RGB:0.4,0.8,0.4> Wish to get or remove a trait, whether it may be positive or negative.",
 
-    "Sandbox_Wishes_DB_LevelingLimit" : "Max skill level",
-    "Sandbox_Wishes_DB_LevelingLimit_tooltip" : "<RGB:0.4,0.8,0.4> The maximum level to which the wish \"Level Up a Skill until level X\" can get you to.",
+    "Sandbox_Wishes_DragonBalls_SkillLevelUpUntil" : "Wish: Level Up a Skill until level X",
+    "Sandbox_Wishes_DragonBalls_SkillLevelUpUntil_tooltip" : "<RGB:0.4,0.8,0.4> Wish to level up a player's skill until a certain level specified in the config below.",
 
-    "Sandbox_Wishes_DB_SkillLevelUpOnce" : "Wish: Level Up a Skill just once",
-    "Sandbox_Wishes_DB_SkillLevelUpOnce_tooltip" : "<RGB:0.4,0.8,0.4> Levels a player's skill only once.",
+    "Sandbox_Wishes_DragonBalls_LevelingLimit" : "Max skill level",
+    "Sandbox_Wishes_DragonBalls_LevelingLimit_tooltip" : "<RGB:0.4,0.8,0.4> The maximum level to which the wish \"Level Up a Skill until level X\" can get you to.",
 
-    "Sandbox_Wishes_DB_HealInjury" : "Wish: Heal any Injury",
-    "Sandbox_Wishes_DB_HealInjury_tooltip" : "<RGB:0.4,0.8,0.4> Heals all injuries of the player. Does not include curing the Knox infection or any sickness.",
+    "Sandbox_Wishes_DragonBalls_SkillLevelUpOnce" : "Wish: Level Up a Skill just once",
+    "Sandbox_Wishes_DragonBalls_SkillLevelUpOnce_tooltip" : "<RGB:0.4,0.8,0.4> Levels a player's skill only once.",
 
-    "Sandbox_Wishes_DB_HealSickness" : "Wish: Cure Sickness",
-    "Sandbox_Wishes_DB_HealSickness_tooltip" : "<RGB:0.4,0.8,0.4> Cures all sicknesses a player may have, which includes the Knox infection (zombie virus). Does not include curing injuries.",
+    "Sandbox_Wishes_DragonBalls_HealInjury" : "Wish: Heal any Injury",
+    "Sandbox_Wishes_DragonBalls_HealInjury_tooltip" : "<RGB:0.4,0.8,0.4> Heals all injuries of the player. Does not include curing the Knox infection or any sickness.",
 
-    "Sandbox_Wishes_DB_IdealWeight" : "Wish: Set to Ideal Weight",
-    "Sandbox_Wishes_DB_IdealWeight_tooltip" : "<RGB:0.4,0.8,0.4> Sets the player's weight to the ideal value (80).",
+    "Sandbox_Wishes_DragonBalls_HealSickness" : "Wish: Cure Sickness",
+    "Sandbox_Wishes_DragonBalls_HealSickness_tooltip" : "<RGB:0.4,0.8,0.4> Cures all sicknesses a player may have, which includes the Knox infection (zombie virus). Does not include curing injuries.",
 
-    "Sandbox_Wishes_DB_ObtainSpecialItems" : "Wish: Special Items",
-    "Sandbox_Wishes_DB_ObtainSpecialItems_tooltip" : "<RGB:0.4,0.8,0.4> Let's the player wish to obtain certain special items related to Dragon Ball.",
+    "Sandbox_Wishes_DragonBalls_IdealWeight" : "Wish: Set to Ideal Weight",
+    "Sandbox_Wishes_DragonBalls_IdealWeight_tooltip" : "<RGB:0.4,0.8,0.4> Sets the player's weight to the ideal value (80).",
 
-    "Sandbox_Wishes_DB_PotentialUnlock" : "Wish: Potential Unlock",
-    "Sandbox_Wishes_DB_PotentialUnlock_tooltip" : "<RGB:1,0,0> DISCLAIMER: This wish is NOT implemented yet!\n <RGB:0.4,0.8,0.4> For each physical ability: \nIf the skill isn't maxed, it will grant a XP multiplier. \nIf the skill is maxed, grants a related trait.",
+    "Sandbox_Wishes_DragonBalls_ObtainSpecialItems" : "Wish: Special Items",
+    "Sandbox_Wishes_DragonBalls_ObtainSpecialItems_tooltip" : "<RGB:0.4,0.8,0.4> Let's the player wish to obtain certain special items related to Dragon Ball.",
 
-    "Sandbox_Wishes_DB_Teleport" : "Wish: Teleportation",
-    "Sandbox_Wishes_DB_Teleport_tooltip" : "<RGB:1,0,0> DISCLAIMER: This wish is NOT implemented yet!\n <RGB:0.4,0.8,0.4> Allows teleporting a player from the same faction as the wisher to his position.",
+    "Sandbox_Wishes_DragonBalls_PotentialUnlock" : "Wish: Potential Unlock",
+    "Sandbox_Wishes_DragonBalls_PotentialUnlock_tooltip" : "<RGB:1,0,0> DISCLAIMER: This wish is NOT implemented yet!\n <RGB:0.4,0.8,0.4> For each physical ability: \nIf the skill isn't maxed, it will grant a XP multiplier. \nIf the skill is maxed, grants a related trait.",
 
-    "Sandbox_Wishes_DB_Inmortality" : "Wish: Inmortality",
-    "Sandbox_Wishes_DB_Inmortality_tooltip" : "<RGB:1,0,0> DISCLAIMER: This wish is NOT implemented yet!\n <RGB:0.4,0.8,0.4> Makes the player invisible (NOT INMORTAL) for a day.",
+    "Sandbox_Wishes_DragonBalls_Teleport" : "Wish: Teleportation",
+    "Sandbox_Wishes_DragonBalls_Teleport_tooltip" : "<RGB:1,0,0> DISCLAIMER: This wish is NOT implemented yet!\n <RGB:0.4,0.8,0.4> Allows teleporting a player from the same faction as the wisher to his position.",
 
-    "Sandbox_Wishes_DB_UpgradeDragonBalls" : "Wish: Upgrade Dragon Balls",
-    "Sandbox_Wishes_DB_UpgradeDragonBalls_tooltip" : "<RGB:1,0,0> DISCLAIMER: This wish is NOT implemented yet!\n <RGB:0.4,0.8,0.4> This wish is not implemented yet."
+    "Sandbox_Wishes_DragonBalls_Inmortality" : "Wish: Inmortality",
+    "Sandbox_Wishes_DragonBalls_Inmortality_tooltip" : "<RGB:1,0,0> DISCLAIMER: This wish is NOT implemented yet!\n <RGB:0.4,0.8,0.4> Makes the player invisible (NOT INMORTAL) for a day.",
+
+    "Sandbox_Wishes_DragonBalls_UpgradeDragonBalls" : "Wish: Upgrade Dragon Balls",
+    "Sandbox_Wishes_DragonBalls_UpgradeDragonBalls_tooltip" : "<RGB:1,0,0> DISCLAIMER: This wish is NOT implemented yet!\n <RGB:0.4,0.8,0.4> This wish is not implemented yet."
 
 }

@@ -1,43 +1,46 @@
 {
-    "Sandbox_Wishes_DB_Divider" : "--o---o---o-- Las Esferas --o-- del Dragón --o---o---o--",
+    "Sandbox_Wishes_DragonBalls_Divider" : "--o---o---o-- Las Esferas --o-- del Dragón --o---o---o--",
 
-    "Sandbox_Wishes_DB_WishPerSummoning" : "Cantidad de deseos",
-    "Sandbox_Wishes_DB_WishPerSummoning_tooltip" : "<RGB:0.4,0.8,0.4> La cantidad de deseos que se pueden pedir por cada invocación del dragón.",
+    "Sandbox_Wishes_DragonBalls_WishPerSummoning" : "Cantidad de deseos",
+    "Sandbox_Wishes_DragonBalls_WishPerSummoning_tooltip" : "<RGB:0.4,0.8,0.4> La cantidad de deseos que se pueden pedir por cada invocación del dragón.",
 
-    "Sandbox_Wishes_DB_ModifyTrait" : "Deseo: Conseguir/Sacarse un Trait",
-    "Sandbox_Wishes_DB_ModifyTrait_tooltip" : "<RGB:0.4,0.8,0.4> Poder obtener un nuevo trait ó removerse uno, ya sea positivo o negativo.",
+    "Sandbox_Wishes_DragonBalls_Cost" : "Costo del deseo",
+    "Sandbox_Wishes_DragonBalls_Cost_tooltip" : "<RGB:0.4,0.8,0.4> La cantidad de deseos consumidos por el deseo que se encuentra arriba de esta opción.",
 
-    "Sandbox_Wishes_DB_SkillLevelUpUntil" : "Deseo: Subir de nivel una habilidad hasta X nivel.",
-    "Sandbox_Wishes_DB_SkillLevelUpUntil_tooltip" : "<RGB:0.4,0.8,0.4> Permite subir de nivel una habilidad del jugador hasta el nivel seleccionado proximamente.",
+    "Sandbox_Wishes_DragonBalls_ModifyTrait" : "Deseo: Conseguir/Sacarse un Trait",
+    "Sandbox_Wishes_DragonBalls_ModifyTrait_tooltip" : "<RGB:0.4,0.8,0.4> Poder obtener un nuevo trait ó removerse uno, ya sea positivo o negativo.",
 
-    "Sandbox_Wishes_DB_LevelingLimit" : "Maximo nivel de habilidad",
-    "Sandbox_Wishes_DB_LevelingLimit_tooltip" : "<RGB:0.4,0.8,0.4> El máximo nivel que puede subirse con el deseo \"Subir de nivel una habilidad hasta X nivel\".",
+    "Sandbox_Wishes_DragonBalls_SkillLevelUpUntil" : "Deseo: Subir de nivel una habilidad hasta X nivel.",
+    "Sandbox_Wishes_DragonBalls_SkillLevelUpUntil_tooltip" : "<RGB:0.4,0.8,0.4> Permite subir de nivel una habilidad del jugador hasta el nivel seleccionado proximamente.",
 
-    "Sandbox_Wishes_DB_SkillLevelUpOnce" : "Deseo: Subir de nivel una habilidad una vez",
-    "Sandbox_Wishes_DB_SkillLevelUpOnce_tooltip" : "<RGB:0.4,0.8,0.4> Habilita subir de nivel una habilidad elegida una única vez.",
+    "Sandbox_Wishes_DragonBalls_LevelingLimit" : "Maximo nivel de habilidad",
+    "Sandbox_Wishes_DragonBalls_LevelingLimit_tooltip" : "<RGB:0.4,0.8,0.4> El máximo nivel que puede subirse con el deseo \"Subir de nivel una habilidad hasta X nivel\".",
 
-    "Sandbox_Wishes_DB_HealInjury" : "Deseo: Curar cualquier herida",
-    "Sandbox_Wishes_DB_HealInjury_tooltip" : "<RGB:0.4,0.8,0.4> Cura todas las heridas del jugador, lo cual NO incluye enfermedades o la infeccion Knox (virus zombie)",
+    "Sandbox_Wishes_DragonBalls_SkillLevelUpOnce" : "Deseo: Subir de nivel una habilidad una vez",
+    "Sandbox_Wishes_DragonBalls_SkillLevelUpOnce_tooltip" : "<RGB:0.4,0.8,0.4> Habilita subir de nivel una habilidad elegida una única vez.",
 
-    "Sandbox_Wishes_DB_HealSickness" : "Deseo: Curar cualquier enfermedad",
-    "Sandbox_Wishes_DB_HealSickness_tooltip" : "<RGB:0.4,0.8,0.4> Cura todas las enfermedades del jugador, lo cual SI incluye la infeccion Knox, pero NO incluye curarse las heridas abiertas",
+    "Sandbox_Wishes_DragonBalls_HealInjury" : "Deseo: Curar cualquier herida",
+    "Sandbox_Wishes_DragonBalls_HealInjury_tooltip" : "<RGB:0.4,0.8,0.4> Cura todas las heridas del jugador, lo cual NO incluye enfermedades o la infeccion Knox (virus zombie)",
 
-    "Sandbox_Wishes_DB_IdealWeight" : "Deseo: Bajar/Subir al peso ideal",
-    "Sandbox_Wishes_DB_IdealWeight_tooltip" : "<RGB:0.4,0.8,0.4> Setea el peso del jugador al ideal (80).",
+    "Sandbox_Wishes_DragonBalls_HealSickness" : "Deseo: Curar cualquier enfermedad",
+    "Sandbox_Wishes_DragonBalls_HealSickness_tooltip" : "<RGB:0.4,0.8,0.4> Cura todas las enfermedades del jugador, lo cual SI incluye la infeccion Knox, pero NO incluye curarse las heridas abiertas",
 
-    "Sandbox_Wishes_DB_ObtainSpecialItems" : "Deseo: Objetos Especiales",
-    "Sandbox_Wishes_DB_ObtainSpecialItems_tooltip" : "<RGB:0.4,0.8,0.4> Permite desear por objetos.",
+    "Sandbox_Wishes_DragonBalls_IdealWeight" : "Deseo: Bajar/Subir al peso ideal",
+    "Sandbox_Wishes_DragonBalls_IdealWeight_tooltip" : "<RGB:0.4,0.8,0.4> Setea el peso del jugador al ideal (80).",
 
-    "Sandbox_Wishes_DB_PotentialUnlock" : "Deseo: Desbloquear Potencial",
-    "Sandbox_Wishes_DB_PotentialUnlock_tooltip" : "<RGB:1,0,0> AVISO: Este deseo todavía NO está implementado!\n <RGB:0.4,0.8,0.4> Para cada habilidad física: \nSi el jugador NO la tiene al máximo, le otorga un multiplicador de XP. \nSi el jugador SI la tiene maxeada, le otorga un rasgo relacionado.",
+    "Sandbox_Wishes_DragonBalls_ObtainSpecialItems" : "Deseo: Objetos Especiales",
+    "Sandbox_Wishes_DragonBalls_ObtainSpecialItems_tooltip" : "<RGB:0.4,0.8,0.4> Permite desear por objetos.",
 
-    "Sandbox_Wishes_DB_Teleport" : "Deseo: Teletransporte",
-    "Sandbox_Wishes_DB_Teleport_tooltip" : "<RGB:1,0,0> AVISO: Este deseo todavía NO está implementado!\n <RGB:0.4,0.8,0.4> Permite teletransportar a un jugador de tu misma facción hacia tu posición.",
+    "Sandbox_Wishes_DragonBalls_PotentialUnlock" : "Deseo: Desbloquear Potencial",
+    "Sandbox_Wishes_DragonBalls_PotentialUnlock_tooltip" : "<RGB:1,0,0> AVISO: Este deseo todavía NO está implementado!\n <RGB:0.4,0.8,0.4> Para cada habilidad física: \nSi el jugador NO la tiene al máximo, le otorga un multiplicador de XP. \nSi el jugador SI la tiene maxeada, le otorga un rasgo relacionado.",
 
-    "Sandbox_Wishes_DB_Inmortality" : "Deseo: Inmortalidad",
-    "Sandbox_Wishes_DB_Inmortality_tooltip" : "<RGB:1,0,0> AVISO: Este deseo todavía NO está implementado!\n <RGB:0.4,0.8,0.4> Hace que el jugador sea invisible durante 1 día.",
+    "Sandbox_Wishes_DragonBalls_Teleport" : "Deseo: Teletransporte",
+    "Sandbox_Wishes_DragonBalls_Teleport_tooltip" : "<RGB:1,0,0> AVISO: Este deseo todavía NO está implementado!\n <RGB:0.4,0.8,0.4> Permite teletransportar a un jugador de tu misma facción hacia tu posición.",
 
-    "Sandbox_Wishes_DB_UpgradeDragonBalls" : "Deseo: Mejorar las Esferas del Dragon",
-    "Sandbox_Wishes_DB_UpgradeDragonBalls_tooltip" : "<RGB:1,0,0> AVISO: Este deseo todavía NO está implementado!\n <RGB:0.4,0.8,0.4> Este deseo todavía no esta implementado."
+    "Sandbox_Wishes_DragonBalls_Inmortality" : "Deseo: Inmortalidad",
+    "Sandbox_Wishes_DragonBalls_Inmortality_tooltip" : "<RGB:1,0,0> AVISO: Este deseo todavía NO está implementado!\n <RGB:0.4,0.8,0.4> Hace que el jugador sea invisible durante 1 día.",
+
+    "Sandbox_Wishes_DragonBalls_UpgradeDragonBalls" : "Deseo: Mejorar las Esferas del Dragon",
+    "Sandbox_Wishes_DragonBalls_UpgradeDragonBalls_tooltip" : "<RGB:1,0,0> AVISO: Este deseo todavía NO está implementado!\n <RGB:0.4,0.8,0.4> Este deseo todavía no esta implementado."
 
 }

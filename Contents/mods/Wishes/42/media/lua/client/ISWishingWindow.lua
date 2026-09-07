@@ -15,7 +15,7 @@ function wishingWindow:createChildren()
 	ISCollapsableWindow.createChildren(self);
 
     -- Only save window layout for single player
-    if (self.playerIndex == 0) then
+    if self.playerIndex == 0 then
         ISLayoutManager.RegisterWindow('wishingwindow', wishingWindow, self);
     end
     self.visibleOnStartup = self:getIsVisible();
@@ -25,9 +25,16 @@ function wishingWindow:createChildren()
 end
 
 function wishingWindow:close()
+    -- if not self.allowClose then return end
     ISPanel.close(self)
     self:removeFromUIManager();
     self:closePanel()
+end
+
+function wishingWindow:forceClose()
+    self.allowClose = true
+    self:close()
+    self.allowClose = false
 end
 
 function wishingWindow:closePanel()
@@ -87,32 +94,33 @@ end
 local function WindowOnCreatePlayer(playerIndex, player)
     if getCore():isDedicated() then return end
 
-    if (not (WishingWindows[playerIndex])) then
+    local playerID = player:getOnlineID()
+    if not WishingWindows[playerID] then
         local x = getPlayerScreenLeft(playerIndex);
         local y = getPlayerScreenTop(playerIndex);
-        WishingWindows[playerIndex] = wishingWindow:new(x, y, player, playerIndex);
+        WishingWindows[playerID] = wishingWindow:new(x, y, player, playerIndex);
     end
 end
 
 local function WindowOnPlayerDeath(player)
     local WishingWindow = WishingWindows[player:getOnlineID()];
 	if WishingWindow then
-		WishingWindow:setVisible(false);
-		WishingWindow:removeFromUIManager();
+		WishingWindow:forceClose()
 	end
 end
 
 local function WindowOnResolutionChange(oldw, oldh, neww, newh)
 	if not getPlayer() then return end
 
+    -- this gets the screen position for coop split-screen sessions
     local getScreenLeft = getPlayerScreenLeft
     local getScreenTop = getPlayerScreenTop
 
-	for playerIndex=0, getNumActivePlayers() - 1 do
-        local x = getScreenLeft(playerIndex);
-        local y = getScreenTop(playerIndex);
-        WishingWindows[playerIndex]:setX(x + 300);
-        WishingWindows[playerIndex]:setY(y + 100);
+	for _playerID, window in pairs(WishingWindows) do
+        local x = getScreenLeft(window.playerIndex);
+        local y = getScreenTop(window.playerIndex);
+        window:setX(x + 200);
+        window:setY(y + 100);
 	end
 end
 
@@ -121,7 +129,7 @@ Events.OnPlayerDeath.Add(WindowOnPlayerDeath)
 Events.OnResolutionChange.Add(WindowOnResolutionChange)
 
 local function WindowReceiveUpdate(module, command, args)
-    if module ~= "Wishes" then return end
+    if module ~= "DP_Wishes" then return end
 
     DPWishes.Action:handleCommand(command, args)
 end
