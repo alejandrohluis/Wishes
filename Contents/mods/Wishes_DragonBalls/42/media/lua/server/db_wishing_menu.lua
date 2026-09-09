@@ -1,5 +1,6 @@
 require "WishAction"
 require "ISWishStyle"
+require "db_wishAttributes"
 
 local Recipe = RecipeCodeOnCreate;
 
@@ -28,6 +29,29 @@ function Recipe.SummonShenron(craftRecipeData, player)
     }
     DPWishes.Action:startWishingMenu(player, shenronData, session:getWishIDs())
 end
+
+
+local function dragon_ball_addActions()
+    local effects = DPWishes.Effects
+    local actions = DPWishes.Action
+    actions:addEffect("Shenron_modifyTrait", effects.modifyTrait)
+    actions:addEffect("Shenron_skillLevelUpUntil", effects.skillLevelUpUntil)
+    actions:addEffect("Shenron_skillLevelUpOnce", effects.skillLevelUpOnce)
+    actions:addEffect("Shenron_idealWeight", effects.setIdealWeight)
+    actions:addEffect("Shenron_heal", effects.healUp)
+    actions:addEffect("Shenron_cureSickness", effects.cureSickness)
+    actions:addEffect("Shenron_obtainItem", effects.obtainItem)
+    actions:addEffect("Shenron_potentialUnlock", effects.potentialUnlock)
+    actions:addEffect("Shenron_teleport", effects.teleportAlly)
+    actions:addEffect("Shenron_inmortality", effects.inmortality)
+    actions:addEffect("Shenron_upgrade", effects.improveDragonBalls)
+
+    local itemWhitelist = DPWishes.FilteringLists.Whitelist_ObtainItem
+    itemWhitelist["DB_IceCream"] = { minQuantity = 1 , maxQuantity = 1 , itemID = "Base.Icecream" }
+    itemWhitelist["DB_PairOfTrunks"] = { minQuantity = 1 , maxQuantity = 1 , itemID = "Base.Underpants_White" }
+end
+
+dragon_ball_addActions()
 
 -- deseos pedidos en dbz ; (!)[deseo] posibles deseos
 -- calzones                     (!)[darle calzones]

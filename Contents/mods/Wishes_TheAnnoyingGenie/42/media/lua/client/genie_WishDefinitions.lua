@@ -1,4 +1,4 @@
-require "WishDefinitions"
+require "client/WishDefinitions"
 
 local function addGenieDefinitions()
     local options = DPWishes.Options

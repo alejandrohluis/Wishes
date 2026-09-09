@@ -18,6 +18,16 @@ option WishesGenieLamp.MaxWishes
     translation = Wishes_GenieLamp_LampWishAmount,
 }
 
+option WishesGenieLamp.LampUses
+{
+    type = integer,
+    min = 1,
+    max = 10,
+    default = 3,
+    page = Wishes,
+    translation = Wishes_GenieLamp_LampUses,
+}
+
 option WishesGenieLamp.ChanceNoWish
 {
     type = integer,

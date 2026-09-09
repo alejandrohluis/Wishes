@@ -1,6 +1,8 @@
 name=Wishes - The Annoying Genie
 id=Wishes-GenieLamp
 description=Come on, rub the lamp! A genie might come out to give you what you wish for, but beware, as he may not grant ALL your desires...
+description=[ Currently the genie has no flaws, he will grant any enabled wish without any catch ]
+description=[ Some wishes are yet to be implemented, but enabling them in the sandbox setting will have an effect whenever they become usable ]
 author=Dios Pato
 versionMin=42.0
 modversion=1.0

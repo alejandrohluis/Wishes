@@ -4,12 +4,12 @@ module DP
     {
         Category 		= Wishes,
         timedAction     = Making,
-		Tags            = AnySurfaceCraft,
+		Tags            = InHandCraft,
 		Time 			= 10,
 		NeedToBeLearn	= false,
 		inputs
         {
-            item 1 [Base.Base.RippedSheets],
+            item 1 [Base.RippedSheets],
         }
 		outputs
 		{   
@@ -20,17 +20,16 @@ module DP
     {
         Category 		= Wishes,
         timedAction     = Making,
-		Tags            = AnySurfaceCraft,
+		Tags            = InHandCraft,
 		Time 			= 10,
 		NeedToBeLearn	= false,
-		OnCreate		= RecipeCodeOnCreate.GenieLamp,
+        OnCreate		= RecipeCodeOnCreate.GenieLamp,
 		inputs
         {
-            item 1 [DP.GenieLamp],
+            item 1 [DP.GenieLamp] mode:keep,
         }
 		outputs
 		{   
-            item 1 DP.GenieLamp,
 		}
     }
 }

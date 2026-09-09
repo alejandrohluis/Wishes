@@ -195,12 +195,19 @@ wishEffects.obtainItem = function(char, optionID)
     local itemData = DPWishes.FilteringLists.Whitelist_ObtainItem[optionID]
     if not itemData then return false end
 
+    local minimumItemQuantity = itemData.minQuantity
+    local maximumItemQuantity = itemData.maxQuantity
+    if minimumItemQuantity > maximumItemQuantity then
+        print("[Wishes] ERROR: Invalid obtainItem config for ".. optionID .. ": minQuantity > maxQuantity !")
+        return false
+    end
+
     local createItemMethod = instanceItem
     local updateInventoryMethod = sendAddItemToContainer
     local itemID = itemData.itemID
-    local itemQuantity = 1
-    if itemData.minQuantity <= itemData.maxQuantity then
-        itemQuantity = ZombRand(itemData.minQuantity, itemData.maxQuantity + 1)
+    local itemQuantity = minimumItemQuantity
+    if minimumItemQuantity < maximumItemQuantity then
+        itemQuantity = ZombRand(minimumItemQuantity, maximumItemQuantity + 1)
     end
     local itemDataModifier = itemData.itemDataModifier
 

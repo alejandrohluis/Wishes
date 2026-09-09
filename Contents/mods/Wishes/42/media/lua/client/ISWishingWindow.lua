@@ -1,6 +1,6 @@
 DPWishes = DPWishes or {}
 
-DPWishes.WindowsList = {}
+DPWishes.WindowsList = DPWishes.WindowsList or {}
 
 local WishingWindows = DPWishes.WindowsList
 
@@ -130,8 +130,8 @@ Events.OnResolutionChange.Add(WindowOnResolutionChange)
 
 local function WindowReceiveUpdate(module, command, args)
     if module ~= "DP_Wishes" then return end
-
-    DPWishes.Action:handleCommand(command, args)
+    local player = getPlayer()
+    DPWishes.Action:handleCommand(command, player, args)
 end
 
 Events.OnServerCommand.Add(WindowReceiveUpdate)

@@ -86,16 +86,16 @@ function wishAction:removeEffect(identifier)
     wishAction[identifier] = nil
 end
 
-function wishAction:handleCommand(command, args)
+function wishAction:handleCommand(command, player, args)
     local wishingWindows = DPWishes.WindowsList
-    local player = getPlayer()
     local playerID = player:getOnlineID()
     local playerWishingWindow = wishingWindows[playerID]
     if not playerWishingWindow then
-        -- local x = getPlayerScreenLeft(playerID);
-        -- local y = getPlayerScreenTop(playerID);
-        -- wishingWindows[playerID] = DPWishes.Window:new(x, y, player, playerID)
-        return
+        local playerIndex = player:getPlayerNum()
+        local x = getPlayerScreenLeft(playerIndex);
+        local y = getPlayerScreenTop(playerIndex);
+        playerWishingWindow = DPWishes.Window:new(x, y, player, playerID)
+        wishingWindows[playerID] = playerWishingWindow
     end
     if command == "StartWishingMenu" then
         local wishStyle = DPWishes.Style:new(args.wishStyle.name, args.wishStyle.wishAmount, args.wishStyle.texturePath)
@@ -104,10 +104,10 @@ function wishAction:handleCommand(command, args)
         playerWishingWindow:startMenu()
     end
     if command == "ConsumeWish" then
-        wishingWindows[playerID]:updateWishesRemaining(args.remainingWishes)
+        playerWishingWindow:updateWishesRemaining(args.remainingWishes)
     end
     if command == "StopWishingMenu" then
-        wishingWindows[playerID]:forceClose()
+        playerWishingWindow:forceClose()
     end
 end
 
@@ -116,7 +116,7 @@ function wishAction:startWishingMenu(player, wishingData, wishes)
     if isMultiplayer then
         sendServerCommand(player, "DP_Wishes", "StartWishingMenu", { wishStyle = wishingData , enabledWishes = wishes })
     else
-        DPWishes.Action:handleCommand("StartWishingMenu", { wishStyle = wishingData , enabledWishes = wishes })
+        DPWishes.Action:handleCommand("StartWishingMenu", player, { wishStyle = wishingData , enabledWishes = wishes })
     end
 end
 
@@ -125,7 +125,7 @@ function wishAction:stopWishingMenu(player)
     if isMultiplayer then
         sendServerCommand(player, "DP_Wishes", "StopWishingMenu", nil)
     else
-        DPWishes.Action:handleCommand("StopWishingMenu", nil)
+        DPWishes.Action:handleCommand("StopWishingMenu", player, nil)
     end
 end
 
@@ -134,7 +134,7 @@ function wishAction:updateWishes(player, newWishes)
     if isMultiplayer then
         sendServerCommand(player, "DP_Wishes", "ConsumeWish", { remainingWishes = newWishes })
     else
-        DPWishes.Action:handleCommand("ConsumeWish", { remainingWishes = newWishes })
+        DPWishes.Action:handleCommand("ConsumeWish", player, { remainingWishes = newWishes })
     end
 end
 
@@ -184,14 +184,10 @@ end
 Events.OnCharacterDeath.Add(OnPlayerDeath)
 
 local function OnPlayerDisconnect(player)
-    print("[Wishes] Closing wishing session...")
     local playerID = player:getOnlineID()
     local session = wishingSession[playerID]
     if session then
         session:close()
-        print("[Wishes] Session succesfully closed.")
-    else
-        print("[Wishes] No session found.")
     end
 end
 

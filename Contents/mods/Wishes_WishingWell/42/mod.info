@@ -1,6 +1,8 @@
 name=Wishes - Wishing Well
 id=Wishes-WishingWell
-description=Throw all your bucks into wells to get wishes.
+description=Throw all your bucks into a well and you might get a wish.
+description=[ This add-on is not implemented yet! ]
+description=[ Some wishes are yet to be implemented, but enabling them in the sandbox setting will have an effect whenever they become usable ]
 author=Dios Pato
 versionMin=42.0
 modversion=1.0
