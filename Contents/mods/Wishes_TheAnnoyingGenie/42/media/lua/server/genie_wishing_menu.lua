@@ -1,5 +1,4 @@
 require "WishAction"
-require "ISWishStyle"
 require "genie_wishAttributes"
 
 local Recipe = RecipeCodeOnCreate;
@@ -49,8 +48,8 @@ function Recipe.GenieLamp(craftRecipeData, player)
 end
 
 local function create_winning_ticket(ticket)
-    local modData = ticket:getModData()
-    if modData["genie_winner"] then return end
+    local unscratchedTicket = instanceItem("Base.ScratchTicket")
+    if not unscratchedTicket then return end
 
     local randomizer = ZombRand(1,3+1)
     local winningValue = 0
@@ -61,8 +60,9 @@ local function create_winning_ticket(ticket)
     elseif randomizer == 3 then
         winningValue = 10000
     end
+    local modData = ticket:getModData()
     modData["genie_winner"] = "$"..tostring(winningValue)
-    ticket:setName(getText("IGUI_ScratchingTicketNameWinner", getItemNameFromFullType("Base.ScratchTicket_Winner"), modData["genie_winner"]));
+    ticket:setName(getText("IGUI_ScratchingTicketNameWinner", unscratchedTicket:getDisplayName(), modData["genie_winner"]));
 end
 
 local function genie_lamp_addActions()

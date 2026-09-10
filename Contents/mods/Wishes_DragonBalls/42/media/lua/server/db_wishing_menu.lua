@@ -1,5 +1,4 @@
 require "WishAction"
-require "ISWishStyle"
 require "db_wishAttributes"
 
 local Recipe = RecipeCodeOnCreate;
