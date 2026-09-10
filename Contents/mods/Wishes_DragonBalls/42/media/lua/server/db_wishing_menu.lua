@@ -7,9 +7,9 @@ local Recipe = RecipeCodeOnCreate;
 function Recipe.SummonShenron(craftRecipeData, player)
     local sandbox = SandboxVars.WishesDragonBalls
     local playerID = player:getOnlineID()
-    local shenron = DPWishes.Style:new("Shenron", sandbox.Setting_WishesPerSummoning, "media/textures/portrait/shenlong.png")
+    local maxWishes = sandbox.Setting_WishesPerSummoning
 
-    local session = DPWishes.Session:new(playerID, shenron)
+    local session = DPWishes.Session:new(playerID, maxWishes)
     session:addWish("Shenron_modifyTrait"       , sandbox.WishCost_ModifyTrait        , sandbox.WishEnable_ModifyTrait)
     session:addWish("Shenron_skillLevelUpUntil" , sandbox.WishCost_SkillLevelUpUntil  , sandbox.WishEnable_SkillLevelUpUntil)
     session:addWish("Shenron_skillLevelUpOnce"  , sandbox.WishCost_SkillLevelUpOnce   , sandbox.WishEnable_SkillLevelUpOnce)
@@ -23,9 +23,10 @@ function Recipe.SummonShenron(craftRecipeData, player)
     session:addWish("Shenron_upgrade"           , sandbox.WishCost_UpgradeDragonBalls , sandbox.WishEnable_UpgradeDragonBalls)
 
     local shenronData = {
-        name = shenron.name,
-        wishAmount = shenron.wishAmount,
-        texturePath = shenron.texturePath,
+        styleName = "UI_ShenronStyle",
+        wishAmount = maxWishes,
+        texturePath = "media/textures/portrait/shenlong.png",
+        enabledWishes = session:getWishIDs(),
     }
     DPWishes.Action:startWishingMenu(player, shenronData, session:getWishIDs())
 end
@@ -46,7 +47,7 @@ local function dragon_ball_addActions()
     actions:addEffect("Shenron_inmortality", effects.inmortality)
     actions:addEffect("Shenron_upgrade", effects.improveDragonBalls)
 
-    local itemWhitelist = DPWishes.FilteringLists.Whitelist_ObtainItem
+    local itemWhitelist = DPWishes.FilteringLists.Whitelists.ObtainItem
     itemWhitelist["DB_IceCream"] = { minQuantity = 1 , maxQuantity = 1 , itemID = "Base.Icecream" }
     itemWhitelist["DB_PairOfTrunks"] = { minQuantity = 1 , maxQuantity = 1 , itemID = "Base.Underpants_White" }
 end

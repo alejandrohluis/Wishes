@@ -16,11 +16,13 @@ local wishDefinitions = DPWishes.Definitions
 --          (ideally use a ID style as follows: myMod_myWishingStyle_myWishID, for example: Wishes_GenieLamp_modifyTrait )  
 -- label = the text displayed at the panel for this wish
 -- categoriesGetter = a reference to a function for all selectable options for the wish
-function wishDefinitions:addWishDefinition(wishID, label, cost, categoriesGetter)
+function wishDefinitions:addWishDefinition(wishID, label, cost, categoriesGetter, blacklist)
     wishDefinitions[wishID] = {}
+    local wishDefinition = wishDefinitions[wishID]
     local getTranslation = getText
-    wishDefinitions[wishID].label = getTranslation(label)
-    wishDefinitions[wishID].description = getTranslation(label.."_description") .. '\n' .. getTranslation("UI_WishCost") .. ' ' .. cost
+    wishDefinition.label = getTranslation(label)
+    wishDefinition.description = getTranslation(label.."_description") .. '\n' .. getTranslation("UI_WishCost", cost)
     if not categoriesGetter then return end
-    wishDefinitions[wishID].categories = categoriesGetter
+    wishDefinition.categories = categoriesGetter
+    wishDefinition.blacklist = blacklist
 end

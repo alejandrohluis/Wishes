@@ -1,5 +1,9 @@
 {
-    "UI_RemainingWishes": "Remaining wishes:",
+    "UI_RemainingWishes": "Remaining wishes: %1",
     "UI_WishWindowTitle": "Make your Wish",
-    "UI_WishCost" : "Cost:"
+    "UI_WishCost" : "Cost: %1",
+    "UI_Get_Good_Trait": "Get a Positive Trait",
+    "UI_Remove_Good_Trait": "Remove a Positive Trait",
+    "UI_Get_Bad_Trait": "Get a Negative Trait",
+    "UI_Remove_Bad_Trait": "Remove a Negative Trait"
 }

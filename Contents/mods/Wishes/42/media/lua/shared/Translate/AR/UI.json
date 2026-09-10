@@ -1,5 +1,9 @@
 {
-    "UI_RemainingWishes": "Deseos restantes:",
+    "UI_RemainingWishes": "Deseos restantes: %1",
     "UI_WishWindowTitle": "Pide tu deseo",
-    "UI_WishCost" : "Costo:"
+    "UI_WishCost" : "Costo del deseo: %1",
+    "UI_Get_Good_Trait": "Obtener un rasgo positivo",
+    "UI_Remove_Good_Trait": "Remover un rasgo positivo",
+    "UI_Get_Bad_Trait": "Obtener un rasgo negativo",
+    "UI_Remove_Bad_Trait": "Remover un rasgo negativo"
 }

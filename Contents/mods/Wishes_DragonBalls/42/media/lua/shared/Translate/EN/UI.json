@@ -1,4 +1,6 @@
 {
+    "UI_ShenronStyle": "Shenron",
+
     "UI_Shenron_modifyTrait": "Modify trait",
     "UI_Shenron_modifyTrait_description": "I wish to change my traits!",
     "UI_Shenron_skillLevelUpUntil": "Level up a skill a lot",

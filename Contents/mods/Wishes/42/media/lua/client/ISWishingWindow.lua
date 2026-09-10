@@ -50,12 +50,12 @@ function wishingWindow:updateWishesRemaining(remainingWishes)
     self.panel:setRemainingWishes(remainingWishes)
 end
 
-function wishingWindow:initialise(wishStyle, wishes)
+function wishingWindow:initialise(UI_styleName, wishAmount, texturePath, wishes)
     ISCollapsableWindow.initialise(self);
-    self.title = wishStyle.name;
+    self.title = getText(UI_styleName) or self.title;
     self.wishList = wishes
-    self.wishAmount = wishStyle.wishAmount;
-    self.texturePath = wishStyle.texturePath
+    self.wishAmount = wishAmount;
+    self.texturePath = texturePath
     self.showCloseButton = false
 
     self:closePanel()

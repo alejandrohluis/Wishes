@@ -44,7 +44,7 @@ end
 ----------------------------------------------------------------------------------
 
 local function remainingWishesString(wishAmount)
-    return getText("UI_RemainingWishes") .. " " .. tostring(wishAmount)
+    return getText("UI_RemainingWishes", wishAmount)
 end
 
 function ISWishingPanel:initialise()
@@ -230,7 +230,7 @@ function ISWishingPanel:addWishesToList()
     for i = 1, #allWishes do
         local wishID = allWishes[i];
         local wishDefinition = wishDefinitions[wishID]
-        local wish = { wishID = wishID , label = wishDefinition.label , description = wishDefinition.description , categories = wishDefinition.categories }
+        local wish = { wishID = wishID , label = wishDefinition.label , description = wishDefinition.description , categories = wishDefinition.categories , blacklist = wishDefinition.blacklist}
         self.listboxWishes:addItem(wish.label, wish, wish.description);
     end
     self.listboxWishes.selected = wishSelection;
@@ -244,7 +244,7 @@ function ISWishingPanel:addCategoryToList(wish)
     local optionsSelection = self.listboxOptions.selected;
     self.listboxCategory:clear();
     self.listboxOptions:clear();
-    local categories = wish:categories(self.player);
+    local categories = wish.categories(self.player, wish.blacklist);
     for i = 1, #categories do
         local category = categories[i];
         category.wishID = wish.wishID;

@@ -9,7 +9,7 @@ DPWishes.Session = {}
 
 local wishingSession = DPWishes.Session
 
-function wishingSession:new(playerID, style)
+function wishingSession:new(playerID, wishAmount)
     if wishingSession[playerID] then
         wishingSession[playerID]:close()
     end
@@ -17,8 +17,7 @@ function wishingSession:new(playerID, style)
     setmetatable(o, self)
     self.__index = self
 
-    o.wishStyle = style
-    o.wishAmount = style.wishAmount
+    o.wishAmount = wishAmount
     o.player = playerID
     o.whitelistedWishes = {}
     wishingSession[playerID] = o
@@ -98,9 +97,7 @@ function wishAction:handleCommand(command, player, args)
         wishingWindows[playerID] = playerWishingWindow
     end
     if command == "StartWishingMenu" then
-        local wishStyle = DPWishes.Style:new(args.wishStyle.name, args.wishStyle.wishAmount, args.wishStyle.texturePath)
-        local wishes = args.enabledWishes
-        playerWishingWindow:initialise(wishStyle, wishes)
+        playerWishingWindow:initialise(args.styleName, args.wishAmount, args.texturePath, args.enabledWishes)
         playerWishingWindow:startMenu()
     end
     if command == "ConsumeWish" then
@@ -111,12 +108,12 @@ function wishAction:handleCommand(command, player, args)
     end
 end
 
-function wishAction:startWishingMenu(player, wishingData, wishes)
+function wishAction:startWishingMenu(player, wishingData)
     local isMultiplayer = isClient() or isServer()
     if isMultiplayer then
-        sendServerCommand(player, "DP_Wishes", "StartWishingMenu", { wishStyle = wishingData , enabledWishes = wishes })
+        sendServerCommand(player, "DP_Wishes", "StartWishingMenu", wishingData )
     else
-        DPWishes.Action:handleCommand("StartWishingMenu", player, { wishStyle = wishingData , enabledWishes = wishes })
+        DPWishes.Action:handleCommand("StartWishingMenu", player, wishingData )
     end
 end
 

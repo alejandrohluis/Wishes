@@ -22,14 +22,20 @@ type of dragon balls:
 -- deseos no pedidos en dbz pero interesantes:
 -- pastillas para niveles temporales
 
-wishOptions.getDBItems = function()
+wishOptions.getDBItems = function(_player, blacklist)
+    if not blacklist then return end
     local getTranslation = getText
     local getItemTranslation = getItemNameFromFullType
-    local lotteryItems = {
-        { label = getItemTranslation("Base.Icecream") , optionID = "DB_IceCream" },
-        { label = getTranslation("UI_Shenron_Option_ItemUnderwear"), optionID = "DB_PairOfTrunks" }
-    }
-    return lotteryItems
+    local specialItems = {}
+    if not blacklist["DB_IceCream"] then
+        local iceCreamData = { label = getItemTranslation("Base.Icecream"), optionID = "DB_IceCream" }
+        table.insert(specialItems, iceCreamData)
+    end
+    if not blacklist["DB_PairOfTrunks"] then
+        local underwearData = { label = getTranslation("UI_Shenron_Option_ItemUnderwear"), optionID = "DB_PairOfTrunks" }
+        table.insert(specialItems, underwearData)
+    end
+    return specialItems
 end
 
 --[[ potential unlocked: 

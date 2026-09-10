@@ -23,10 +23,9 @@ function Recipe.GenieLamp(craftRecipeData, player)
 
     local sandbox = SandboxVars.WishesGenieLamp
     local playerID = player:getOnlineID()
+    local maxWishes = sandbox.MaxWishes
 
-    local genie = DPWishes.Style:new("The Genie of the Lamp", sandbox.MaxWishes, "media/textures/portrait/normal_genie.png")
-
-    local session = DPWishes.Session:new(playerID, genie)
+    local session = DPWishes.Session:new(playerID, maxWishes)
     session:addWish("GenieLamp_modifyTrait"         , sandbox.WishCost_ModifyTrait       , sandbox.WishEnable_ModifyTrait)
     session:addWish("GenieLamp_skillLevelUpUntil"   , sandbox.WishCost_SkillLevelUpUntil , sandbox.WishEnable_SkillLevelUpUntil)
     session:addWish("GenieLamp_skillLevelUpOnce"    , sandbox.WishCost_SkillLevelUp      , sandbox.WishEnable_SkillLevelUp)
@@ -38,11 +37,12 @@ function Recipe.GenieLamp(craftRecipeData, player)
     session:addWish("GenieLamp_slayZeds"            , sandbox.WishCost_KillNearbyZombies , sandbox.WishEnable_KillNearbyZombies)
 
     local genieData = {
-        name = genie.name,
-        wishAmount = genie.wishAmount,
-        texturePath = genie.texturePath,
+        styleName = "UI_GenieStyle",
+        wishAmount = maxWishes,
+        texturePath = "media/textures/portrait/normal_genie.png",
+        enabledWishes = session:getWishIDs(),
     }
-    DPWishes.Action:startWishingMenu(player, genieData, session:getWishIDs())
+    DPWishes.Action:startWishingMenu(player, genieData)
     local lampCondition = lamp:getCondition()
     local lampMaxCondition = lamp:getConditionMax()
     lamp:setCondition(math.max(0, lampCondition - (lampMaxCondition / sandbox.LampUses)))
@@ -51,8 +51,6 @@ end
 local function create_winning_ticket(ticket)
     local modData = ticket:getModData()
     if modData["genie_winner"] then return end
-    local emptyTicket = instanceItem("Base.ScratchTicket")
-    if not emptyTicket then return end
 
     local randomizer = ZombRand(1,3+1)
     local winningValue = 0
@@ -64,7 +62,7 @@ local function create_winning_ticket(ticket)
         winningValue = 10000
     end
     modData["genie_winner"] = "$"..tostring(winningValue)
-    ticket:setName(getText("IGUI_ScratchingTicketNameWinner", emptyTicket:getDisplayName(), modData["genie_winner"]));
+    ticket:setName(getText("IGUI_ScratchingTicketNameWinner", getItemNameFromFullType("Base.ScratchTicket_Winner"), modData["genie_winner"]));
 end
 
 local function genie_lamp_addActions()
@@ -80,9 +78,9 @@ local function genie_lamp_addActions()
     actions:addEffect("GenieLamp_infiniteWishesGenie", effects.infiniteWishes)
     actions:addEffect("GenieLamp_slayZombiesGenie", effects.slayZeds)
 
-    local itemWhitelist = DPWishes.FilteringLists.Whitelist_ObtainItem
+    local itemWhitelist = DPWishes.FilteringLists.Whitelists.ObtainItem
     itemWhitelist["GL_Wealth_LotteryTicket"] = { minQuantity = 1 , maxQuantity = 1 , itemID = "Base.ScratchTicket_Winner" , itemDataModifier = create_winning_ticket}
-    itemWhitelist["GL_Wealth_Money"] = { minQuantity = 10 , maxQuantity = 100 , itemID = "Base.Money" }
+    itemWhitelist["GL_Wealth_Money"] = { minQuantity = 5 , maxQuantity = 20 , itemID = "Base.MoneyBundle" }
     itemWhitelist["GL_Wealth_GoldBar"] = { minQuantity = 1 , maxQuantity = 3 , itemID = "Base.GoldBar" }
 end
 
