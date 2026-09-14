@@ -1,7 +1,7 @@
 name=Wishes - Dragon Balls
 id=Wishes-DragonBall
-description=Collect all 7 dragon balls from the popular anime series Dragon Ball, scattered around the county, and you will summon the mighty Shenron!
-description=[ Some wishes are yet to be implemented, but enabling them in the sandbox setting will have an effect whenever they become usable ]
+description=Collect all 7 dragon balls from the popular anime series Dragon Ball, scattered around the county, and you will be able to summon the mighty Shenron!
+description=<LINE><LINE><RGB:1,0.6,0.2>[ Some wishes are yet to be implemented, but any changes in the sandbox setting will work whenever they get integrated  ]
 author=Dios Pato
 versionMin=42.0
 modversion=1.0

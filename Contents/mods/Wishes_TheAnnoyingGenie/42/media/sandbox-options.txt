@@ -8,14 +8,14 @@ option WishesGenieLamp.Divider
     translation = Wishes_GenieLamp_Divider,
 }
 
-option WishesGenieLamp.MaxWishes
+option WishesGenieLamp.WishesPerUse
 {
     type = integer,
     min = 1,
     max = 3,
     default = 1,
     page = Wishes,
-    translation = Wishes_GenieLamp_LampWishAmount,
+    translation = Wishes_GenieLamp_WishPerUse,
 }
 
 option WishesGenieLamp.LampUses
@@ -51,7 +51,7 @@ option WishesGenieLamp.WishCost_ModifyTrait
     type = integer,
     min = 1,
     max = 3,
-    default = 1,
+    default = 2,
     page = Wishes,
     translation = Wishes_GenieLamp_Cost,
 }
@@ -67,7 +67,7 @@ option WishesGenieLamp.WishCost_SkillLevelUpUntil
     type = integer,
     min = 1,
     max = 3,
-    default = 1,
+    default = 2,
     page = Wishes,
     translation = Wishes_GenieLamp_Cost,
 }
@@ -124,7 +124,7 @@ option WishesGenieLamp.WishCost_HealSickness
     type = integer,
     min = 1,
     max = 3,
-    default = 2,
+    default = 3,
     page = Wishes,
     translation = Wishes_GenieLamp_Cost,
 }

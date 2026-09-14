@@ -1,5 +1,3 @@
-require "WishAttributes"
-
 DPWishes = DPWishes or {}
 
 ----------------------------------------------------------------------------------
@@ -9,9 +7,14 @@ DPWishes.Session = {}
 
 local wishingSession = DPWishes.Session
 
-function wishingSession:new(playerID, wishAmount)
-    if wishingSession[playerID] then
-        wishingSession[playerID]:close()
+function wishingSession:new(playerID, wishAmount, styleUsed)
+    local playerSession = wishingSession[playerID]
+    if playerSession then
+        if playerSession.style == styleUsed then
+            playerSession:addMoreWishes(wishAmount)
+            return playerSession
+        end
+        playerSession:close()
     end
     local o = {}
     setmetatable(o, self)
@@ -19,6 +22,7 @@ function wishingSession:new(playerID, wishAmount)
 
     o.wishAmount = wishAmount
     o.player = playerID
+    o.style = styleUsed
     o.whitelistedWishes = {}
     wishingSession[playerID] = o
     return o
@@ -53,8 +57,12 @@ function wishingSession:getWish(wishID)
 end
 
 function wishingSession:addWish(wishID, wishCost, isEnabled)
-    if not isEnabled then return end
+    if not isEnabled or self.whitelistedWishes[wishID] then return end
     self.whitelistedWishes[wishID] = { cost = wishCost }
+end
+
+function wishingSession:addMoreWishes(wishAmount)
+    self.wishAmount = self.wishAmount + wishAmount
 end
 
 function wishingSession:close()

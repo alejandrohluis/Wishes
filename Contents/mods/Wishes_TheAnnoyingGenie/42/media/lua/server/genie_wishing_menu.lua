@@ -22,9 +22,9 @@ function Recipe.GenieLamp(craftRecipeData, player)
 
     local sandbox = SandboxVars.WishesGenieLamp
     local playerID = player:getOnlineID()
-    local maxWishes = sandbox.MaxWishes
+    local maxWishes = sandbox.WishesPerUse
 
-    local session = DPWishes.Session:new(playerID, maxWishes)
+    local session = DPWishes.Session:new(playerID, maxWishes, "genie")
     session:addWish("GenieLamp_modifyTrait"         , sandbox.WishCost_ModifyTrait       , sandbox.WishEnable_ModifyTrait)
     session:addWish("GenieLamp_skillLevelUpUntil"   , sandbox.WishCost_SkillLevelUpUntil , sandbox.WishEnable_SkillLevelUpUntil)
     session:addWish("GenieLamp_skillLevelUpOnce"    , sandbox.WishCost_SkillLevelUp      , sandbox.WishEnable_SkillLevelUp)
@@ -37,8 +37,8 @@ function Recipe.GenieLamp(craftRecipeData, player)
 
     local genieData = {
         styleName = "UI_GenieStyle",
-        wishAmount = maxWishes,
-        texturePath = "media/textures/portrait/normal_genie.png",
+        wishAmount = session:getRemainingWishes(),
+        texturePath = "media/textures/portrait/genie_2.png",
         enabledWishes = session:getWishIDs(),
     }
     DPWishes.Action:startWishingMenu(player, genieData)

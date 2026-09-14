@@ -1,9 +1,12 @@
 {
     "Sandbox_Wishes_GenieLamp_Divider" : "·····==={}===·····   El Genio Garca   ·····==={}===·····",
 
-    "Sandbox_Wishes_GenieLamp_LampWishAmount" : "Cantidad de deseos",
-    "Sandbox_Wishes_GenieLamp_LampWishAmount_tooltip" : "<RGB:1,1,0.75> La cantidad de deseos que podes pedir por cada manoseo de la lampara. Tene en cuenta que la lampara se puede manosear 3 veces y despues se acaba.",
-    
+    "Sandbox_Wishes_GenieLamp_WishPerUse" : "Cantidad de deseos",
+    "Sandbox_Wishes_GenieLamp_WishPerUse_tooltip" : "<RGB:1,1,0.75> La cantidad de deseos que podes pedir por cada manoseo de la lampara.",
+
+    "Wishes_GenieLamp_LampUses" : "Usos de la lámpara",
+    "Wishes_GenieLamp_LampUses_tooltip" : "<RGB:1,1,0.75> La cantidad de veces que se puede manosear la lampara antes de que acabe.",
+
     "Sandbox_Wishes_GenieLamp_Cost" : "Costo del deseo",
     "Sandbox_Wishes_GenieLamp_Cost_tooltip" : "<RGB:1,1,0.75> La cantidad de deseos que consume el deseo superior.",
 

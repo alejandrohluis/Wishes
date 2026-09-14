@@ -6,9 +6,8 @@ local Recipe = RecipeCodeOnCreate;
 function Recipe.SummonShenron(craftRecipeData, player)
     local sandbox = SandboxVars.WishesDragonBalls
     local playerID = player:getOnlineID()
-    local maxWishes = sandbox.Setting_WishesPerSummoning
 
-    local session = DPWishes.Session:new(playerID, maxWishes)
+    local session = DPWishes.Session:new(playerID, sandbox.Setting_WishesPerSummoning, "shenron")
     session:addWish("Shenron_modifyTrait"       , sandbox.WishCost_ModifyTrait        , sandbox.WishEnable_ModifyTrait)
     session:addWish("Shenron_skillLevelUpUntil" , sandbox.WishCost_SkillLevelUpUntil  , sandbox.WishEnable_SkillLevelUpUntil)
     session:addWish("Shenron_skillLevelUpOnce"  , sandbox.WishCost_SkillLevelUpOnce   , sandbox.WishEnable_SkillLevelUpOnce)
@@ -23,7 +22,7 @@ function Recipe.SummonShenron(craftRecipeData, player)
 
     local shenronData = {
         styleName = "UI_ShenronStyle",
-        wishAmount = maxWishes,
+        wishAmount = session:getRemainingWishes(),
         texturePath = "media/textures/portrait/shenlong.png",
         enabledWishes = session:getWishIDs(),
     }

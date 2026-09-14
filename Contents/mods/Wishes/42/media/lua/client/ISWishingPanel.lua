@@ -73,7 +73,7 @@ function ISWishingPanel:createChildren()
     local offset = self.tablePad + self.tableWidth;
     local tableOffsetX = self.tablePad + offset;
 
-    self.portrait = DPWishes.Portrait:new(self.tablePad, self.tablePad, self.tableWidth, (self.maxHeight - UI_BORDER_SPACING * 4), self.texturePath);
+    self.portrait = DPWishes.Portrait:new(self.tablePad/2, self.tablePad/2, self.tableWidth, (self.maxHeight - UI_BORDER_SPACING * 4), self.texturePath);
     self.portrait:initialise();
     self:addChild(self.portrait);
 

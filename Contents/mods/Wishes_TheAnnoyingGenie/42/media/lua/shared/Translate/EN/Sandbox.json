@@ -1,8 +1,11 @@
 {
     "Sandbox_Wishes_GenieLamp_Divider" : " ····==={}===····  The Annoying Genie  ····==={}===···· ",
 
-    "Sandbox_Wishes_GenieLamp_LampWishAmount" : "Genie Wishes per Lamp Usage",
-    "Sandbox_Wishes_GenieLamp_LampWishAmount_tooltip" : "<RGB:1,1,0.75> The amount of wishes one has per genie lamp usage. Keep in mind that the genie lamp has 3 uses.",
+    "Sandbox_Wishes_GenieLamp_WishPerUse" : "Genie Wishes per Lamp Usage",
+    "Sandbox_Wishes_GenieLamp_WishPerUse_tooltip" : "<RGB:1,1,0.75> The amount of wishes one has per genie lamp usage. Keep in mind that the genie lamp has 3 uses.",
+
+    "Wishes_GenieLamp_LampUses" : "Lamp Uses",
+    "Wishes_GenieLamp_LampUses_tooltip" : "<RGB:1,1,0.75> How many times you may use the lamp before it runs out of power.",
 
     "Sandbox_Wishes_GenieLamp_Cost" : "Wish cost",
     "Sandbox_Wishes_GenieLamp_Cost_tooltip" : "<RGB:1,1,0.75> The amount of wishes consumed by the above wish.",
