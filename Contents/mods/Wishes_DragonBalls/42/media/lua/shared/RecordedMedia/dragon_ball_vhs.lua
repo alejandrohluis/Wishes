@@ -25,7 +25,7 @@ recMedia["4bc43dcf-b046-4d0a-b100-cee0d37ed67d"] = {
         -- kamehameha!
 		{ text = "RM_e2c9e3df-d0cb-4387-81af-fe7949bb2337", r = 0.80, g = 0.94, b = 0.97, codes = "BOR-2" },
         -- <oolong> i wish for the most comfortable pair of underwear!
-		{ text = "RM_4ae32ea7-d9f0-4091-b4e6-ba32c664383c", r = 0.00, g = 0.43, b = 0.00, codes = "RCP=Summon Shenron" },
+		{ text = "RM_4ae32ea7-d9f0-4091-b4e6-ba32c664383c", r = 0.00, g = 0.43, b = 0.00, codes = "RCP=UseDragonBalls" },
         -- dragon desaparece
 		{ text = "RM_f8d30836-cc25-4a89-a63f-7fcac1b45e2c", r = 0.00, g = 0.43, b = 0.00, codes = "BOR-1" },
         -- ...

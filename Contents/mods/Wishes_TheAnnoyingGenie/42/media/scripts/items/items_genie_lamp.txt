@@ -2,26 +2,26 @@ module DP
 {
 	item GenieLamp
 	{
-		DisplayName 	 	= Genie Lamp,
-		DisplayCategory 	= Junk,
-		ItemType 			= base:normal,
-		Weight 			 	= 2.0,
-		UseWhileEquipped 	= false,
-		ConditionMax 		= 10,
-		OnBreak 			= OnBreak.ReplaceGenieLamp,
-		Icon 			 	= GenieLamp,
-		StaticModel			= DP.GenieLamp,
-		WorldStaticModel    = DP.GenieLamp_Ground,
+		DisplayName = Genie Lamp,
+		DisplayCategory = Junk,
+		ItemType = base:normal,
+		Weight = 2.0,
+		UseWhileEquipped = false,
+		ConditionMax = 10,
+		OnBreak = OnBreak.ReplaceGenieLamp,
+		Icon = GenieLamp,
+		StaticModel = GenieLamp_Ground,
+		WorldStaticModel = GenieLamp_Ground,
 	}
 	item GoldLamp
 	{
-		DisplayName 	 	= Golden Lamp,
-		DisplayCategory 	= Junk,
-		ItemType 			= base:normal,
-		Weight 			 	= 2.0,
-		UseWhileEquipped 	= false,
-		Icon 			 	= GenieLamp,
-		StaticModel			= DP.GenieLamp,
-		WorldStaticModel    = DP.GenieLamp_Ground,
+		DisplayName = Golden Lamp,
+		DisplayCategory = Junk,
+		ItemType = base:normal,
+		Weight = 2.0,
+		UseWhileEquipped = false,
+		Icon = GenieLamp,
+		StaticModel = GenieLamp_Ground,
+		WorldStaticModel = GenieLamp_Ground,
 	}
 }

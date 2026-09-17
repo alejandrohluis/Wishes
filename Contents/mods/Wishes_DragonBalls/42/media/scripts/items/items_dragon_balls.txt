@@ -2,71 +2,85 @@ module DP
 {
     item DragonBall_1
     {
-        DisplayName 	 	= Dragon Ball - 1 Star,
-		DisplayCategory 	= Junk,
-		ItemType 			= base:normal,
-		Weight 			 	= 19.8,
-		Icon 			 	= DragonBallOne,
-		WorldStaticModel 	= DP.DragonBallOne_Ground,
-    }
+        DisplayName = Dragon Ball - 1 Star,
+		DisplayCategory = Junk,
+		ItemType = base:normal,
+		Weight = 19.8,
+		Icon = DragonBallOne,
+		StaticModel = DragonBall_1_Ground,
+		WorldStaticModel = DragonBall_1_Ground,
+		RequiresEquippedBothHands = true,
+	}
 
     item DragonBall_2
     {
-        DisplayName 	 	= Dragon Ball - 2 Star,
-		DisplayCategory 	= Junk,
-		ItemType 			= base:normal,
-		Weight 			 	= 19.8,
-		Icon 			 	= DragonBallTwo,
-		WorldStaticModel 	= DP.DragonBallTwo_Ground,
-    }
+        DisplayName = Dragon Ball - 2 Star,
+		DisplayCategory = Junk,
+		ItemType = base:normal,
+		Weight = 19.8,
+		Icon = DragonBallTwo,
+		StaticModel = DragonBall_2_Ground,
+		WorldStaticModel = DragonBall_2_Ground,
+		RequiresEquippedBothHands = true,
+	}
 
     item DragonBall_3
     {
-        DisplayName 	 	= Dragon Ball - 3 Star,
-		DisplayCategory 	= Junk,
-		ItemType 			= base:normal,
-		Weight 			 	= 19.8,
-		Icon 			 	= DragonBallThree,
-		WorldStaticModel 	= DP.DragonBallThree_Ground,
-    }
+        DisplayName = Dragon Ball - 3 Star,
+		DisplayCategory = Junk,
+		ItemType = base:normal,
+		Weight = 19.8,
+		Icon = DragonBallThree,
+		StaticModel = DragonBall_3_Ground,
+		WorldStaticModel = DragonBall_3_Ground,
+		RequiresEquippedBothHands = true,
+	}
 
     item DragonBall_4
     {
-        DisplayName 	 	= Dragon Ball - 4 Star,
-		DisplayCategory 	= Junk,
-		ItemType 			= base:normal,
-		Weight 			 	= 19.8,
-		Icon 			 	= DragonBallFour,
-		WorldStaticModel 	= DP.DragonBallFour_Ground,
-    }
+        DisplayName = Dragon Ball - 4 Star,
+		DisplayCategory = Junk,
+		ItemType = base:normal,
+		Weight = 19.8,
+		Icon = DragonBallFour,
+		StaticModel = DragonBall_4_Ground,
+		WorldStaticModel = DragonBall_4_Ground,
+		RequiresEquippedBothHands = true,
+	}
 
     item DragonBall_5
     {
-        DisplayName 	 	= Dragon Ball - 5 Star,
-		DisplayCategory 	= Junk,
-		ItemType 			= base:normal,
-		Weight 			 	= 19.8,
-		Icon 			 	= DragonBallFive,
-		WorldStaticModel 	= DP.DragonBallFive_Ground,
-    }
+        DisplayName = Dragon Ball - 5 Star,
+		DisplayCategory = Junk,
+		ItemType = base:normal,
+		Weight = 19.8,
+		Icon = DragonBallFive,
+		StaticModel = DragonBall_5_Ground,
+		WorldStaticModel = DragonBall_5_Ground,
+		RequiresEquippedBothHands = true,
+	}
 
     item DragonBall_6
     {
-        DisplayName 	 	= Dragon Ball - 6 Star,
-		DisplayCategory 	= Junk,
-		ItemType 			= base:normal,
-		Weight 			 	= 19.8,
-		Icon 			 	= DragonBallSeven,
-		WorldStaticModel 	= DP.DragonBallSeven_Ground,
-    }
+        DisplayName = Dragon Ball - 6 Star,
+		DisplayCategory = Junk,
+		ItemType = base:normal,
+		Weight = 19.8,
+		Icon = DragonBallSeven,
+		StaticModel = DragonBall_6_Ground,
+		WorldStaticModel = DragonBall_6_Ground,
+		RequiresEquippedBothHands = true,
+	}
 
     item DragonBall_7
     {
-        DisplayName 	 	= Dragon Ball - 7 Star,
-		DisplayCategory 	= Junk,
-		ItemType 			= base:normal,
-		Weight 			 	= 19.8,
-		Icon 			 	= DragonBallSeven,
-		WorldStaticModel 	= DP.DragonBallSeven_Ground,
-    }
+        DisplayName = Dragon Ball - 7 Star,
+		DisplayCategory = Junk,
+		ItemType = base:normal,
+		Weight = 19.8,
+		Icon = DragonBallSeven,
+		StaticModel = DragonBall_7_Ground,
+		WorldStaticModel = DragonBall_7_Ground,
+		RequiresEquippedBothHands = true,
+	}
 }

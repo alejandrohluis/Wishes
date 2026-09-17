@@ -1,21 +1,5 @@
 module DP
 {
-    craftRecipe MakeGenieLamp_DEBUG
-    {
-        Category 		= Wishes,
-        timedAction     = Making,
-		Tags            = InHandCraft,
-		Time 			= 10,
-		NeedToBeLearn	= false,
-		inputs
-        {
-            item 1 [Base.RippedSheets],
-        }
-		outputs
-		{   
-            item 1 DP.GenieLamp,
-		}
-    }
     craftRecipe UseGenieLamp
     {
         Category 		= Wishes,
@@ -29,7 +13,7 @@ module DP
             item 1 [DP.GenieLamp] mode:keep,
         }
 		outputs
-		{   
+		{
 		}
     }
 }

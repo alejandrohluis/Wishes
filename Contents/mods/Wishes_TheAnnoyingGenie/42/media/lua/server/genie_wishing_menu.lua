@@ -38,7 +38,7 @@ function Recipe.GenieLamp(craftRecipeData, player)
     local genieData = {
         styleName = "UI_GenieStyle",
         wishAmount = session:getRemainingWishes(),
-        texturePath = "media/textures/portrait/genie_2.png",
+        texturePath = "media/textures/portrait/genie.png",
         enabledWishes = session:getWishIDs(),
     }
     DPWishes.Action:startWishingMenu(player, genieData)

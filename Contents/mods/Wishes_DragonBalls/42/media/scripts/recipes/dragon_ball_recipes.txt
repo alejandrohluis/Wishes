@@ -1,6 +1,6 @@
 module DP
 {
-    craftRecipe AskWish_DB
+    craftRecipe UseDragonBalls
     {
         Category 		= Wishes,
         timedAction     = Making,
@@ -21,24 +21,6 @@ module DP
 		outputs
 		{   
             item 7 Base.LargeStone,
-		}
-    }
-    
-    craftRecipe AskWish_DB_DEBUG
-    {
-        Category 		= Wishes,
-        timedAction     = Making,
-		Tags            = InHandCraft;CanBeDoneFromFloor,
-		Time 			= 10,
-		NeedToBeLearn	= false,
-		OnCreate		= RecipeCodeOnCreate.SummonShenron,
-		inputs
-        {
-            item 1 [Base.Wrench],
-        }
-		outputs
-		{   
-            item 1 Base.Wrench,
 		}
     }
 }

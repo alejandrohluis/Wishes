@@ -25,7 +25,7 @@ function wishingWindow:createChildren()
 end
 
 function wishingWindow:close()
-    -- if not self.allowClose then return end
+    if not self.allowClose then return end
     ISPanel.close(self)
     self:removeFromUIManager();
     self:closePanel()

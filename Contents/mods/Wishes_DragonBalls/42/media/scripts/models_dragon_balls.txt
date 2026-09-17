@@ -1,0 +1,45 @@
+module DP
+{
+	model DragonBall_1_Ground
+	{
+		mesh = WorldItems/DragonBall,
+		texture = WorldItems/DragonBall_1,
+		scale = 0.075,
+	}
+	model DragonBall_2_Ground
+	{
+		mesh = WorldItems/DragonBall,
+		texture = WorldItems/DragonBall_2,
+		scale = 0.075,
+	}
+	model DragonBall_3_Ground
+	{
+		mesh = WorldItems/DragonBall,
+		texture = WorldItems/DragonBall_3,
+		scale = 0.075,
+	}
+	model DragonBall_4_Ground
+	{
+		mesh = WorldItems/DragonBall,
+		texture = WorldItems/DragonBall_4,
+		scale = 0.075,
+	}
+	model DragonBall_5_Ground
+	{
+		mesh = WorldItems/DragonBall,
+		texture = WorldItems/DragonBall_5,
+		scale = 0.075,
+	}
+	model DragonBall_6_Ground
+	{
+		mesh = WorldItems/DragonBall,
+		texture = WorldItems/DragonBall_6,
+		scale = 0.075,
+	}
+	model DragonBall_7_Ground
+	{
+		mesh = WorldItems/DragonBall,
+		texture = WorldItems/DragonBall_7,
+		scale = 0.075,
+	}
+}

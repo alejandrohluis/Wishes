@@ -1,19 +1,9 @@
 module DP
 {
-    imports
-    {
-        Base,
-    }
-
     model GenieLamp_Ground
     {
         mesh = WorldItems/GenieLamp,
         texture = WorldItems/GenieLamp,
         scale = 0.4,
     }
-    model GenieLamp
-    {
-        mesh = Item_GenieLamp,
-        texture = Item_GenieLamp,
-    }
-}    
+}
