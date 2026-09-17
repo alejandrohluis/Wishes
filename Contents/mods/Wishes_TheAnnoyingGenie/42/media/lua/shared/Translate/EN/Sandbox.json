@@ -11,7 +11,7 @@
     "Sandbox_Wishes_GenieLamp_GenieChanceNoWish_tooltip" : "<RGB:1,0,0> DISCLAIMER: This option is NOT implemented yet!\n <RGB:1,1,0.75> The chance for the genie to avoid granting you a wish, or worse...",
 
     "Sandbox_Wishes_GenieLamp_ChanceToSpawn": "Chance to Find Genie Lamp",
-    "Sandbox_Wishes_GenieLamp_ChanceToSpawn_tooltip": "<RGB:1,1,0.75> The probability to spawn genie lamps. Keep in mind that it's NOT a probability % from 0-1.",
+    "Sandbox_Wishes_GenieLamp_ChanceToSpawn_tooltip": "<RGB:1,1,0.75> The probability to spawn genie lamps. Keep in mind that it's NOT a probability % from 0-100.",
 
     "Sandbox_Wishes_GenieLamp_Cost" : "Wish cost",
     "Sandbox_Wishes_GenieLamp_Cost_tooltip" : "<RGB:1,1,0.75> The amount of wishes consumed by the above wish.",

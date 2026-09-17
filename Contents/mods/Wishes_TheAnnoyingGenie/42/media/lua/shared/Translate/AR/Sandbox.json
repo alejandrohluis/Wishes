@@ -11,7 +11,7 @@
     "Sandbox_Wishes_GenieLamp_GenieChanceNoWish_tooltip" : "<RGB:1,0,0> AVISO: Esta opción todavía NO está implementada!\n <RGB:1,1,0.75>  La probabilidad de que el genio decida no darte un deseo, o peor...",
 
     "Sandbox_Wishes_GenieLamp_ChanceToSpawn": "Probabilidad de generar lámpara",
-    "Sandbox_Wishes_GenieLamp_ChanceToSpawn_tooltip": "<RGB:1,1,0.75> La probabilidad de que la lámpara del génio se genere. Tene en cuenta que no es una probabilidad de 0-1.",
+    "Sandbox_Wishes_GenieLamp_ChanceToSpawn_tooltip": "<RGB:1,1,0.75> La probabilidad de que la lámpara del génio se genere. Tene en cuenta que no es una probabilidad de 0-100.",
 
     "Sandbox_Wishes_GenieLamp_Cost" : "Costo del deseo",
     "Sandbox_Wishes_GenieLamp_Cost_tooltip" : "<RGB:1,1,0.75> La cantidad de deseos que consume el deseo superior.",
