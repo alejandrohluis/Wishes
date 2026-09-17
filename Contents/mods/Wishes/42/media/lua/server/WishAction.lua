@@ -3,6 +3,11 @@ DPWishes = DPWishes or {}
 ----------------------------------------------------------------------------------
 --- WishAction
 ----------------------------------------------------------------------------------
+--- Looking to make your own wish summoning mod using this base ?
+--- If you are looking at this on steam's version of the code and there is no 
+--- explanation then check the github. If you are looking at this on github
+--- and there is no explanation, then screw the author for procrastinating!!!
+----------------------------------------------------------------------------------
 DPWishes.Session = {}
 
 local wishingSession = DPWishes.Session
