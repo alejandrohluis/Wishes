@@ -21,9 +21,11 @@ Disclaimer: Keep in mind that, while the mod is highly operational, it's still i
 
 ```
 How it works:
-After looting around the world you may find items which will let you summon for a guardian to grant your wishes.
-They may be granted from the popular anime Dragon Ball's Shenron, the classic genie of the lamp or a few other methods.
-Summoning them once again without consuming all wishes will grant you the new added set of wishes.
+After looting around the world you may find items which will let you summon a guardian to grant your wishes.
+Some guardians include the popular anime Dragon Ball's Shenron, the classic genie of the lamp or a few others.
+
+Invoking them once again without consuming all your wishes will grant you the new added set of wishes.
+
 The guardian may ONLY go away by consuming every single wishes available.
 ```
 
@@ -34,11 +36,11 @@ Currently features 2 working guardians with another 2 yet to come:
 
 • Shenron and it's 7 dragon balls
 
-• The annoying genie of the lamp
+• The genie of the lamp
 
 • Wishing well (not implemented yet)
 
-• Pray to win (not implemented yet)
+• Praying (not implemented yet)
 
 <h3> - ⭐ Wishes ⭐ - </h3>
 Each ritual has their own wishes, with some that are more normal and others "unique" to their ritual. You can enable or disable any wish on the sandbox settings without affecting the other rituals! 
@@ -102,3 +104,5 @@ The following list of objectives are not ordered, I'll take my own arbitrary ord
   - The Annoying Genie: chance to not grant a wish, chance to produce a bad effect on the player, chance to consume wish without doing anything
   - Shenron: be able to ask for wishes in a group, improve dragon balls wish
   - Others: implementing probably harder to code wishes (like inmortality, potential unlock, etc...) 
+
+Do not copy or reupload this mod. If you wish to add it to a modpack, use the Steam Collection feature.

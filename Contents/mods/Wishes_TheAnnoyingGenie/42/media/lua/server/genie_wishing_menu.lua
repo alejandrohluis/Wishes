@@ -16,12 +16,8 @@ function OnBreak.ReplaceGenieLamp(genieLamp, player)
     sendAddItemToContainer(inventory, goldenLamp)
 end
 
-
-function Recipe.GenieLamp(craftRecipeData, player)
-    local lamp = craftRecipeData:getAllInputItems():get(0)
-
+function DPWishes.Action:GenieLampCreateSession(playerID)
     local sandbox = SandboxVars.WishesGenieLamp
-    local playerID = player:getOnlineID()
     local maxWishes = sandbox.WishesPerUse
 
     local session = DPWishes.Session:new(playerID, maxWishes, "genie")
@@ -34,6 +30,17 @@ function Recipe.GenieLamp(craftRecipeData, player)
     session:addWish("GenieLamp_obtainItem"          , sandbox.WishCost_Wealth            , sandbox.WishEnable_Wealth)
     session:addWish("GenieLamp_infiniteWishes"      , sandbox.WishCost_InfiniteWishes    , sandbox.WishEnable_InfiniteWishes)
     session:addWish("GenieLamp_slayZeds"            , sandbox.WishCost_KillNearbyZombies , sandbox.WishEnable_KillNearbyZombies)
+    return session
+end
+
+
+function Recipe.GenieLamp(craftRecipeData, player)
+    local lamp = craftRecipeData:getAllInputItems():get(0)
+
+    local sandbox = SandboxVars.WishesGenieLamp
+    local playerID = player:getOnlineID()
+
+    local session = DPWishes.Action:GenieLampCreateSession(playerID)
 
     local genieData = {
         styleName = "UI_GenieStyle",
