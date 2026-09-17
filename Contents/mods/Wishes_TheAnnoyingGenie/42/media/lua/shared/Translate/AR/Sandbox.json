@@ -4,15 +4,18 @@
     "Sandbox_Wishes_GenieLamp_WishPerUse" : "Cantidad de deseos",
     "Sandbox_Wishes_GenieLamp_WishPerUse_tooltip" : "<RGB:1,1,0.75> La cantidad de deseos que podes pedir por cada manoseo de la lampara.",
 
-    "Wishes_GenieLamp_LampUses" : "Usos de la lámpara",
-    "Wishes_GenieLamp_LampUses_tooltip" : "<RGB:1,1,0.75> La cantidad de veces que se puede manosear la lampara antes de que acabe.",
-
-    "Sandbox_Wishes_GenieLamp_Cost" : "Costo del deseo",
-    "Sandbox_Wishes_GenieLamp_Cost_tooltip" : "<RGB:1,1,0.75> La cantidad de deseos que consume el deseo superior.",
+    "Sandbox_Wishes_GenieLamp_LampUses" : "Usos de la lámpara",
+    "Sandbox_Wishes_GenieLamp_LampUses_tooltip" : "<RGB:1,1,0.75> La cantidad de veces que se puede manosear la lampara antes de que acabe.",
 
     "Sandbox_Wishes_GenieLamp_GenieChanceNoWish" : "Chance de que te cague",
     "Sandbox_Wishes_GenieLamp_GenieChanceNoWish_tooltip" : "<RGB:1,0,0> AVISO: Esta opción todavía NO está implementada!\n <RGB:1,1,0.75>  La probabilidad de que el genio decida no darte un deseo, o peor...",
 
+    "Sandbox_Wishes_GenieLamp_ChanceToSpawn": "Probabilidad de generar lámpara",
+    "Sandbox_Wishes_GenieLamp_ChanceToSpawn_tooltip": "<RGB:1,1,0.75> La probabilidad de que la lámpara del génio se genere. Tene en cuenta que no es una probabilidad de 0-1.",
+
+    "Sandbox_Wishes_GenieLamp_Cost" : "Costo del deseo",
+    "Sandbox_Wishes_GenieLamp_Cost_tooltip" : "<RGB:1,1,0.75> La cantidad de deseos que consume el deseo superior.",
+    
     "Sandbox_Wishes_GenieLamp_ModifyTrait" : "Deseo: Conseguir/Sacarse un Rasgo",
     "Sandbox_Wishes_GenieLamp_ModifyTrait_tooltip" : "<RGB:1,1,0.75> <RGB:1,1,0.75> Poder obtener un nuevo rasgo (trait) ó removerse uno, ya sea positivo o negativo.",
 

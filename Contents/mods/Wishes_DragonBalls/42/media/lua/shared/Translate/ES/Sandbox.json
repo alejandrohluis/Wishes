@@ -4,6 +4,12 @@
     "Sandbox_Wishes_DB_WishPerSummoning" : "Cantidad de deseos",
     "Sandbox_Wishes_DB_WishPerSummoning_tooltip" : "<RGB:0.4,0.8,0.4> La cantidad de deseos que se pueden pedir por cada invocación del dragón.",
 
+    "Sandbox_Wishes_DragonBalls_ChanceToSpawnAnywhere" : "Probabilidad de generarse en cualquier lugar",
+    "Sandbox_Wishes_DragonBalls_ChanceToSpawnAnywhere_tooltip" : "<RGB:0.4,0.8,0.4> La probabilidad de que las esferas del dragon se generen en CUALQUIER contenedor. Considerar que la probabilidad base (0.00001) es alrededor de 3%.",
+
+    "Sandbox_Wishes_DragonBalls_ChanceToSpawnSpecial" : "Probabilidad de generarse en lugares especiales",
+    "Sandbox_Wishes_DragonBalls_ChanceToSpawnSpecial_tooltip" : "<RGB:0.4,0.8,0.4> La probabilidad de que las esferas del dragon se generen en lugares que tengan sentido encontrar esferas. Por ejemplo, oficinas de políticos, cajas de objetos basura. Considerar que no es un porcentaje 0-1.",
+
     "Sandbox_Wishes_DB_ModifyTrait" : "Deseo: Conseguir/Sacarse un Trait",
     "Sandbox_Wishes_DB_ModifyTrait_tooltip" : "<RGB:0.4,0.8,0.4> Poder obtener un nuevo trait ó removerse uno, ya sea positivo o negativo.",
 

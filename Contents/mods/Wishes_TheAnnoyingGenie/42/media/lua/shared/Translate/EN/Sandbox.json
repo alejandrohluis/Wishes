@@ -4,14 +4,17 @@
     "Sandbox_Wishes_GenieLamp_WishPerUse" : "Genie Wishes per Lamp Usage",
     "Sandbox_Wishes_GenieLamp_WishPerUse_tooltip" : "<RGB:1,1,0.75> The amount of wishes one has per genie lamp usage. Keep in mind that the genie lamp has 3 uses.",
 
-    "Wishes_GenieLamp_LampUses" : "Lamp Uses",
-    "Wishes_GenieLamp_LampUses_tooltip" : "<RGB:1,1,0.75> How many times you may use the lamp before it runs out of power.",
-
-    "Sandbox_Wishes_GenieLamp_Cost" : "Wish cost",
-    "Sandbox_Wishes_GenieLamp_Cost_tooltip" : "<RGB:1,1,0.75> The amount of wishes consumed by the above wish.",
+    "Sandbox_Wishes_GenieLamp_LampUses" : "Lamp Uses",
+    "Sandbox_Wishes_GenieLamp_LampUses_tooltip" : "<RGB:1,1,0.75> How many times you may use the lamp before it runs out of power.",
 
     "Sandbox_Wishes_GenieLamp_GenieChanceNoWish" : "Slacking chance",
     "Sandbox_Wishes_GenieLamp_GenieChanceNoWish_tooltip" : "<RGB:1,0,0> DISCLAIMER: This option is NOT implemented yet!\n <RGB:1,1,0.75> The chance for the genie to avoid granting you a wish, or worse...",
+
+    "Sandbox_Wishes_GenieLamp_ChanceToSpawn": "Chance to Find Genie Lamp",
+    "Sandbox_Wishes_GenieLamp_ChanceToSpawn_tooltip": "<RGB:1,1,0.75> The probability to spawn genie lamps. Keep in mind that it's NOT a probability % from 0-1.",
+
+    "Sandbox_Wishes_GenieLamp_Cost" : "Wish cost",
+    "Sandbox_Wishes_GenieLamp_Cost_tooltip" : "<RGB:1,1,0.75> The amount of wishes consumed by the above wish.",
 
     "Sandbox_Wishes_GenieLamp_ModifyTrait" : "Enable Wish: Get/Remove a trait",
     "Sandbox_Wishes_GenieLamp_ModifyTrait_tooltip" : "<RGB:1,1,0.75> Wish to get or remove a trait, whether it may be positive or negative.",

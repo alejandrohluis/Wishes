@@ -18,6 +18,26 @@ option WishesDragonBalls.Setting_WishesPerSummoning
     translation = Wishes_DragonBalls_WishPerSummoning,
 }
 
+option WishesDragonBalls.Setting_ChanceToSpawnAnywhere
+{
+    type = double,
+    min = 0,
+    max = 1,
+    default = 0.00001,
+    page = Wishes,
+    translation = Wishes_DragonBalls_ChanceToSpawnAnywhere,
+}
+
+option WishesDragonBalls.Setting_ChanceToSpawnSpecial
+{
+    type = double,
+    min = 0,
+    max = 10,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_DragonBalls_ChanceToSpawnSpecial,
+}
+
 
 
 option WishesDragonBalls.WishEnable_ModifyTrait

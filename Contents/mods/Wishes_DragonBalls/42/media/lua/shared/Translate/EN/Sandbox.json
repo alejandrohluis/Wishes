@@ -4,6 +4,12 @@
     "Sandbox_Wishes_DragonBalls_WishPerSummoning" : "Wishes per Summoning",
     "Sandbox_Wishes_DragonBalls_WishPerSummoning_tooltip" : "<RGB:0.4,0.8,0.4> The amount of wishes granted for every Shenron's summoning.",
 
+    "Sandbox_Wishes_DragonBalls_ChanceToSpawnAnywhere" : "Chance to Find Anywhere",
+    "Sandbox_Wishes_DragonBalls_ChanceToSpawnAnywhere_tooltip" : "<RGB:0.4,0.8,0.4> The probability to spawn dragon balls on ANY container around the map. Keep in mind that the default chance (0.00001) is around 3% per container.",
+
+    "Sandbox_Wishes_DragonBalls_ChanceToSpawnSpecial" : "Chance to Find on Special Spots",
+    "Sandbox_Wishes_DragonBalls_ChanceToSpawnSpecial_tooltip" : "<RGB:0.4,0.8,0.4> The probability to spawn dragon balls on containers which have a realistic reason to have them in. For example, politician offices, junk crates. Keep in mind that it's not a percentage from 0-1.",
+
     "Sandbox_Wishes_DragonBalls_Cost" : "Wish Cost",
     "Sandbox_Wishes_DragonBalls_Cost_tooltip" : "<RGB:0.4,0.8,0.4> The amount of wishes consumed by wishing for the wish above.",
 
