@@ -2,17 +2,21 @@ require 'Items/ProceduralDistributions'
 
 local procList = ProceduralDistributions["list"]
 
+local function tableContains(table, element)
+    for _, value in pairs(table) do
+      if value == element then
+        return true
+      end
+    end
+    return false
+  end
+
 local function insertToDistribution(distributionID, item, chance)
     table.insert(procList[distributionID].items, item)
     table.insert(procList[distributionID].items, chance)
 end
 
 local function addDragonBallToDistributions(id_dragonBall)
-    local general_spawn_chance = SandboxVars.WishesDragonBalls.Setting_ChanceToSpawnAnywhere -- 0.00001
-    for distribution, _ in pairs(procList) do
-        insertToDistribution(distribution, id_dragonBall, general_spawn_chance)
-    end
-
     local special_spawn_chance = SandboxVars.WishesDragonBalls.Setting_ChanceToSpawnSpecial -- 1
     insertToDistribution("CrateToys"                , id_dragonBall, special_spawn_chance)
     insertToDistribution("ScienceMisc"              , id_dragonBall, special_spawn_chance)
@@ -39,6 +43,13 @@ local function addDragonBallToDistributions(id_dragonBall)
     insertToDistribution("WardrobeClassy"           , id_dragonBall, special_spawn_chance)
     insertToDistribution("MayorWestPointDesk"       , id_dragonBall, special_spawn_chance * 10)
     insertToDistribution("MayorWestPointSafe"       , id_dragonBall, special_spawn_chance * 100)
+
+    local general_spawn_chance = SandboxVars.WishesDragonBalls.Setting_ChanceToSpawnAnywhere -- 0.00001
+    for distribution, _ in pairs(procList) do
+        if not tableContains(procList[distribution].items, id_dragonBall) then
+            insertToDistribution(distribution, id_dragonBall, general_spawn_chance)
+        end
+    end
 end
 
 local function addDragonBalls()

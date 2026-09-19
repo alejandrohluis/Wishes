@@ -1,4 +1,4 @@
-module DP
+module Base
 {
     craftRecipe UseGenieLamp
     {
@@ -6,7 +6,7 @@ module DP
         timedAction     = Making,
 		Tags            = InHandCraft,
 		Time 			= 10,
-		NeedToBeLearn	= false,
+		NeedToBeLearn	= true,
         OnCreate		= RecipeCodeOnCreate.GenieLamp,
 		inputs
         {

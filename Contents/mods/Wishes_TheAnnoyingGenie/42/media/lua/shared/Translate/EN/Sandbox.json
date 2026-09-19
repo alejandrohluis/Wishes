@@ -16,33 +16,33 @@
     "Sandbox_Wishes_GenieLamp_Cost" : "Wish cost",
     "Sandbox_Wishes_GenieLamp_Cost_tooltip" : "<RGB:1,1,0.75> The amount of wishes consumed by the above wish.",
 
-    "Sandbox_Wishes_GenieLamp_ModifyTrait" : "Enable Wish: Get/Remove a trait",
+    "Sandbox_Wishes_GenieLamp_ModifyTrait" : "Wish: Get/Remove a trait",
     "Sandbox_Wishes_GenieLamp_ModifyTrait_tooltip" : "<RGB:1,1,0.75> Wish to get or remove a trait, whether it may be positive or negative.",
 
-    "Sandbox_Wishes_GenieLamp_SkillLevelUpUntil" : "Enable Wish: Level Up a Skill until level X",
+    "Sandbox_Wishes_GenieLamp_SkillLevelUpUntil" : "Wish: Level Up a Skill until level X",
     "Sandbox_Wishes_GenieLamp_SkillLevelUpUntil_tooltip" : "<RGB:1,1,0.75> Wish to level up a player's skill until a certain level specified in the config below.",
 
     "Sandbox_Wishes_GenieLamp_LevelingLimit" : "Max skill level",
     "Sandbox_Wishes_GenieLamp_LevelingLimit_tooltip" : "<RGB:1,1,0.75> The maximum level to which the wish \"Level Up a Skill until level X\" can get you to.",
 
-    "Sandbox_Wishes_GenieLamp_SkillLevelUpOnce" : "Enable Wish: Level Up a Skill just once",
+    "Sandbox_Wishes_GenieLamp_SkillLevelUpOnce" : "Wish: Level Up a Skill just once",
     "Sandbox_Wishes_GenieLamp_SkillLevelUpOnce_tooltip" : "<RGB:1,1,0.75> Levels a player's skill only once.",
 
-    "Sandbox_Wishes_GenieLamp_HealInjury" : "Enable Wish: Heal any Injury",
+    "Sandbox_Wishes_GenieLamp_HealInjury" : "Wish: Heal any Injury",
     "Sandbox_Wishes_GenieLamp_HealInjury_tooltip" : "<RGB:1,1,0.75> Heals all injuries of the player. Does not include curing the Knox infection or any sickness.",
 
-    "Sandbox_Wishes_GenieLamp_HealSickness" : "Enable Wish: Cure Sickness",
+    "Sandbox_Wishes_GenieLamp_HealSickness" : "Wish: Cure Sickness",
     "Sandbox_Wishes_GenieLamp_HealSickness_tooltip" : "<RGB:1,1,0.75> Cures all sicknesses a player may have, which includes the Knox infection (zombie virus). Does not include curing injuries.",
 
-    "Sandbox_Wishes_GenieLamp_IdealWeight" : "Enable Wish: Set to Ideal Weight",
+    "Sandbox_Wishes_GenieLamp_IdealWeight" : "Wish: Set to Ideal Weight",
     "Sandbox_Wishes_GenieLamp_IdealWeight_tooltip" : "<RGB:1,1,0.75> Sets the player's weight to the ideal value (80).",
 
-    "Sandbox_Wishes_GenieLamp_Wealth" : "Enable Wish: Wealth",
+    "Sandbox_Wishes_GenieLamp_Wealth" : "Wish: Wealth",
     "Sandbox_Wishes_GenieLamp_Wealth_tooltip" : "<RGB:1,1,0.75> Let's the player wish for wealth/riches.",
 
-    "Sandbox_Wishes_GenieLamp_InfiniteWishesJoke" : "Enable Wish: Infinite wishes",
+    "Sandbox_Wishes_GenieLamp_InfiniteWishesJoke" : "Wish: Infinite wishes",
     "Sandbox_Wishes_GenieLamp_InfiniteWishesJoke_tooltip" : "<RGB:1,0,0> DISCLAIMER: This wish is NOT implemented yet!\n <RGB:1,1,0.75> Enables asking for infinite wishes. <RGB:0.8,0.3,0.3> \n Spoiler: This wish is a joke, it won't give you more wishes.",
 
-    "Sandbox_Wishes_GenieLamp_KillNearbyZombies" : "Enable Wish: Kill all nearby zombies",
+    "Sandbox_Wishes_GenieLamp_KillNearbyZombies" : "Wish: Kill all nearby zombies",
     "Sandbox_Wishes_GenieLamp_KillNearbyZombies_tooltip" : "<RGB:1,0,0> DISCLAIMER: This wish is NOT implemented yet!\n <RGB:1,1,0.75> Kills all zombies near the player, this means, those that are in the same chunk as the player."
 }

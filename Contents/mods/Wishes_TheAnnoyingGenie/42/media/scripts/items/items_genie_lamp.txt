@@ -8,6 +8,7 @@ module DP
 		Weight = 2.0,
 		UseWhileEquipped = false,
 		ConditionMax = 10,
+		Researchablerecipes = UseGenieLamp,
 		OnBreak = OnBreak.ReplaceGenieLamp,
 		Icon = GenieLamp,
 		StaticModel = GenieLamp_Ground,
