@@ -15,7 +15,7 @@ option WishesGenieLamp.WishesPerUse
     max = 3,
     default = 1,
     page = Wishes,
-    translation = Wishes_GenieLamp_WishPerUse,
+    translation = Wishes_GenieLamp_Setting_WishPerUse,
 }
 
 option WishesGenieLamp.LampUses
@@ -25,7 +25,7 @@ option WishesGenieLamp.LampUses
     max = 10,
     default = 3,
     page = Wishes,
-    translation = Wishes_GenieLamp_LampUses,
+    translation = Wishes_GenieLamp_Setting_LampUses,
 }
 
 option WishesGenieLamp.ChanceNoWish
@@ -36,7 +36,7 @@ option WishesGenieLamp.ChanceNoWish
     default = 30,
     asPercent = true,
     page = Wishes,
-    translation = Wishes_GenieLamp_GenieChanceNoWish,
+    translation = Wishes_GenieLamp_Setting_GenieChanceNoWish,
 }
 
 option WishesGenieLamp.ChanceToSpawn
@@ -46,7 +46,7 @@ option WishesGenieLamp.ChanceToSpawn
     max = 100,
     default = 1,
     page = Wishes,
-    translation = Wishes_GenieLamp_ChanceToSpawn,
+    translation = Wishes_GenieLamp_Setting_ChanceToSpawn,
 }
 
 
@@ -56,16 +56,16 @@ option WishesGenieLamp.WishEnable_ModifyTrait
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_GenieLamp_ModifyTrait,
+    translation = Wishes_GenieLamp_WishEnable_ModifyTrait,
 }
 option WishesGenieLamp.WishCost_ModifyTrait
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 30,
     default = 2,
     page = Wishes,
-    translation = Wishes_GenieLamp_Cost,
+    translation = Wishes_GenieLamp_WishCost_ModifyTrait,
 }
 
 
@@ -76,25 +76,25 @@ option WishesGenieLamp.WishEnable_SkillLevelUpUntil
     type = boolean,
     default = false,
     page = Wishes,
-    translation = Wishes_GenieLamp_SkillLevelUpUntil,
+    translation = Wishes_GenieLamp_WishEnable_SkillLevelUpUntil,
 }
 option WishesGenieLamp.WishCost_SkillLevelUpUntil
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 30,
     default = 2,
     page = Wishes,
-    translation = Wishes_GenieLamp_Cost,
+    translation = Wishes_GenieLamp_WishCost_SkillLevelUpUntil,
 }
 option WishesGenieLamp.LevelingLimit
 {
     type = integer,
     min = 1,
-    max = 10,
+    max = 30,
     default = 5,
     page = Wishes,
-    translation = Wishes_GenieLamp_LevelingLimit,
+    translation = Wishes_GenieLamp_WishSetting_LevelingLimit,
 }
 
 
@@ -105,16 +105,16 @@ option WishesGenieLamp.WishEnable_SkillLevelUp
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_GenieLamp_SkillLevelUpOnce,
+    translation = Wishes_GenieLamp_WishEnable_SkillLevelUpOnce,
 }
 option WishesGenieLamp.WishCost_SkillLevelUp
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 30,
     default = 1,
     page = Wishes,
-    translation = Wishes_GenieLamp_Cost,
+    translation = Wishes_GenieLamp_WishCost_SkillLevelUpOnce,
 }
 
 
@@ -125,16 +125,16 @@ option WishesGenieLamp.WishEnable_HealInjury
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_GenieLamp_HealInjury,
+    translation = Wishes_GenieLamp_WishEnable_HealInjury,
 }
 option WishesGenieLamp.WishCost_HealInjury
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 30,
     default = 1,
     page = Wishes,
-    translation = Wishes_GenieLamp_Cost,
+    translation = Wishes_GenieLamp_WishCost_HealInjury,
 }
 
 
@@ -145,16 +145,16 @@ option WishesGenieLamp.WishEnable_HealSickness
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_GenieLamp_HealSickness,
+    translation = Wishes_GenieLamp_WishEnable_HealSickness,
 }
 option WishesGenieLamp.WishCost_HealSickness
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 30,
     default = 3,
     page = Wishes,
-    translation = Wishes_GenieLamp_Cost,
+    translation = Wishes_GenieLamp_WishCost_HealSickness,
 }
 
 
@@ -165,16 +165,16 @@ option WishesGenieLamp.WishEnable_IdealWeight
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_GenieLamp_IdealWeight,
+    translation = Wishes_GenieLamp_WishEnable_IdealWeight,
 }
 option WishesGenieLamp.WishCost_IdealWeight
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 30,
     default = 1,
     page = Wishes,
-    translation = Wishes_GenieLamp_Cost,
+    translation = Wishes_GenieLamp_WishCost_IdealWeight,
 }
 
 
@@ -185,16 +185,16 @@ option WishesGenieLamp.WishEnable_Wealth
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_GenieLamp_Wealth,
+    translation = Wishes_GenieLamp_WishEnable_Wealth,
 }
 option WishesGenieLamp.WishCost_Wealth
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 30,
     default = 1,
     page = Wishes,
-    translation = Wishes_GenieLamp_Cost,
+    translation = Wishes_GenieLamp_WishCost_Wealth,
 }
 
 
@@ -205,16 +205,16 @@ option WishesGenieLamp.WishEnable_InfiniteWishes
     type = boolean,
     default = false,
     page = Wishes,
-    translation = Wishes_GenieLamp_InfiniteWishesJoke,
+    translation = Wishes_GenieLamp_WishEnable_InfiniteWishesJoke,
 }
 option WishesGenieLamp.WishCost_InfiniteWishes
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 30,
     default = 1,
     page = Wishes,
-    translation = Wishes_GenieLamp_Cost,
+    translation = Wishes_GenieLamp_WishCost_InfiniteWishesJoke,
 }
 
 
@@ -225,14 +225,14 @@ option WishesGenieLamp.WishEnable_KillNearbyZombies
     type = boolean,
     default = false,
     page = Wishes,
-    translation = Wishes_GenieLamp_KillNearbyZombies,
+    translation = Wishes_GenieLamp_WishEnable_KillNearbyZombies,
 }
 option WishesGenieLamp.WishCost_KillNearbyZombies
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 30,
     default = 1,
     page = Wishes,
-    translation = Wishes_GenieLamp_Cost,
+    translation = Wishes_GenieLamp_WishCost_KillNearbyZombies,
 }

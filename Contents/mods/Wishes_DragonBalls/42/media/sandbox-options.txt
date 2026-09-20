@@ -15,7 +15,7 @@ option WishesDragonBalls.Setting_WishesPerSummoning
     max = 10,
     default = 3,
     page = Wishes,
-    translation = Wishes_DragonBalls_WishPerSummoning,
+    translation = Wishes_DragonBalls_Setting_WishPerSummoning,
 }
 
 option WishesDragonBalls.Setting_ChanceToSpawnAnywhere
@@ -25,7 +25,7 @@ option WishesDragonBalls.Setting_ChanceToSpawnAnywhere
     max = 1,
     default = 0.00001,
     page = Wishes,
-    translation = Wishes_DragonBalls_ChanceToSpawnAnywhere,
+    translation = Wishes_DragonBalls_Setting_ChanceToSpawnAnywhere,
 }
 
 option WishesDragonBalls.Setting_ChanceToSpawnSpecial
@@ -35,7 +35,7 @@ option WishesDragonBalls.Setting_ChanceToSpawnSpecial
     max = 10,
     default = 1,
     page = Wishes,
-    translation = Wishes_DragonBalls_ChanceToSpawnSpecial,
+    translation = Wishes_DragonBalls_Setting_ChanceToSpawnSpecial,
 }
 
 
@@ -45,16 +45,16 @@ option WishesDragonBalls.WishEnable_ModifyTrait
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_DragonBalls_ModifyTrait,
+    translation = Wishes_DragonBalls_WishEnable_ModifyTrait,
 }
 option WishesDragonBalls.WishCost_ModifyTrait
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 10,
     default = 1,
     page = Wishes,
-    translation = Wishes_DragonBalls_Cost,
+    translation = Wishes_DragonBalls_WishCost_ModifyTrait,
 }
 
 
@@ -65,16 +65,16 @@ option WishesDragonBalls.WishEnable_SkillLevelUpUntil
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_DragonBalls_SkillLevelUpUntil,
+    translation = Wishes_DragonBalls_WishEnable_SkillLevelUpUntil,
 }
 option WishesDragonBalls.WishCost_SkillLevelUpUntil
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 10,
     default = 1,
     page = Wishes,
-    translation = Wishes_DragonBalls_Cost,
+    translation = Wishes_DragonBalls_WishCost_SkillLevelUpUntil,
 }
 option WishesDragonBalls.LevelingLimit
 {
@@ -83,8 +83,10 @@ option WishesDragonBalls.LevelingLimit
     max = 10,
     default = 5,
     page = Wishes,
-    translation = Wishes_DragonBalls_LevelingLimit,
+    translation = Wishes_DragonBalls_WishSetting_LevelingLimit,
 }
+
+
 
 
 option WishesDragonBalls.WishEnable_SkillLevelUpOnce
@@ -92,17 +94,19 @@ option WishesDragonBalls.WishEnable_SkillLevelUpOnce
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_DragonBalls_SkillLevelUpOnce,
+    translation = Wishes_DragonBalls_WishEnable_SkillLevelUpOnce,
 }
 option WishesDragonBalls.WishCost_SkillLevelUpOnce
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 10,
     default = 1,
     page = Wishes,
-    translation = Wishes_DragonBalls_Cost,
+    translation = Wishes_DragonBalls_WishCost_SkillLevelUpOnce,
 }
+
+
 
 
 option WishesDragonBalls.WishEnable_HealInjury
@@ -110,17 +114,19 @@ option WishesDragonBalls.WishEnable_HealInjury
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_DragonBalls_HealInjury,
+    translation = Wishes_DragonBalls_WishEnable_HealInjury,
 }
 option WishesDragonBalls.WishCost_HealInjury
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 10,
     default = 1,
     page = Wishes,
-    translation = Wishes_DragonBalls_Cost,
+    translation = Wishes_DragonBalls_WishCost_HealInjury,
 }
+
+
 
 
 option WishesDragonBalls.WishEnable_HealSickness
@@ -128,17 +134,19 @@ option WishesDragonBalls.WishEnable_HealSickness
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_DragonBalls_HealSickness,
+    translation = Wishes_DragonBalls_WishEnable_HealSickness,
 }
 option WishesDragonBalls.WishCost_HealSickness
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 10,
     default = 2,
     page = Wishes,
-    translation = Wishes_DragonBalls_Cost,
+    translation = Wishes_DragonBalls_WishCost_HealSickness,
 }
+
+
 
 
 option WishesDragonBalls.WishEnable_IdealWeight
@@ -146,17 +154,19 @@ option WishesDragonBalls.WishEnable_IdealWeight
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_DragonBalls_IdealWeight,
+    translation = Wishes_DragonBalls_WishEnable_IdealWeight,
 }
 option WishesDragonBalls.WishCost_IdealWeight
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 10,
     default = 1,
     page = Wishes,
-    translation = Wishes_DragonBalls_Cost,
+    translation = Wishes_DragonBalls_WishCost_IdealWeight,
 }
+
+
 
 
 option WishesDragonBalls.WishEnable_ObtainSpecialItem
@@ -164,17 +174,19 @@ option WishesDragonBalls.WishEnable_ObtainSpecialItem
     type = boolean,
     default = true,
     page = Wishes,
-    translation = Wishes_DragonBalls_ObtainSpecialItems,
+    translation = Wishes_DragonBalls_WishEnable_ObtainSpecialItems,
 }
 option WishesDragonBalls.WishCost_ObtainSpecialItem
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 10,
     default = 1,
     page = Wishes,
-    translation = Wishes_DragonBalls_Cost,
+    translation = Wishes_DragonBalls_WishCost_ObtainSpecialItems,
 }
+
+
 
 
 option WishesDragonBalls.WishEnable_PotentialUnlock
@@ -182,17 +194,19 @@ option WishesDragonBalls.WishEnable_PotentialUnlock
     type = boolean,
     default = false,
     page = Wishes,
-    translation = Wishes_DragonBalls_PotentialUnlock,
+    translation = Wishes_DragonBalls_WishEnable_PotentialUnlock,
 }
 option WishesDragonBalls.WishCost_PotentialUnlock
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 10,
     default = 1,
     page = Wishes,
-    translation = Wishes_DragonBalls_Cost,
+    translation = Wishes_DragonBalls_WishCost_PotentialUnlock,
 }
+
+
 
 
 option WishesDragonBalls.WishEnable_Teleport
@@ -200,35 +214,39 @@ option WishesDragonBalls.WishEnable_Teleport
     type = boolean,
     default = false,
     page = Wishes,
-    translation = Wishes_DragonBalls_Teleport,
+    translation = Wishes_DragonBalls_WishEnable_Teleport,
 }
 option WishesDragonBalls.WishCost_Teleport
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 10,
     default = 1,
     page = Wishes,
-    translation = Wishes_DragonBalls_Cost,
+    translation = Wishes_DragonBalls_WishCost_Teleport,
 }
 
 
-option WishesDragonBalls.WishEnable_Inmortality
+
+
+option WishesDragonBalls.WishEnable_Immortality
 {
     type = boolean,
     default = false,
     page = Wishes,
-    translation = Wishes_DragonBalls_Inmortality,
+    translation = Wishes_DragonBalls_WishEnable_Immortality,
 }
-option WishesDragonBalls.WishCost_Inmortality
+option WishesDragonBalls.WishCost_Immortality
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 10,
     default = 1,
     page = Wishes,
-    translation = Wishes_DragonBalls_Cost,
+    translation = Wishes_DragonBalls_WishCost_Immortality,
 }
+
+
 
 
 option WishesDragonBalls.WishEnable_UpgradeDragonBalls
@@ -236,14 +254,14 @@ option WishesDragonBalls.WishEnable_UpgradeDragonBalls
     type = boolean,
     default = false,
     page = Wishes,
-    translation = Wishes_DragonBalls_UpgradeDragonBalls,
+    translation = Wishes_DragonBalls_WishEnable_UpgradeDragonBalls,
 }
 option WishesDragonBalls.WishCost_UpgradeDragonBalls
 {
     type = integer,
     min = 1,
-    max = 3,
+    max = 10,
     default = 1,
     page = Wishes,
-    translation = Wishes_DragonBalls_Cost,
+    translation = Wishes_DragonBalls_WishCost_UpgradeDragonBalls,
 }
