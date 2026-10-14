@@ -1,0 +1,21 @@
+{
+    "UI_WishingWellStyle": "Water Well - Wishing",
+
+    "UI_WishingWell_modifyTrait": "Modify Trait",
+    "UI_WishingWell_modifyTrait_description": "I wish to change my traits!",
+
+    "UI_WishingWell_skillLevelUpUntil": "Level up a skill many times",
+    "UI_WishingWell_skillLevelUpUntil_description": "I wish to become very skilled at one skill",
+
+    "UI_WishingWell_skillLevelUpOnce": "Level up a skill once",
+    "UI_WishingWell_skillLevelUpOnce_description": "I wish improve a single one of my skills!",
+
+    "UI_WishingWell_heal": "Heal injuries",
+    "UI_WishingWell_heal_description": "I wish to heal all my injuries!",
+
+    "UI_WishingWell_cureSickness": "Cure sickness",
+    "UI_WishingWell_cureSickness_description": "I wish to cure any and all sicknesses!",
+
+    "UI_WishingWell_idealWeight": "Ideal weight",
+    "UI_WishingWell_idealWeight_description": "I wish to have the perfect weight for my body!"
+}

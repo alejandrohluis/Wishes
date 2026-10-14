@@ -1,0 +1,21 @@
+{
+    "UI_WishingWellStyle": "El Pozo de los Deseos",
+
+    "UI_WishingWell_modifyTrait": "Cambiar rasgos",
+    "UI_WishingWell_modifyTrait_description": "Deseo cambiar mis rasgos!",
+
+    "UI_WishingWell_skillLevelUpUntil": "Subir de nivel una habilidad lo máximo posible",
+    "UI_WishingWell_skillLevelUpUntil_description": "Deseo ser muy habilidoso en una de mis habilidades!",
+
+    "UI_WishingWell_skillLevelUpOnce": "Subir de nivel mi habilidad una vez",
+    "UI_WishingWell_skillLevelUpOnce_description": "Deseo mejorar una de mis habilidades!",
+
+    "UI_WishingWell_heal": "Curar heridas",
+    "UI_WishingWell_heal_description": "Deseo curar todas mis heridas!",
+
+    "UI_WishingWell_cureSickness": "Curar enfermedades",
+    "UI_WishingWell_cureSickness_description": "Deseo curar todas mis enfermedades!",
+
+    "UI_WishingWell_idealWeight": "Peso corporal ideal",
+    "UI_WishingWell_idealWeight_description": "Deseo tener el peso corporal ideal!"
+}

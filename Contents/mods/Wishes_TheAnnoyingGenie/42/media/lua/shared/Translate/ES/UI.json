@@ -1,17 +1,24 @@
 {
     "UI_GenieStyle": "El Genio de la Lámpara",
+
     "UI_GenieLamp_modifyTrait": "Cambiar rasgos",
     "UI_GenieLamp_modifyTrait_description": "Deseo cambiar mis rasgos!",
+
     "UI_GenieLamp_skillLevelUpUntil": "Subir de nivel una habilidad lo máximo posible",
     "UI_GenieLamp_skillLevelUpUntil_description": "Deseo subir de nivel mi habilidad lo que más de tu poder!",
+
     "UI_GenieLamp_skillLevelUpOnce": "Subir de nivel mi habilidad una vez",
     "UI_GenieLamp_skillLevelUpOnce_description": "Deseo subir de nivel mi habilidad una única vez!",
+
     "UI_GenieLamp_heal": "Curar heridas",
     "UI_GenieLamp_heal_description": "Deseo curar todas mis heridas!",
+
     "UI_GenieLamp_cureSickness": "Curar enfermedades",
     "UI_GenieLamp_cureSickness_description": "Deseo curar todas mis enfermedades!",
+
     "UI_GenieLamp_idealWeight": "Peso corporal ideal",
     "UI_GenieLamp_idealWeight_description": "Deseo tener el peso corporal ideal!",
+
     "UI_GenieLamp_wealth": "Riquezas",
     "UI_GenieLamp_wealth_description": "Deseo ser la persona más rica del mundo!"
 }

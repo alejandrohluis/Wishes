@@ -152,7 +152,7 @@ local function canPerformWish(availableWishes, wishID, wish)
     return wishAction[wishID] ~= nil and availableWishes >= wish.cost
 end
 
-local function OnClientCommand(module, command, player, args)
+local function GrantWish(module, command, player, args)
     if module ~= "DP_Wishes" then return end
     if command ~= "GrantWish" then return end
     if not args or not args.wishID or type(args.wishID) ~= "string" then return end
@@ -179,7 +179,7 @@ local function OnClientCommand(module, command, player, args)
     end
 end
 
-Events.OnClientCommand.Add(OnClientCommand)
+Events.OnClientCommand.Add(GrantWish)
 
 local function OnPlayerDeath(character)
     if not instanceof(character, "IsoPlayer") then return end

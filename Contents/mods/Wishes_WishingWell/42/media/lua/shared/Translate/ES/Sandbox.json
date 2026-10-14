@@ -1,0 +1,49 @@
+{
+    "Sandbox_Wishes_WishingWell_Divider" : "         · • · • · • · • · • · • ·     El Pozo de los Deseos     · • · • · • · • · • · • ·         ",
+
+
+    "Sandbox_Wishes_WishingWell_Setting_WishesPerUse" : "Cantidad de deseos",
+    "Sandbox_Wishes_WishingWell_Setting_WishesPerUse_tooltip" : "<RGB:0.75,0.75,1> La cantidad de deseos otorgada al recibir deseos.",
+
+    "Sandbox_Wishes_WishingWell_Setting_ChanceForWishes" : "Probabilidad de deseos",
+    "Sandbox_Wishes_WishingWell_Setting_ChanceForWishes_tooltip" : "<RGB:0.75,0.75,1> La probabilidad de que el objeto arrojado (monedas) tenga éxito y otorgue deseos.",
+
+
+
+    "Sandbox_Wishes_WishingWell_WishEnable_ModifyTrait" : "Deseo: Conseguir/Sacarse un Rasgo",
+    "Sandbox_Wishes_WishingWell_WishEnable_ModifyTrait_tooltip" : "<RGB:0.75,0.75,1> Poder obtener un nuevo rasgo (trait) ó removerse uno, ya sea positivo o negativo.",
+    "Sandbox_Wishes_WishingWell_WishCost_ModifyTrait" : "Costo: Conseguir/Sacarse un Rasgo",
+    "Sandbox_Wishes_WishingWell_WishCost_ModifyTrait_tooltip" : "<RGB:0.75,0.75,1> La cantidad de deseos que consume el deseo \"Conseguir/Sacarse un Rasgo\".",
+
+
+    "Sandbox_Wishes_WishingWell_WishEnable_SkillLevelUpUntil" : "Deseo: Subir de nivel una habilidad hasta X nivel.",
+    "Sandbox_Wishes_WishingWell_WishEnable_SkillLevelUpUntil_tooltip" : "<RGB:0.75,0.75,1> Permite subir de nivel una habilidad del jugador hasta el nivel seleccionado en la próxima opción.",
+    "Sandbox_Wishes_WishingWell_WishCost_SkillLevelUpUntil" : "Costo: Subir de nivel una habilidad hasta X nivel",
+    "Sandbox_Wishes_WishingWell_WishCost_SkillLevelUpUntil_tooltip" : "<RGB:0.75,0.75,1> La cantidad de deseos que consume el deseo \"Subir de nivel una habilidad hasta X nivel\".",
+    "Sandbox_Wishes_WishingWell_WishSetting_LevelingLimit" : "Maximo nivel de habilidad",
+    "Sandbox_Wishes_WishingWell_WishSetting_LevelingLimit_tooltip" : "<RGB:0.75,0.75,1> El máximo nivel que puede subirse con el deseo \"Subir de nivel una habilidad hasta X nivel\".",
+
+
+    "Sandbox_Wishes_WishingWell_WishEnable_SkillLevelUpOnce" : "Deseo: Subir de nivel una habilidad una vez",
+    "Sandbox_Wishes_WishingWell_WishEnable_SkillLevelUpOnce_tooltip" : "<RGB:0.75,0.75,1> Habilita subir de nivel una habilidad elegida una única vez.",
+    "Sandbox_Wishes_WishingWell_WishCost_SkillLevelUpOnce" : "Costo: Subir de nivel una habilidad una vez",
+    "Sandbox_Wishes_WishingWell_WishCost_SkillLevelUpOnce_tooltip" : "<RGB:0.75,0.75,1> La cantidad de deseos que consume el deseo \"Subir de nivel una habilidad una vez\".",
+
+
+    "Sandbox_Wishes_WishingWell_WishEnable_HealInjury" : "Deseo: Curar cualquier herida",
+    "Sandbox_Wishes_WishingWell_WishEnable_HealInjury_tooltip" : "<RGB:0.75,0.75,1> Cura todas las heridas del jugador, lo cual NO incluye enfermedades o la infeccion Knox (virus zombie)",
+    "Sandbox_Wishes_WishingWell_WishCost_HealInjury" : "Costo: Curar cualquier herida",
+    "Sandbox_Wishes_WishingWell_WishCost_HealInjury_tooltip" : "<RGB:0.75,0.75,1> La cantidad de deseos que consume el deseo \"Curar cualquier herida\".",
+
+
+    "Sandbox_Wishes_WishingWell_WishEnable_HealSickness" : "Deseo: Curar cualquier enfermedad",
+    "Sandbox_Wishes_WishingWell_WishEnable_HealSickness_tooltip" : "<RGB:0.75,0.75,1> Cura todas las enfermedades del jugador, lo cual SI incluye la infeccion Knox, pero NO incluye curarse las heridas abiertas",
+    "Sandbox_Wishes_WishingWell_WishCost_HealSickness" : "Costo: Curar cualquier enfermedad",
+    "Sandbox_Wishes_WishingWell_WishCost_HealSickness_tooltip" : "<RGB:0.75,0.75,1> La cantidad de deseos que consume el deseo \"Curar cualquier enfermedad\".",
+
+
+    "Sandbox_Wishes_WishingWell_WishEnable_IdealWeight" : "Deseo: Bajar/Subir al peso ideal",
+    "Sandbox_Wishes_WishingWell_WishEnable_IdealWeight_tooltip" : "<RGB:0.75,0.75,1> Establece el peso del jugador al peso ideal (80).",
+    "Sandbox_Wishes_WishingWell_WishCost_IdealWeight" : "Costo: Bajar/Subir al peso ideal",
+    "Sandbox_Wishes_WishingWell_WishCost_IdealWeight_tooltip" : "<RGB:0.75,0.75,1> La cantidad de deseos que consume el deseo \"Bajar/Subir al peso ideal\"."
+}

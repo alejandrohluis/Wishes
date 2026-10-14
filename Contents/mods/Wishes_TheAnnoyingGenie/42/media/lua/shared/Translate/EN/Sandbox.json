@@ -1,6 +1,5 @@
 {
-    "Sandbox_Wishes_GenieLamp_Divider" : " ····==={}===····  The Annoying Genie  ····==={}===···· ",
-
+    "Sandbox_Wishes_GenieLamp_Divider" : "         · • · • · • · • · • · • ·       The Annoying Genie       · • · • · • · • · • · • ·        ",
 
     "Sandbox_Wishes_GenieLamp_Setting_WishPerUse" : "Genie Wishes per Lamp Usage",
     "Sandbox_Wishes_GenieLamp_Setting_WishPerUse_tooltip" : "<RGB:1,1,0.75> The amount of wishes one has per genie lamp usage. Keep in mind that the genie lamp has 3 uses.",

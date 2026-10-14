@@ -1,5 +1,12 @@
 VERSION = 1,
 
+option WishesGenieLamp.EmptySpace
+{
+    type = boolean,
+    default = false,
+    page = Wishes,
+    translation = Wishes_EmptySpace,
+}
 option WishesGenieLamp.Divider
 {
     type = boolean,
@@ -235,4 +242,11 @@ option WishesGenieLamp.WishCost_KillNearbyZombies
     default = 1,
     page = Wishes,
     translation = Wishes_GenieLamp_WishCost_KillNearbyZombies,
+}
+option WishesGenieLamp.EmptySpace2
+{
+    type = boolean,
+    default = false,
+    page = Wishes,
+    translation = Wishes_EmptySpace,
 }

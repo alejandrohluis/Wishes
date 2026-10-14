@@ -1,5 +1,12 @@
 VERSION = 1,
 
+option WishesDragonBalls.EmptySpace
+{
+    type = boolean,
+    default = false,
+    page = Wishes,
+    translation = Wishes_EmptySpace,
+}
 option WishesDragonBalls.Divider
 {
     type = boolean,
@@ -264,4 +271,11 @@ option WishesDragonBalls.WishCost_UpgradeDragonBalls
     default = 1,
     page = Wishes,
     translation = Wishes_DragonBalls_WishCost_UpgradeDragonBalls,
+}
+option WishesDragonBalls.EmptySpace2
+{
+    type = boolean,
+    default = false,
+    page = Wishes,
+    translation = Wishes_EmptySpace,
 }

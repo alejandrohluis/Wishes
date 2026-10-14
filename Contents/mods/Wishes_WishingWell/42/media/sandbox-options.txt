@@ -1,0 +1,174 @@
+VERSION = 1,
+
+option WishesWishingWell.EmptySpace
+{
+    type = boolean,
+    default = false,
+    page = Wishes,
+    translation = Wishes_EmptySpace,
+}
+option WishesWishingWell.Divider
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_WishingWell_Divider,
+}
+
+option WishesWishingWell.WishesPerUse
+{
+    type = integer,
+    min = 1,
+    max = 1000,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_WishingWell_Setting_WishesPerUse,
+}
+
+option WishesWishingWell.ChanceForWishes
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 5,
+    asPercent = true,
+    page = Wishes,
+    translation = Wishes_WishingWell_Setting_ChanceForWishes,
+}
+
+option WishesWishingWell.WishEnable_ModifyTrait
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_WishingWell_WishEnable_ModifyTrait,
+}
+option WishesWishingWell.WishCost_ModifyTrait
+{
+    type = integer,
+    min = 1,
+    max = 100,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_WishingWell_WishCost_ModifyTrait,
+}
+
+
+
+
+option WishesWishingWell.WishEnable_SkillLevelUpUntil
+{
+    type = boolean,
+    default = false,
+    page = Wishes,
+    translation = Wishes_WishingWell_WishEnable_SkillLevelUpUntil,
+}
+option WishesWishingWell.WishCost_SkillLevelUpUntil
+{
+    type = integer,
+    min = 1,
+    max = 100,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_WishingWell_WishCost_SkillLevelUpUntil,
+}
+option WishesWishingWell.LevelingLimit
+{
+    type = integer,
+    min = 1,
+    max = 100,
+    default = 5,
+    page = Wishes,
+    translation = Wishes_WishingWell_WishSetting_LevelingLimit,
+}
+
+
+
+
+option WishesWishingWell.WishEnable_SkillLevelUp
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_WishingWell_WishEnable_SkillLevelUpOnce,
+}
+option WishesWishingWell.WishCost_SkillLevelUp
+{
+    type = integer,
+    min = 1,
+    max = 100,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_WishingWell_WishCost_SkillLevelUpOnce,
+}
+
+
+
+
+option WishesWishingWell.WishEnable_HealInjury
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_WishingWell_WishEnable_HealInjury,
+}
+option WishesWishingWell.WishCost_HealInjury
+{
+    type = integer,
+    min = 1,
+    max = 100,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_WishingWell_WishCost_HealInjury,
+}
+
+
+
+
+option WishesWishingWell.WishEnable_HealSickness
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_WishingWell_WishEnable_HealSickness,
+}
+option WishesWishingWell.WishCost_HealSickness
+{
+    type = integer,
+    min = 1,
+    max = 100,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_WishingWell_WishCost_HealSickness,
+}
+
+
+
+
+option WishesWishingWell.WishEnable_IdealWeight
+{
+    type = boolean,
+    default = true,
+    page = Wishes,
+    translation = Wishes_WishingWell_WishEnable_IdealWeight,
+}
+option WishesWishingWell.WishCost_IdealWeight
+{
+    type = integer,
+    min = 1,
+    max = 100,
+    default = 1,
+    page = Wishes,
+    translation = Wishes_WishingWell_WishCost_IdealWeight,
+}
+
+
+
+
+option WishesWishingWell.EmptySpace2
+{
+    type = boolean,
+    default = false,
+    page = Wishes,
+    translation = Wishes_EmptySpace,
+}

@@ -16,7 +16,7 @@ function OnBreak.ReplaceGenieLamp(genieLamp, player)
     sendAddItemToContainer(inventory, goldenLamp)
 end
 
-function DPWishes.Action:GenieLampCreateSession(playerID)
+function DPWishes.Action:GenieLamp_CreateSession(playerID)
     local sandbox = SandboxVars.WishesGenieLamp
     local maxWishes = sandbox.WishesPerUse
 
@@ -40,7 +40,7 @@ function Recipe.GenieLamp(craftRecipeData, player)
     local sandbox = SandboxVars.WishesGenieLamp
     local playerID = player:getOnlineID()
 
-    local session = DPWishes.Action:GenieLampCreateSession(playerID)
+    local session = DPWishes.Action:GenieLamp_CreateSession(playerID)
 
     local genieData = {
         styleName = "UI_GenieStyle",
@@ -54,7 +54,7 @@ function Recipe.GenieLamp(craftRecipeData, player)
     lamp:setCondition(math.max(0, lampCondition - (lampMaxCondition / sandbox.LampUses)))
 end
 
-local function create_winning_ticket(ticket)
+local function createWinningTicket(ticket)
     local unscratchedTicket = instanceItem("Base.ScratchTicket")
     if not unscratchedTicket then return end
 
@@ -72,7 +72,7 @@ local function create_winning_ticket(ticket)
     ticket:setName(getText("IGUI_ScratchingTicketNameWinner", unscratchedTicket:getDisplayName(), modData["genie_winner"]));
 end
 
-local function genie_lamp_addActions()
+local function genieLamp_addActions()
     local effects = DPWishes.Effects
     local actions = DPWishes.Action
     actions:addEffect("GenieLamp_modifyTrait", effects.modifyTrait)
@@ -86,9 +86,9 @@ local function genie_lamp_addActions()
     actions:addEffect("GenieLamp_slayZombiesGenie", effects.slayZeds)
 
     local itemWhitelist = DPWishes.FilteringLists.Whitelists.ObtainItem
-    itemWhitelist["GL_Wealth_LotteryTicket"] = { minQuantity = 1 , maxQuantity = 1 , itemID = "Base.ScratchTicket_Winner" , itemDataModifier = create_winning_ticket}
+    itemWhitelist["GL_Wealth_LotteryTicket"] = { minQuantity = 1 , maxQuantity = 1 , itemID = "Base.ScratchTicket_Winner" , itemDataModifier = createWinningTicket}
     itemWhitelist["GL_Wealth_Money"] = { minQuantity = 5 , maxQuantity = 20 , itemID = "Base.MoneyBundle" }
     itemWhitelist["GL_Wealth_GoldBar"] = { minQuantity = 1 , maxQuantity = 3 , itemID = "Base.GoldBar" }
 end
 
-genie_lamp_addActions()
+genieLamp_addActions()

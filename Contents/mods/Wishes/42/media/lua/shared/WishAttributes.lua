@@ -380,4 +380,5 @@ local function initializeWishWhitelists()
     SkillLevelOnce_initWhitelist()
 end
 
-Events.OnGameStart.Add(initializeWishWhitelists())
+initializeWishWhitelists()
+Events.OnGameStart.Add(initializeWishWhitelists)

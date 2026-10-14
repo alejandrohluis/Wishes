@@ -1,0 +1,49 @@
+{
+    "Sandbox_Wishes_WishingWell_Divider" : "         · • · • · • · • · • · • ·         Wishing Well         · • · • · • · • · • · • ·          ",
+
+
+    "Sandbox_Wishes_WishingWell_Setting_WishesPerUse" : "Wishes Per Success",
+    "Sandbox_Wishes_WishingWell_Setting_WishesPerUse_tooltip" : "<RGB:0.75,0.75,1> The amount of wishes one gets when the well decides to grant wishes.",
+
+    "Sandbox_Wishes_WishingWell_Setting_ChanceForWishes" : "Chance for wishes",
+    "Sandbox_Wishes_WishingWell_Setting_ChanceForWishes_tooltip" : "<RGB:0.75,0.75,1> The chance for the item thrown to succeed and grant you wishes.",
+
+
+
+    "Sandbox_Wishes_WishingWell_WishEnable_ModifyTrait" : "Wish: Get/Remove a trait",
+    "Sandbox_Wishes_WishingWell_WishEnable_ModifyTrait_tooltip" : "<RGB:0.75,0.75,1> Wish to get or remove a trait, whether it may be positive or negative.",
+    "Sandbox_Wishes_WishingWell_WishCost_ModifyTrait" : "Cost: Get/Remove a trait",
+    "Sandbox_Wishes_WishingWell_WishCost_ModifyTrait_tooltip" : "<RGB:0.75,0.75,1> The amount of wishes consumed by the above wish.",
+
+
+    "Sandbox_Wishes_WishingWell_WishEnable_SkillLevelUpUntil" : "Wish: Level Up a Skill until level X",
+    "Sandbox_Wishes_WishingWell_WishEnable_SkillLevelUpUntil_tooltip" : "<RGB:0.75,0.75,1> Wish to level up a player's skill until a certain level specified in the config below.",
+    "Sandbox_Wishes_WishingWell_WishCost_SkillLevelUpUntil" : "Cost: Level Up a Skill until level X",
+    "Sandbox_Wishes_WishingWell_WishCost_SkillLevelUpUntil_tooltip" : "<RGB:0.75,0.75,1> The amount of wishes consumed by the above wish.",
+    "Sandbox_Wishes_WishingWell_WishSetting_LevelingLimit" : "Max skill level",
+    "Sandbox_Wishes_WishingWell_WishSetting_LevelingLimit_tooltip" : "<RGB:0.75,0.75,1> The maximum level to which the wish \"Level Up a Skill until level X\" can get you to.",
+
+
+    "Sandbox_Wishes_WishingWell_WishEnable_SkillLevelUpOnce" : "Wish: Level Up a Skill just once",
+    "Sandbox_Wishes_WishingWell_WishEnable_SkillLevelUpOnce_tooltip" : "<RGB:0.75,0.75,1> Levels a player's skill only once.",
+    "Sandbox_Wishes_WishingWell_WishCost_SkillLevelUpOnce" : "Cost: Level Up a Skill just once",
+    "Sandbox_Wishes_WishingWell_WishCost_SkillLevelUpOnce_tooltip" : "<RGB:0.75,0.75,1> The amount of wishes consumed by the above wish.",
+
+
+    "Sandbox_Wishes_WishingWell_WishEnable_HealInjury" : "Wish: Heal any Injury",
+    "Sandbox_Wishes_WishingWell_WishEnable_HealInjury_tooltip" : "<RGB:0.75,0.75,1> Heals all injuries of the player. Does not include curing the Knox infection or any sickness.",
+    "Sandbox_Wishes_WishingWell_WishCost_HealInjury" : "Cost: Heal any Injury",
+    "Sandbox_Wishes_WishingWell_WishCost_HealInjury_tooltip" : "<RGB:0.75,0.75,1> The amount of wishes consumed by the above wish.",
+
+
+    "Sandbox_Wishes_WishingWell_WishEnable_HealSickness" : "Wish: Cure Sickness",
+    "Sandbox_Wishes_WishingWell_WishEnable_HealSickness_tooltip" : "<RGB:0.75,0.75,1> Cures all sicknesses a player may have, which includes the Knox infection (zombie virus). Does not include curing injuries.",
+    "Sandbox_Wishes_WishingWell_WishCost_HealSickness" : "Cost: Cure Sickness",
+    "Sandbox_Wishes_WishingWell_WishCost_HealSickness_tooltip" : "<RGB:0.75,0.75,1> The amount of wishes consumed by the above wish.",
+
+
+    "Sandbox_Wishes_WishingWell_WishEnable_IdealWeight" : "Wish: Set to Ideal Weight",
+    "Sandbox_Wishes_WishingWell_WishEnable_IdealWeight_tooltip" : "<RGB:0.75,0.75,1> Sets the player's weight to the ideal value (80).",
+    "Sandbox_Wishes_WishingWell_WishCost_IdealWeight" : "Cost: Set to Ideal Weight",
+    "Sandbox_Wishes_WishingWell_WishCost_IdealWeight_tooltip" : "<RGB:0.75,0.75,1> The amount of wishes consumed by the above wish."
+}
