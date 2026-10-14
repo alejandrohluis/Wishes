@@ -1,7 +1,7 @@
 require "WishAction"
 
 
-function DPWishes.Action:WishingWell_CreateSession(playerID)
+local function WishingWell_CreateSession(playerID)
     local sandbox = SandboxVars.WishesWishingWell
     local maxWishes = sandbox.WishesPerUse
 
@@ -18,7 +18,7 @@ end
 local function WishingWell_StartMenu(player)
     local playerID = player:getOnlineID()
 
-    local session = DPWishes.Action:WishingWell_CreateSession(playerID)
+    local session = WishingWell_CreateSession(playerID)
 
     local wishingWellData = {
         styleName = "UI_WishingWellStyle",

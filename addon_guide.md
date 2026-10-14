@@ -2,29 +2,42 @@
 
 So, you wish to make your very own wishes? ~~(ok I'll stop with the puns)~~
 
-It is highly recommendable to read all the code if you get stuck at some part to understand the flow of the mod.
+It is highly recommendable to read all the code if you get stuck at some part of this guide, as it will help in understanding the flow of the mod.
 
-The basic workflow is the following:
-1. Summon the ritual in some way. 
-   - This creates a server-side session with the available wishes, their connection between the ID and the effects, and then starts the wishing window
-   - This also immediately consumes the durability of the item used to summon the ritual.
-2. The window gets initialised with the data recieved from the ritual summoned
+
+## How does this mod work?
+As a summary, the basic workflow of an addon should be:
+1. Summon the ritual in some way.
+   1. Here we immediately consume the item used to summon the ritual
+      - This step is not always required, it can even be done elsewhere, but itneeds to be done server-side for security reasons
+   2. We create a server-side session with the ID of the wishes, if they are enabled and their cost
+   3. Then, we start the wishing window for the player selected using `DPWishes.Action:startWishingMenu(player, wishingStyleData)`
+2. The window gets initialised with the data received from the ritual summoned
 3. The panel gets created and initialised with the window
 
-...
-After the player clicks an item inside the panel:
+Other required things include:
+- server:
+ - a function that links the wish IDs with their effects. Should get called when the file gets loaded.
+   - for reference, check functions with the suffix "addActions"
+- client:
+ - a definitions file, to link the wish IDs with the UI text and their cost
+- shared:
+ - an attributes file, to create your own effects / options / filtering lists
+
+Following the workflow, after the player clicks an item inside the panel:
 1. Depending on the wish's options:
   - If its an optionless wish, skips to step 2.
   - If the wish has a category or options, creates and displays the list of options for that wish.
     - If the option is a final one (as in, it's not a category), skips to step 2.
-    - If it is a category, repeat this step.
+    - If it is a category, repeat this step with the category.
 2. After selecting the wish and hitting OK, send a command to the server asking to perform the wish.
 3. The server receives it, and checks: 
   - if there is a wishing session started for that player
   - if the wish exists
   - if the wish can be performed
+    - this means, if it's enabled on the server, and the player has enough wishes left for the cost 
 4. If all the previous conditions are true, the server performs the effect linked to the wish's ID
-5. After doing that, consumes the wishes available based on the cost and sends the player a command to update their remaining wishes.
+5. After doing that, consumes the wishes available based on the cost and sends the player a command to update their remaining wishes on the panel.
 6. If the player does not have wishes remaining in his session, the session closes and sends a command to the player's window to close itself.
 
 
