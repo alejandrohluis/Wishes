@@ -6,32 +6,32 @@
 --  - Effects
 
 DPWishes = DPWishes or {}
-DPWishes.Extras = {};
+DPWishes.Extras = {}
 
 ----------------------------------------------------------------------------------
 --- Options
 ----------------------------------------------------------------------------------
-DPWishes.Options = {};
+DPWishes.Options = {}
 
 local wishOptions = DPWishes.Options
 
 wishOptions.getTraits = function(player, blacklist)
     if not blacklist then return end
-    local traitsArray = CharacterTraitDefinition.getTraits();
+    local traitsArray = CharacterTraitDefinition.getTraits()
     local getTranslation = getText
     local traits = {
         { label = getTranslation("UI_Get_Good_Trait") , options = {} , color = { r = 0, g = 0.7, b = 0, a = 1 } },
         { label = getTranslation("UI_Remove_Good_Trait"), options = {} , color = { r = 0.7, g = 0, b = 0, a = 1 } },
         { label = getTranslation("UI_Get_Bad_Trait"), options = {} , color = { r = 0.7, g = 0, b = 0, a = 1 } },
         { label = getTranslation("UI_Remove_Bad_Trait") , options = {} , color = { r = 0, g = 0.7, b = 0, a = 1 } },
-    };
+    }
     for i = 0, traitsArray:size()-1 do
-        local trait = traitsArray:get(i);
+        local trait = traitsArray:get(i)
         if trait then
             local traitType = trait:getType()
             if not blacklist[traitType] then
                 local hasTrait = player:hasTrait(traitType)
-                local cost = trait:getCost();
+                local cost = trait:getCost()
                 local index = 0
                 -- cost > 0 ==> good trait
                 -- cost < 0 ==> bad trait
@@ -52,7 +52,7 @@ wishOptions.getTraits = function(player, blacklist)
             end
         end
     end
-    return traits;
+    return traits
 end
 
 local function addSkillToList(skill, list, blacklist)
@@ -60,45 +60,45 @@ local function addSkillToList(skill, list, blacklist)
     if not blacklist[skillID] then
         if list then
             local skillDisplay = { label = skill:getName(), optionID = skillID }
-            table.insert(list.options, skillDisplay);
+            table.insert(list.options, skillDisplay)
         end
     end
 end
 
 local function addParentToList(parentSkill, list, blacklist, parentsList, noParent)
     local skillID = parentSkill:getId()
-    local parent = parentSkill:getParent();
+    local parent = parentSkill:getParent()
     local isParentSkill = parent == noParent
     if not isParentSkill then return end
     if blacklist[skillID] then return end
 
-    local parentSkillData = { label = parentSkill:getName(), id = skillID, options = {}, color = { r = 0.7, g = 0.7, b = 0.7, a = 1 } };
-    table.insert(list, parentSkillData);
+    local parentSkillData = { label = parentSkill:getName(), id = skillID, options = {}, color = { r = 0.7, g = 0.7, b = 0.7, a = 1 } }
+    table.insert(list, parentSkillData)
     parentsList[skillID] = parentSkillData
 end
 
 wishOptions.getSkills = function(_player, blacklist)
     if not blacklist then return end
-    local skillsArray = PerkFactory.PerkList;
-    local arraySize = skillsArray:size()-1;
-    local skillNone = PerkFactory.Perks.None;
-    local skills = {};
+    local skillsArray = PerkFactory.PerkList
+    local arraySize = skillsArray:size()-1
+    local skillNone = PerkFactory.Perks.None
+    local skills = {}
     local parentSkills = {}
     for i = 0, arraySize do
-        local skill = skillsArray:get(i);
+        local skill = skillsArray:get(i)
         if skill then
             addParentToList(skill, skills, blacklist, parentSkills, skillNone)
         end
     end
     for i = 0, arraySize do
-        local skill = skillsArray:get(i);
+        local skill = skillsArray:get(i)
         if skill then
-            local parent = skill:getParent();
+            local parent = skill:getParent()
             local parentSkill = parentSkills[parent:getId()]
             addSkillToList(skill, parentSkill, blacklist)
         end
     end
-    return skills;
+    return skills
 end
 
 ----------------------------------------------------------------------------------
@@ -106,7 +106,7 @@ end
 ----------------------------------------------------------------------------------
 -- effect(player, wish)   
 -- Returns if the wish is consumed or not
-DPWishes.Effects = {};
+DPWishes.Effects = {}
 
 local wishEffects = DPWishes.Effects
 
@@ -129,12 +129,12 @@ local function getTraitFromID(traitID)
 end
 
 local function obtainTrait(player, trait)
-    player:getCharacterTraits():add(trait);
+    player:getCharacterTraits():add(trait)
     return player:hasTrait(trait)
 end
 
 local function removeTrait(player, trait)
-    player:getCharacterTraits():remove(trait);
+    player:getCharacterTraits():remove(trait)
     return not player:hasTrait(trait)
 end
 
@@ -142,7 +142,7 @@ end
 wishEffects.modifyTrait = function(char, traitID)
     if not DPWishes.FilteringLists.Whitelists.ModifyTrait[traitID] then return false end
     local trait = getTraitFromID(traitID)
-    local hasTrait = char:hasTrait(trait);
+    local hasTrait = char:hasTrait(trait)
     if hasTrait then
         return removeTrait(char, trait)
     else
@@ -155,13 +155,15 @@ wishEffects.skillLevelUpUntil = function(char, skillID)
     if not DPWishes.FilteringLists.Whitelists.SkillLevelUntil[skillID] then return false end
 
     local perk = PerkFactory.Perks.FromString(skillID)
-    local perkLevel = char:getPerkLevel(perk);
-    local startingPerkLevel = perkLevel;
-    local maxLevel = 5;
+    local perkLevel = char:getPerkLevel(perk)
+    local startingPerkLevel = perkLevel
+    local maxLevel = 5
+    if startingPerkLevel >= maxLevel then return false end
     while perkLevel < maxLevel do
-        char:LevelPerk(perk);
-        perkLevel = perkLevel + 1;
+        char:LevelPerk(perk)
+        perkLevel = perkLevel + 1
     end
+    char:getXp():setXPToLevel(perk, perkLevel)
     return startingPerkLevel ~= perkLevel
 end
 
@@ -169,43 +171,44 @@ end
 wishEffects.skillLevelUpOnce = function(char, skillID)
     if not DPWishes.FilteringLists.Whitelists.SkillLevelOnce[skillID] then return false end
     local perk = PerkFactory.Perks.FromString(skillID)
-    local startingPerkLevel = char:getPerkLevel(perk);
-    char:LevelPerk(perk);
-    local perkLevel = char:getPerkLevel(perk);
-    return perkLevel == (startingPerkLevel + 1)
+    local targetPerkLevel = char:getPerkLevel(perk) + 1
+    char:LevelPerk(perk)
+    char:getXp():setXPToLevel(perk, targetPerkLevel)
+    local perkLevelAfter = char:getPerkLevel(perk)
+    return perkLevelAfter == targetPerkLevel
 end
 
 -- sets the player weight to the ideal weight
 wishEffects.setIdealWeight = function(char, _selectedOptionID)
-    local nutrition = char:getNutrition();
-    nutrition:setWeight(80);
-    nutrition:applyTraitFromWeight();
+    local nutrition = char:getNutrition()
+    nutrition:setWeight(80)
+    nutrition:applyTraitFromWeight()
     return nutrition:getWeight() == 80
 end
 
 -- heals the player's health bar to full HP. does not heal any sickness 
 wishEffects.healUp = function(char, _selectedOptionID)
-    local bodyDamage = char:getBodyDamage();
-    local bodyParts = bodyDamage:getBodyParts();
+    local bodyDamage = char:getBodyDamage()
+    local bodyParts = bodyDamage:getBodyParts()
     for i = 0, bodyParts:size()-1 do
-        bodyParts:get(i):RestoreToFullHealth();
+        bodyParts:get(i):RestoreToFullHealth()
     end
-    bodyDamage:Update();
+    bodyDamage:Update()
     return true
 end
 
 -- cure all sickness the player has (whether that may be Zombie Infection or queasy-type sickness)
 wishEffects.cureSickness = function(char, _selectedOptionID)
-    local bodyDamage = char:getBodyDamage();
+    local bodyDamage = char:getBodyDamage()
     if not bodyDamage:IsInfected() then return false end
 
-    local bodyParts = bodyDamage:getBodyParts();
+    local bodyParts = bodyDamage:getBodyParts()
     for i = 0, bodyParts:size()-1 do
-        bodyParts:get(i):SetInfected(false);
+        bodyParts:get(i):SetInfected(false)
     end
-    bodyDamage:setInfected(false);
-    bodyDamage:setInfectionTime(-1.0);
-    bodyDamage:setInfectionMortalityDuration(-1.0);
+    bodyDamage:setInfected(false)
+    bodyDamage:setInfectionTime(-1.0)
+    bodyDamage:setInfectionMortalityDuration(-1.0)
     return true
 end
 
@@ -319,7 +322,7 @@ end
 local function ModifyTrait_initWhitelist()
     wishFilteringLists.Whitelists.ModifyTrait = {}
 
-    local traitsArray = CharacterTraitDefinition.getTraits();
+    local traitsArray = CharacterTraitDefinition.getTraits()
     for i = 0, traitsArray:size()-1 do
         local trait = traitsArray:get(i)
         local traitID = tostring(trait:getType())
@@ -333,17 +336,17 @@ end
 local function SkillLevelUntil_isSkillAllowed(skill, id)
     if wishFilteringLists.Blacklists.SkillLevelUntil[id] then return false end
     if wishFilteringLists.WhitelistForce.SkillLevelUntil[id] then return true end
-    local parent = skill:getParent();
-    local skillNone = PerkFactory.Perks.None;
+    local parent = skill:getParent()
+    local skillNone = PerkFactory.Perks.None
     return parent ~= skillNone
 end
 
 local function SkillLevelUntil_initWhitelist()
     wishFilteringLists.Whitelists.SkillLevelUntil = {}
 
-    local skillsArray = PerkFactory.PerkList;
+    local skillsArray = PerkFactory.PerkList
     for i = skillsArray:size()-1, 0, -1 do
-        local skill = skillsArray:get(i);
+        local skill = skillsArray:get(i)
         local skillID = skill:getId()
         if SkillLevelUntil_isSkillAllowed(skill, skillID) then
             wishFilteringLists.Whitelists.SkillLevelUntil[skillID] = true
@@ -354,17 +357,17 @@ end
 local function SkillLevelOnce_isSkillAllowed(skill, id)
     if wishFilteringLists.Blacklists.SkillLevelOnce[id] then return false end
     if wishFilteringLists.WhitelistForce.SkillLevelOnce[id] then return true end
-    local parent = skill:getParent();
-    local skillNone = PerkFactory.Perks.None;
+    local parent = skill:getParent()
+    local skillNone = PerkFactory.Perks.None
     return parent ~= skillNone
 end
 
 local function SkillLevelOnce_initWhitelist()
     wishFilteringLists.Whitelists.SkillLevelOnce = {}
 
-    local skillsArray = PerkFactory.PerkList;
+    local skillsArray = PerkFactory.PerkList
     for i = skillsArray:size()-1, 0, -1 do
-        local skill = skillsArray:get(i);
+        local skill = skillsArray:get(i)
         local skillID = skill:getId()
         if SkillLevelOnce_isSkillAllowed(skill, skillID) then
             wishFilteringLists.Whitelists.SkillLevelOnce[skillID] = true

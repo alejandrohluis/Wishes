@@ -119,6 +119,9 @@ function wishAction:handleCommand(command, player, args)
     if command == "StopWishingMenu" then
         playerWishingWindow:forceClose()
     end
+    if command == "FixXP" then
+        DPWishes.Fixes.clientFixXp(args)
+    end
 end
 
 function wishAction:startWishingMenu(player, wishingData)
